@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author paolavivascorredor hola
+ * @author paolavivascorredor hola programadores
  *
  */
 module centrosangue {
