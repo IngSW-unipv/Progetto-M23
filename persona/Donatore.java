@@ -1,12 +1,12 @@
-package persone;
+package persona;
 
 public class Donatore extends Persona {
     
 	
 	
-	public Donatore(String n,String c,String cf,Boolean s){
+	public Donatore(String n,String c,String cf,Boolean s,GruppoSanguigno g){
 		
-		super(n,c,cf,s,da togliere);
+		super(n,c,cf,s,g);
 	}
 
 }
