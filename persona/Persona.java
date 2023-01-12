@@ -25,5 +25,7 @@ public class Persona {
 	public static void main(String[] args) {
 		
 		//System.out.println(GruppoSanguigno.A);
+		ProvaAperturaFile paf=new ProvaAperturaFile();
+		paf.trovaGruppiDonatori();
 	}
 }
