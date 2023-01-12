@@ -14,5 +14,6 @@ public class Persona {
 		this.cognome=c;
 		this.codFiscale=cf;
 		this.uomo=s;
+		da togliere
 	}
 }
