@@ -26,6 +26,13 @@ public class Persona {
 		
 		//System.out.println(GruppoSanguigno.A);
 		ProvaAperturaFile paf=new ProvaAperturaFile();
-		paf.trovaGruppiDonatori();
+		
+		
+		System.out.println(paf.mappaGruppi.size());
+			
+		System.out.println( paf.mappaGruppi.get(GruppoSanguigno.A).get(0) );
+		
+		
+		
 	}
 }
