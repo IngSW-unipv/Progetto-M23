@@ -2,6 +2,7 @@ package persona;
 //import java.util.ArrayList;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
 
 public class Persona {
@@ -22,17 +23,44 @@ public class Persona {
 
 	}
 	
-	public static void main(String[] args) {
+	
+	
+	public static class MappaGruppi {
 		
-		//System.out.println(GruppoSanguigno.A);
-		ProvaAperturaFile paf=new ProvaAperturaFile();
+		public final HashMap<GruppoSanguigno, GruppoSanguigno[] > mappaGruppi = new HashMap<GruppoSanguigno, GruppoSanguigno[] >();
 		
 		
-		System.out.println(paf.mappaGruppi.size());
+		public MappaGruppi() {
 			
-		System.out.println( paf.mappaGruppi.get(GruppoSanguigno.A).get(0) );
+			GruppoSanguigno[] donatoriA = {GruppoSanguigno.A,GruppoSanguigno.ZERO};
+			mappaGruppi.put(GruppoSanguigno.A, donatoriA);
+			
+			GruppoSanguigno[] donatoriB = {GruppoSanguigno.B,GruppoSanguigno.ZERO};
+			mappaGruppi.put(GruppoSanguigno.B, donatoriB);
+			
+			GruppoSanguigno[] donatoriAB = {GruppoSanguigno.A,GruppoSanguigno.B,GruppoSanguigno.AB,GruppoSanguigno.ZERO};
+			mappaGruppi.put(GruppoSanguigno.AB, donatoriAB);
+			
+			GruppoSanguigno[] donatori0 = {GruppoSanguigno.ZERO};
+			mappaGruppi.put(GruppoSanguigno.ZERO, donatori0);
+		}
 		
 		
+		public GruppoSanguigno[] chiDonaA(GruppoSanguigno g) {	
+			return this.mappaGruppi.get(g);	
+		}
 		
 	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+
+		MappaGruppi pr = new MappaGruppi();
+		
+		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
+	}
+	
 }
