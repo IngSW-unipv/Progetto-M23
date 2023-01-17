@@ -1,15 +1,16 @@
 package persona;
 
 import java.time.LocalDate;
+import java.sql.Date;
 
 
 public class Donatore extends Persona {
     
 	
 	
-	public Donatore(String n,String c,String cf,Boolean s,LocalDate d,GruppoSanguigno g){
+	public Donatore(String cf,String c,String n, Date d, String s,GruppoSanguigno g){
 		
-		super(n,c,cf,s,d,g);
+		super(cf,c,n,d,s,g);
 	}
 
 }

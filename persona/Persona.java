@@ -2,26 +2,29 @@ package persona;
 //import java.util.ArrayList;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import DataBase.JavaDatabaseConn;
-
 import java.sql.Connection;
-
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import DataBase.JavaDatabaseConn;
+import java.sql.Date;
+import java.sql.Driver;
 
 public class Persona {
     
-	private String nome, cognome, codFiscale;
-	private boolean uomo;
+	private String nome, cognome, codFiscale, sesso;
+
 	private GruppoSanguigno gruppo;
-	private LocalDate dob; 
+	private Date dob; 
 	
 	
-	public Persona( String n,String c,String cf,Boolean s,LocalDate d,GruppoSanguigno g) {
+	public Persona( String cf,String c,String n, Date d, String s,GruppoSanguigno g) {
 		this.nome=n;
 		this.cognome=c;
 		this.codFiscale=cf;
-		this.uomo=s;
+		this.sesso=s;
 		this.gruppo=g;
 		this.dob=d;
 
@@ -66,12 +69,10 @@ public class Persona {
 		
 		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
 		
-		
-
-		Connection conn=null;
-		conn=JavaDatabaseConn.startConnection(conn, "Donatore");
-		
-		JavaDatabaseConn.closeConnection(conn);
+		DonatoreDAO s = new DonatoreDAO();
+	    ArrayList<Donatore> d = s.selectAll();
+	    
+	    System.out.println(d.get(0));
 	}
 	
 }

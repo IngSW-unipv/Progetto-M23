@@ -2,6 +2,7 @@ package DataBase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Driver;
 
 
 public class JavaDatabaseConn {
@@ -14,9 +15,9 @@ public class JavaDatabaseConn {
 		String password=null;
 	
 		DbDriver= "com.mysql.jdbc.Driver";
-		DbURL= "jdbc:mysql://10.87.148.163:8080/"+schema;
+		DbURL= "jdbc:mysql://localhost:3306/"+schema;
 		username="root";
-		password ="root";
+		password ="JavaDOP123";
 		
 		
 		if (isOpen(conn)) {
