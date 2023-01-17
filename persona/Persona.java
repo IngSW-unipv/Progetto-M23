@@ -4,6 +4,10 @@ package persona;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+import DataBase.JavaDatabaseConn;
+
+import java.sql.Connection;
+
 
 public class Persona {
     
@@ -61,6 +65,13 @@ public class Persona {
 		MappaGruppi pr = new MappaGruppi();
 		
 		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
+		
+		
+
+		Connection conn=null;
+		conn=JavaDatabaseConn.startConnection(conn, "Donatore");
+		
+		JavaDatabaseConn.closeConnection(conn);
 	}
 	
 }

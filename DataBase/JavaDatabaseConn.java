@@ -1,5 +1,6 @@
 package DataBase;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
@@ -13,28 +14,33 @@ public class JavaDatabaseConn {
 		String password=null;
 	
 		DbDriver= "com.mysql.jdbc.Driver";
-		DbURL= "jdbc:mysql://localhost:3306/"+javadop;
+		DbURL= "jdbc:mysql://10.87.148.163:8080/"+schema;
 		username="root";
-		password ="JavaDOP123";
+		password ="root";
 		
 		
 		if (isOpen(conn)) {
 			closeConnection(conn);
 		}
 		
+		
 		try 
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConne(DbURL, username, password);
+			conn = DriverManager.getConnection(DbURL, username, password);
 			
 		}
+		
+		
 		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
+		
+		
 		return conn;
 		
-		}
+	}
 	
 	
 	
