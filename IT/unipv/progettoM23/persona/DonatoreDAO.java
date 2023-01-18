@@ -1,14 +1,15 @@
-package persona;
+package IT.unipv.progettoM23.persona;
 import java.sql.Connection;
 import java.util.ArrayList;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.sql.Date;
 import java.sql.Driver;
 
-
-import DataBase.JavaDatabaseConn; 	 
+import IT.unipv.progettoM23.database.JavaDatabaseConn;
+ 	 
 
 public class DonatoreDAO implements IDonatoreDAO {
 	
@@ -18,23 +19,24 @@ public class DonatoreDAO implements IDonatoreDAO {
 	public DonatoreDAO () 
 	{
 		super();
-		this.schema = "javadop";
+		this.schema = "dop";
 	}
-	public ArrayList<Donatore> selectAll()
-	{
+	
+	
+	public ArrayList<Donatore> selectAll(){
 		ArrayList<Donatore> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
 		ResultSet rs1;
 		
-		try
-		{
+		try{
+			
 			st1 = conn.createStatement();
 			String query="select * from donatore";
 			rs1=st1.executeQuery(query);
 			
-			while(rs1.next()) 
-			{
+			
+			while(rs1.next()) {
 				String grs = rs1.getString(6);
 				GruppoSanguigno gr;
 				gr = GruppoSanguigno.valueOf(grs);
@@ -44,9 +46,13 @@ public class DonatoreDAO implements IDonatoreDAO {
 				
 			}
 		}
+		
+		
 		catch (Exception e) {e.printStackTrace();
-	}
+	    }
+		
 		JavaDatabaseConn.closeConnection(conn);
+		
         return result;
    }
 }

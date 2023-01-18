@@ -1,4 +1,4 @@
-package DataBase;
+package IT.unipv.progettoM23.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,9 +15,9 @@ public class JavaDatabaseConn {
 		String password=null;
 	
 		DbDriver= "com.mysql.jdbc.Driver";
-		DbURL= "jdbc:mysql://localhost:3306/"+schema;
+		DbURL= "jdbc:mysql://127.0.0.1:3306/"+schema;
 		username="root";
-		password ="JavaDOP123";
+		password ="root";
 		
 		
 		if (isOpen(conn)) {

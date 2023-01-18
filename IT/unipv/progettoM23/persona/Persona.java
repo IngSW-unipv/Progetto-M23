@@ -1,14 +1,15 @@
-package persona;
+package IT.unipv.progettoM23.persona;
 //import java.util.ArrayList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import IT.unipv.progettoM23.database.JavaDatabaseConn;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import DataBase.JavaDatabaseConn;
 import java.sql.Date;
 import java.sql.Driver;
 
@@ -59,6 +60,12 @@ public class Persona {
 		
 	}
 	
+	
+	
+	
+	public String toString() {
+		return this.nome+" "+this.cognome;
+	}
 	
 	
 	
