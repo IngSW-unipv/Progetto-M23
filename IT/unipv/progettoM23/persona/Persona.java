@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
+import IT.unipv.progettoM23.saccheSangue.ControllerSacche;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -80,6 +81,10 @@ public class Persona {
 	    ArrayList<Donatore> d = s.selectAll();
 	    
 	    System.out.println(d.get(0));
+	    
+	    
+	    ControllerSacche cntr = new ControllerSacche();
+	    System.out.println(cntr.getNumSacche(GruppoSanguigno.A));
 	}
 	
 }
