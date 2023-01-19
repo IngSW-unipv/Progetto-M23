@@ -3,6 +3,7 @@ package IT.unipv.progettoM23.persona;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
@@ -11,6 +12,7 @@ import IT.unipv.progettoM23.saccheSangue.ControllerSacche;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.sql.Date;
 import java.sql.Driver;
 
@@ -85,6 +87,11 @@ public class Persona {
 	    
 	    ControllerSacche cntr = new ControllerSacche();
 	    System.out.println(cntr.getNumSacche(GruppoSanguigno.A));
+	    
+	    java.util.Date currentDate =GregorianCalendar.getInstance().getTime();
+	    DateFormat df = DateFormat.getDateInstance();
+	    String dateString = df.format(currentDate);
+	    System.out.println(dateString);
 	}
 	
 }
