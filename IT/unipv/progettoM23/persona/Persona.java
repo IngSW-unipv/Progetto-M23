@@ -22,7 +22,6 @@ import java.sql.Date;
 public class Persona {
     
 	private String nome, cognome, codFiscale, sesso;
-
 	private GruppoSanguigno gruppo;
 	private Date dob; 
 	
