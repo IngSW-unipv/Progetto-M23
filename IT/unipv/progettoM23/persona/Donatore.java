@@ -1,6 +1,6 @@
 package IT.unipv.progettoM23.persona;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.sql.Date;
 
 
