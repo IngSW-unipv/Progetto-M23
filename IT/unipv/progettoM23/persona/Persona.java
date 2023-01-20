@@ -35,7 +35,13 @@ public class Persona {
 		this.gruppo=g;
 		this.dob=d;
 
+		
 	}
+	public String getCognome() {
+		return this.cognome;
+	}
+	
+
 	
 	
 	
@@ -103,6 +109,12 @@ public class Persona {
 	    DateFormat df = DateFormat.getDateInstance();
 	    String dateString = df.format(currentDate);
 	    System.out.println(dateString);
+	    
+	    DonatoreDAO don = new DonatoreDAO();
+	    String cf1 = "TTTFFF000UUU333A";
+	    Persona d1 = don.selectDonatore(cf1);
+	    System.out.println(d1.getCognome());
+	   
 	}
 	
 }
