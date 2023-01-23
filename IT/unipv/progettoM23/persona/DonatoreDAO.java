@@ -1,5 +1,6 @@
 package IT.unipv.progettoM23.persona;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import java.sql.ResultSet;
@@ -23,6 +24,7 @@ public class DonatoreDAO implements IDonatoreDAO {
 	}
 	
 	
+	
 	public ArrayList<Donatore> selectAll(){
 		ArrayList<Donatore> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
@@ -35,8 +37,8 @@ public class DonatoreDAO implements IDonatoreDAO {
 			String query="select * from donatore";
 			rs1=st1.executeQuery(query);
 			
-			
-			while(rs1.next()) {
+		    while(rs1.next())
+		    {
 				String grs = rs1.getString(6);
 				GruppoSanguigno gr;
 				gr = GruppoSanguigno.valueOf(grs);
@@ -48,6 +50,8 @@ public class DonatoreDAO implements IDonatoreDAO {
 		}
 		
 		
+		
+		
 		catch (Exception e) {e.printStackTrace();
 	    }
 		
@@ -55,4 +59,56 @@ public class DonatoreDAO implements IDonatoreDAO {
 		
         return result;
    }
-}
+	
+	
+	
+	public Donatore selectDonatore(String cf){
+		//ArrayList<Donatore> result = new ArrayList<>();
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+		Donatore d= null;
+		try{
+			
+			
+			String query="select * from donatore where CodiceFiscale=?";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, cf);
+			
+			rs1=st1.executeQuery(query);
+			
+			rs1.next();
+	        String grs = rs1.getString(6);
+			GruppoSanguigno gr;
+			gr = GruppoSanguigno.valueOf(grs);
+				
+			d= new Donatore(rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getDate(4), rs1.getString(5), gr);
+			 
+			
+			
+		}
+		
+		
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+        return d;
+   }
+	
+	
+
+	
+
+		
+   }
+	
+	
+	
+	
+	
+
+
