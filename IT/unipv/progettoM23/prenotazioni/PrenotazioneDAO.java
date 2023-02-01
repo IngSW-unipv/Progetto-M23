@@ -18,6 +18,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	
 	private String schema;
 	private Connection conn;
+	Date data;
 	
 	public PrenotazioneDAO () 
 	{
@@ -29,35 +30,40 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public ArrayList<Prenotazione> selectDate(Date data){
 		ArrayList<Prenotazione> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		Statement st1, st2;
 		ResultSet rs1, rs2;
-		
-		Statement st2;
+		this.data=data;
 	
-		try{
+           try{
 			
 			st1 = conn.createStatement();
-			String query="select * from prenotazione where DataPrenotazione = '2023-01-19'";
+			String query="select * from prenotazione where Data="+data;
 			rs1=st1.executeQuery(query);
 			
 			
 			while(rs1.next()) {
 				
-				st2= conn.createStatement();
-				String query1= "select * from donatore where CodiceFiscale ="+rs1.getString(1);
-				rs2 = st2.executeQuery(query1);
 				
+					st2 = conn.createStatement();
+					String query2="select * from donatore where CodiceFiscale="+rs1.getString(1);
+					rs2=st2.executeQuery(query2);
+					rs2.next();
+				
+			
 				String grs = rs2.getString(6);
 				GruppoSanguigno gr;
 				gr = GruppoSanguigno.valueOf(grs);
 				
-				Donatore donat= new Donatore(rs2.getString(1), rs2.getString(2), rs2.getString(3), rs2.getDate(4), rs2.getString(5), gr);
+				Donatore d= new Donatore(rs2.getString(1), rs2.getString(2), rs2.getString(3), rs2.getDate(4), rs2.getString(5), gr);
 				
-				Prenotazione p= new Prenotazione(donat, rs1.getDate(2), rs1.getTime(3));
+				Prenotazione p= new Prenotazione(d, rs1.getDate(2), rs1.getTime(3));
 				result.add(p);
 				
+			
+				
+			
 			}
-		}
+           }
 		
 		
 		catch (Exception e) {e.printStackTrace();
@@ -66,5 +72,9 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		JavaDatabaseConn.closeConnection(conn);
 		
         return result;
-   }
+			
+           
+	}
 }
+
+

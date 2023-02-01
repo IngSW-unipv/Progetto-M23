@@ -8,12 +8,12 @@ public class Prenotazione {
 	
 	private Date data;
 	private Time ora;
-	private Donatore donatore;
+	private String codFiscale;
 
 	public Prenotazione(Donatore d, Date data, Time ora) {
 		this.data =data;
 		this.ora = ora;
-		this.donatore=d;
+		this.codFiscale=d.getCodF;
 		
 		
 	}
