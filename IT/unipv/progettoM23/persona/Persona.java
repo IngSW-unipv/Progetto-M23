@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+import javax.swing.JFrame;
+
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
+import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
@@ -101,18 +104,24 @@ public class Persona {
 //	    System.out.println(n.get(2));
 	    
 	    
-	    ControllerSacche cntr = new ControllerSacche();
-	    System.out.println(cntr.getNumSacche(GruppoSanguigno.A));
+//	    ControllerSacche cntr = new ControllerSacche() ;
+//	    System.out.println(cntr.getNumSacche(GruppoSanguigno.A));
 	    
-	    java.util.Date currentDate =GregorianCalendar.getInstance().getTime();    
-	    DateFormat df = DateFormat.getDateInstance();
-	    String dateString = df.format(currentDate);
-	    System.out.println(dateString);
+//	    java.util.Date currentDate =GregorianCalendar.getInstance().getTime();    
+//	    DateFormat df = DateFormat.getDateInstance();
+//	    String dateString = df.format(currentDate);
+//	    System.out.println(dateString);
 	    
-	    DonatoreDAO don = new DonatoreDAO();
-	    String cf1 = "TTTFFF000UUU333A";
-	    Persona d1 = don.selectDonatore(cf1);
-	    System.out.println(d1.getCognome());
+//	    DonatoreDAO don = new DonatoreDAO();
+//	    String cf1 = "TTTFFF000UUU333A";
+//	    Persona d1 = don.selectDonatore(cf1);
+//	    System.out.println(d1.getCognome());
+	    
+	    
+	    CenteredFrame cf= new CenteredFrame(800,600);
+	    
+	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cf.setVisible(true);		
 	   
 	}
 	
