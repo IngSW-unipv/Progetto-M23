@@ -8,9 +8,11 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
+import com.google.protobuf.TextFormat.ParseException;
+
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
-import IT.unipv.progettoM23.graphics.CenteredFrame;
+// import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
@@ -19,6 +21,7 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 //import java.sql.DriverManager;
 //import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.sql.Date;
 //import java.sql.Driver;
 
@@ -41,6 +44,10 @@ public class Persona {
 	}
 	public String getCognome() {
 		return this.cognome;
+	}
+	
+	public String getcodFiscale() {
+		return this.codFiscale;
 	}
 	
 
@@ -118,11 +125,28 @@ public class Persona {
 //	    System.out.println(d1.getCognome());
 	    
 	    
-	    CenteredFrame cf= new CenteredFrame(800,600);
+//	    CenteredFrame cf= new CenteredFrame(800,600);
 	    
-	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		cf.setVisible(true);		
+//	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		cf.setVisible(true);		
 	   
+	    
+	    PrenotazioneDAO p1 = new PrenotazioneDAO(); 
+
+
+          Date e = new Date(123,00,01);
+    	  System.out.println(e);
+          ArrayList<Prenotazione> n = p1.selectDate(e);
+          Prenotazione n1 = n.get(0);
+          System.out.println(n1.getPrenotazione());
+          Prenotazione n2 = n.get(1);
+          System.out.println(n2.getPrenotazione());
+          Prenotazione n3 = n.get(2);
+          System.out.println(n3.getPrenotazione());
+          Prenotazione n4 = n.get(3);
+          System.out.println(n4.getPrenotazione());
+        
+
 	}
 	
 }

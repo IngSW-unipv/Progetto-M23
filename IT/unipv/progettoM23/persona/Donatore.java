@@ -48,6 +48,8 @@ public class Donatore extends Persona {
 		}
 		
 		return p;
+	
+
 	}
 
 }

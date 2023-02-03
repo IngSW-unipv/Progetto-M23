@@ -11,6 +11,7 @@ import java.sql.Driver;
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.persona.Donatore;
+import IT.unipv.progettoM23.persona.DonatoreDAO;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
  	 
 
@@ -30,33 +31,29 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public ArrayList<Prenotazione> selectDate(Date data){
 		ArrayList<Prenotazione> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1, st2;
-		ResultSet rs1, rs2;
+		Statement st1;
+		ResultSet rs1;
 		this.data=data;
 	
            try{
 			
 			st1 = conn.createStatement();
-			String query="select * from prenotazione where Data="+data;
+			String query="select * from prenotazione where DataPrenotazione='2023-01-01'" ;
 			rs1=st1.executeQuery(query);
 			
 			
 			while(rs1.next()) {
 				
 				
-					st2 = conn.createStatement();
-					String query2="select * from donatore where CodiceFiscale="+rs1.getString(1);
-					rs2=st2.executeQuery(query2);
-					rs2.next();
+				//	st2 = conn.createStatement();
+				//	DonatoreDAO d1 = new DonatoreDAO();
+				//	Donatore d2;
+				//	d2= d1.selectDonatore(rs1.getString(1));
+					
 				
-			
-				String grs = rs2.getString(6);
-				GruppoSanguigno gr;
-				gr = GruppoSanguigno.valueOf(grs);
+
 				
-				Donatore d= new Donatore(rs2.getString(1), rs2.getString(2), rs2.getString(3), rs2.getDate(4), rs2.getString(5), gr);
-				
-				Prenotazione p= new Prenotazione(d, rs1.getDate(2), rs1.getTime(3));
+				Prenotazione p= new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
 				result.add(p);
 				
 			
@@ -75,6 +72,10 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			
            
 	}
+	
+	
+
+	
 }
 
 

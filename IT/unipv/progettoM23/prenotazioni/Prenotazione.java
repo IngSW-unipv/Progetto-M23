@@ -10,10 +10,10 @@ public class Prenotazione {
 	private Time ora;
 	private String codFiscale;
 
-	public Prenotazione(Donatore d, Date data, Time ora) {
+	public Prenotazione(String CodFiscale, Date data, Time ora) {
 		this.data =data;
 		this.ora = ora;
-		this.codFiscale=d.getCodF;
+		this.codFiscale=CodFiscale;
 		
 		
 	}
@@ -21,5 +21,18 @@ public class Prenotazione {
 	public Time getOra() {
 		return this.ora;
 	}
+	
+	public String getCodiceFiscale() {
+		return this.codFiscale;
+	}
+	
+	public Date getData() {
+		return this.data;
+	}
 
+	public String getPrenotazione() { 
+	String p;
+	p = codFiscale+" "+data+" "+ora;
+	return p;
+	}
 }
