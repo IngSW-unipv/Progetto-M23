@@ -19,14 +19,23 @@ public class CenteredFrame extends JFrame{
 		int posY=(AltScreen-a)/2;
 				
 		
-		setSize(l,a);
+		this.setSize(l,a);
 		
-		setLocation(posX,posY);
+		this.setLocation(posX,posY);
 		
+		//this.setLayout(null);                    //set layout=null per spostare elementi in jpanel
 		
-        SimplePanel p=new SimplePanel();	
+		Color col =new Color(140,0,0);
+		this.setBackground(col);
+		
 		Container c=this.getContentPane();
+		//c.setLayout(new GridLayout(20,20));
+		
+		//GridBagConstraints grid=new GridBagConstraints();
+		SimplePanel p=new SimplePanel();
+		p.setLayout(null);
 		c.add(p);
+
 		
 	}
 	
