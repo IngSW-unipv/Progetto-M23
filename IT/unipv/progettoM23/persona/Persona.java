@@ -23,36 +23,37 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.sql.Time;
 //import java.sql.Driver;
 
 public class Persona {
     
-	private String nome, cognome, codFiscale, sesso;
+	private String codFiscale;
 	private GruppoSanguigno gruppo;
-	private Date dob; 
+ 
 	
 	
-	public Persona( String cf,String c,String n, Date d, String s,GruppoSanguigno g) {
-		this.nome=n;
-		this.cognome=c;
+	public Persona( String cf, GruppoSanguigno g) {
+//		this.nome=n;
+//		this.cognome=c;
 		this.codFiscale=cf;
-		this.sesso=s;
+//		this.sesso=s;
 		this.gruppo=g;
-		this.dob=d;
+//		this.dob=d;
 
 		
 	}
-	public String getCognome() {
-		return this.cognome;
-	}
+
 	
 	public String getcodFiscale() {
 		return this.codFiscale;
 	}
-	
 
 	
 	
+	public GruppoSanguigno getGruppo() {
+		return this.gruppo;
+	}
 	
 	public static class MappaGruppi {
 		
@@ -84,9 +85,6 @@ public class Persona {
 	
 	
 	
-	public String toString() {
-		return this.nome+" "+this.cognome;
-	}
 	
 	
 	
@@ -133,8 +131,9 @@ public class Persona {
 	    
 	    PrenotazioneDAO p1 = new PrenotazioneDAO(); 
 
-
-          Date e = new Date(123,00,01);
+        
+       // Date e = new Date(123,00,01);
+          Date e = Date.valueOf("2023-01-01");
     	  System.out.println(e);
           ArrayList<Prenotazione> n = p1.selectDate(e);
           Prenotazione n1 = n.get(0);
@@ -145,8 +144,17 @@ public class Persona {
           System.out.println(n3.getPrenotazione());
           Prenotazione n4 = n.get(3);
           System.out.println(n4.getPrenotazione());
+          
+          Date o = Date.valueOf("2023-02-02");
+          Time t = Time.valueOf("16:30:00");
+  //        p1.inserisciPrenotazione(new Prenotazione("TTTTTTTTT5566778",o,t ));
+          
+          ArrayList<Prenotazione> v = p1.selectDate(o);
+          Prenotazione v1 = v.get(0);
+          System.out.println(v1.getPrenotazione());
         
-
+      //    s.inserisciDonatore(new Donatore("TTTTTTTTT5566778", "VERDI","GABRIELE",e,"M", GruppoSanguigno.B));
+          
 	}
 	
 }

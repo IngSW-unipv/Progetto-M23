@@ -37,6 +37,7 @@ public class DonatoreDAO implements IDonatoreDAO {
 			String query="select * from donatore";
 			rs1=st1.executeQuery(query);
 			
+			
 		    while(rs1.next())
 		    {
 				String grs = rs1.getString(6);
@@ -99,6 +100,37 @@ public class DonatoreDAO implements IDonatoreDAO {
         return d;
    }
 	
+	public void  inserisciDonatore(Donatore d){
+	
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		Statement st1;
+
+		
+		try{
+			
+			st1 = conn.createStatement();
+			
+			String gr;
+			gr = String.valueOf(d.getGruppo());
+			
+			String query="Insert into Donatore values ('"+d.getcodFiscale()+"','"
+			+d.getCognome()+"','"+d.getNome()+"','"+d.getData()+"','"+d.getSesso()+"','"+gr+"')";
+			
+			st1.executeUpdate(query);
+			
+			System.out.println("Data inserted successfully");
+		}
+		
+		
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+       
+   }
 	
 
 	

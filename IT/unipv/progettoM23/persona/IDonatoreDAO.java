@@ -5,4 +5,5 @@ public interface IDonatoreDAO {
 
 	public ArrayList<Donatore> selectAll();
 	public Donatore selectDonatore(String cf);
+	public void inserisciDonatore(Donatore d);
 }

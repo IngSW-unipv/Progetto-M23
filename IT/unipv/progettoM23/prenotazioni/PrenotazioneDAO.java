@@ -38,27 +38,14 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
            try{
 			
 			st1 = conn.createStatement();
-			String query="select * from prenotazione where DataPrenotazione='2023-01-01'" ;
+			String query="select * from prenotazione where DataPrenotazione='"+data+"'" ;
 			rs1=st1.executeQuery(query);
 			
 			
 			while(rs1.next()) {
-				
-				
-				//	st2 = conn.createStatement();
-				//	DonatoreDAO d1 = new DonatoreDAO();
-				//	Donatore d2;
-				//	d2= d1.selectDonatore(rs1.getString(1));
-					
-				
-
-				
+			
 				Prenotazione p= new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
 				result.add(p);
-				
-			
-				
-			
 			}
            }
 		
@@ -73,6 +60,34 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
            
 	}
 	
+	public void  inserisciPrenotazione(Prenotazione p){
+		
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		Statement st1;
+
+		
+		try{
+			
+			st1 = conn.createStatement();
+			
+			String query="Insert into Prenotazione values ('"+p.getCodiceFiscale()+"','"
+			+p.getData()+"','"+p.getOra()+"')";
+			
+			st1.executeUpdate(query);
+			
+			System.out.println("Data inserted successfully");
+		}
+		
+		
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+       
+   }
 	
 
 	
