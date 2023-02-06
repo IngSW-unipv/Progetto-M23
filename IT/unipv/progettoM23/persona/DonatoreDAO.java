@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 //import java.time.LocalDate;
 //import java.sql.Date;
@@ -25,7 +26,7 @@ public class DonatoreDAO implements IDonatoreDAO {
 	
 	
 	
-	public ArrayList<Donatore> selectAll(){
+	public ArrayList<Donatore> selectAll() throws SQLException{
 		ArrayList<Donatore> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
@@ -36,7 +37,6 @@ public class DonatoreDAO implements IDonatoreDAO {
 			st1 = conn.createStatement();
 			String query="select * from donatore";
 			rs1=st1.executeQuery(query);
-			
 			
 		    while(rs1.next())
 		    {
@@ -63,16 +63,19 @@ public class DonatoreDAO implements IDonatoreDAO {
 	
 	
 	
-	public Donatore selectDonatore(String cf){
+	public Donatore selectDonatore(String cf) throws SQLException{
 		//ArrayList<Donatore> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		Donatore d= null;
 		try{
 			
-			st1 = conn.createStatement();
-			String query="select * from donatore where CodiceFiscale="+"'"+cf+"'";
+			
+			String query="select * from donatore where CodiceFiscale=?";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, cf);
+			
 			rs1=st1.executeQuery(query);
 			
 			rs1.next();
@@ -97,37 +100,6 @@ public class DonatoreDAO implements IDonatoreDAO {
         return d;
    }
 	
-	public void  inserisciDonatore(Donatore d){
-	
-		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
-
-		
-		try{
-			
-			st1 = conn.createStatement();
-			
-			String gr;
-			gr = String.valueOf(d.getGruppo());
-			
-			String query="Insert into Donatore values ('"+d.getcodFiscale()+"','"
-			+d.getCognome()+"','"+d.getNome()+"','"+d.getData()+"','"+d.getSesso()+"','"+gr+"')";
-			
-			st1.executeUpdate(query);
-			
-			System.out.println("Data inserted successfully");
-		}
-		
-		
-		
-		
-		catch (Exception e) {e.printStackTrace();
-	    }
-		
-		JavaDatabaseConn.closeConnection(conn);
-		
-       
-   }
 	
 
 	
