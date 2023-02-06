@@ -95,9 +95,9 @@ public class Persona {
 		
 		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
 		
-		DonatoreDAO s = new DonatoreDAO();
-	    String cf = "OOOOOOOOOOOOOOOO";
-		s.selectDonatore(cf);
+//		DonatoreDAO s = new DonatoreDAO();
+//	    String cf = "OOOOOOOOOOOOOOOO";
+//		s.selectDonatore(cf);
 //	    ArrayList<Donatore> d = s.selectAll();
 	    
 //	    System.out.println(d.get(0));
@@ -157,6 +157,11 @@ public class Persona {
         
       //    s.inserisciDonatore(new Donatore("TTTTTTTTT5566778", "VERDI","GABRIELE",e,"M", GruppoSanguigno.B));
           
+		
+		LoginRegistrazione l = new LoginRegistrazione("DDDDDDDDDDDDDDDD", "12345679");
+		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
+      //ld.inserisciUtente(l);
+		ld.verificaUtente(l);
 	}
 	
 }
