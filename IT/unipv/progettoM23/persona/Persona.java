@@ -96,9 +96,11 @@ public class Persona {
 		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
 		
 		DonatoreDAO s = new DonatoreDAO();
-	    ArrayList<Donatore> d = s.selectAll();
+	    String cf = "OOOOOOOOOOOOOOOO";
+		s.selectDonatore(cf);
+//	    ArrayList<Donatore> d = s.selectAll();
 	    
-	    System.out.println(d.get(0));
+//	    System.out.println(d.get(0));
 	    
 //		PrenotazioneDAO p = new PrenotazioneDAO();         
 //		Date e = new Date(2023-01-19);
@@ -129,29 +131,29 @@ public class Persona {
 //		cf.setVisible(true);		
 	   
 	    
-	    PrenotazioneDAO p1 = new PrenotazioneDAO(); 
+//	    PrenotazioneDAO p1 = new PrenotazioneDAO(); 
 
         
-       // Date e = new Date(123,00,01);
-          Date e = Date.valueOf("2023-01-01");
-    	  System.out.println(e);
-          ArrayList<Prenotazione> n = p1.selectDate(e);
-          Prenotazione n1 = n.get(0);
-          System.out.println(n1.getPrenotazione());
-          Prenotazione n2 = n.get(1);
-          System.out.println(n2.getPrenotazione());
-          Prenotazione n3 = n.get(2);
-          System.out.println(n3.getPrenotazione());
-          Prenotazione n4 = n.get(3);
-          System.out.println(n4.getPrenotazione());
+//          Date e = new Date(123,00,01);
+//          Date e = Date.valueOf("2023-01-01");
+//    	    System.out.println(e);
+//          ArrayList<Prenotazione> n = p1.selectDate(e);
+//          Prenotazione n1 = n.get(0);
+//          System.out.println(n1.getPrenotazione());
+//          Prenotazione n2 = n.get(1);
+//          System.out.println(n2.getPrenotazione());
+//          Prenotazione n3 = n.get(2);
+//          System.out.println(n3.getPrenotazione());
+//          Prenotazione n4 = n.get(3);
+//          System.out.println(n4.getPrenotazione());
           
-          Date o = Date.valueOf("2023-02-02");
-          Time t = Time.valueOf("16:30:00");
-  //        p1.inserisciPrenotazione(new Prenotazione("TTTTTTTTT5566778",o,t ));
+//          Date o = Date.valueOf("2023-02-02");
+//          Time t = Time.valueOf("16:30:00");
+//          p1.inserisciPrenotazione(new Prenotazione("TTTTTTTTT5566778",o,t ));
           
-          ArrayList<Prenotazione> v = p1.selectDate(o);
-          Prenotazione v1 = v.get(0);
-          System.out.println(v1.getPrenotazione());
+//          ArrayList<Prenotazione> v = p1.selectDate(o);
+//          Prenotazione v1 = v.get(0);
+//          System.out.println(v1.getPrenotazione());
         
       //    s.inserisciDonatore(new Donatore("TTTTTTTTT5566778", "VERDI","GABRIELE",e,"M", GruppoSanguigno.B));
           

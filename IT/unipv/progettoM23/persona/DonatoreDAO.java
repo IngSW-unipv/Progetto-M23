@@ -66,16 +66,13 @@ public class DonatoreDAO implements IDonatoreDAO {
 	public Donatore selectDonatore(String cf){
 		//ArrayList<Donatore> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		PreparedStatement st1;
+		Statement st1;
 		ResultSet rs1;
 		Donatore d= null;
 		try{
 			
-			
-			String query="select * from donatore where CodiceFiscale=?";
-			st1 = conn.prepareStatement(query);
-			st1.setString(1, cf);
-			
+			st1 = conn.createStatement();
+			String query="select * from donatore where CodiceFiscale="+"'"+cf+"'";
 			rs1=st1.executeQuery(query);
 			
 			rs1.next();
