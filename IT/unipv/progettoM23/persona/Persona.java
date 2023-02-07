@@ -12,6 +12,9 @@ import com.google.protobuf.TextFormat.ParseException;
 
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
+import IT.unipv.progettoM23.graphics.CenteredFrame;
+import IT.unipv.progettoM23.graphics.LoginPanel;
+import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
 // import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
@@ -22,6 +25,7 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 //import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.awt.Container;
 import java.sql.Date;
 import java.sql.Time;
 //import java.sql.Driver;
@@ -91,9 +95,9 @@ public class Persona {
 	
 	public static void main(String[] args) {
 
-		MappaGruppi pr = new MappaGruppi();
+//		MappaGruppi pr = new MappaGruppi();
 		
-		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
+//		System.out.println(pr.chiDonaA(GruppoSanguigno.A)[1]);
 		
 //		DonatoreDAO s = new DonatoreDAO();
 //	    String cf = "OOOOOOOOOOOOOOOO";
@@ -125,10 +129,16 @@ public class Persona {
 //	    System.out.println(d1.getCognome());
 	    
 	    
-//	    CenteredFrame cf= new CenteredFrame(800,600);
+	    CenteredFrame cf= new CenteredFrame(800,600);
 	    
-//	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		cf.setVisible(true);		
+	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cf.setVisible(true);
+		
+		RegistrationPanel lp=new RegistrationPanel();
+		
+		Container c=cf.getContentPane();
+		
+		c.add(lp);
 	   
 	    
 //	    PrenotazioneDAO p1 = new PrenotazioneDAO(); 
@@ -158,10 +168,10 @@ public class Persona {
       //    s.inserisciDonatore(new Donatore("TTTTTTTTT5566778", "VERDI","GABRIELE",e,"M", GruppoSanguigno.B));
           
 		
-		LoginRegistrazione l = new LoginRegistrazione("DDDDDDDDDDDDDDDD", "12345679");
-		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
+//		LoginRegistrazione l = new LoginRegistrazione("DDDDDDDDDDDDDDDD", "12345679");
+//		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
       //ld.inserisciUtente(l);
-		ld.verificaUtente(l);
+//		ld.verificaUtente(l);
 	}
 	
 }

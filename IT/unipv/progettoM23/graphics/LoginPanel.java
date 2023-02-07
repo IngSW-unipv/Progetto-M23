@@ -20,17 +20,22 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private JTextField passwordTextField;
 	private JButton loginButton;
 	
-	LoginPanel(){
+	public LoginPanel(){
 		
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
+		Color white=new Color(255,255,255);
+		
+		
 	    userLabel = new JLabel("Codice Fiscale:");
+	    userLabel.setForeground(white);
 	    this.add(userLabel);
 
 	    userTextField = new JTextField(25);
 	    this.add(userTextField);
 
 	    passwordLabel = new JLabel("Password:");
+	    passwordLabel.setForeground(white);
 	    this.add(passwordLabel);
 
 	    passwordTextField = new JPasswordField(25);

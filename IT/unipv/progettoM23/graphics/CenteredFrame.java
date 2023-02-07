@@ -32,9 +32,9 @@ public class CenteredFrame extends JFrame{
 		//c.setLayout(new GridLayout(20,20));
 		
 		//GridBagConstraints grid=new GridBagConstraints();
-		SimplePanel p=new SimplePanel();
-		p.setLayout(null);
-		c.add(p);
+		//SimplePanel p=new SimplePanel();
+		//p.setLayout(null);
+		//c.add(p);
 
 		
 	}
