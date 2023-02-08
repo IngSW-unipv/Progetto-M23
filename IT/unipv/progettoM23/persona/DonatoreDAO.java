@@ -63,7 +63,7 @@ public class DonatoreDAO implements IDonatoreDAO {
 	
 	
 	
-	public Donatore selectDonatore(String cf) throws SQLException{
+	public Donatore selectDonatore(String cf) {
 		//ArrayList<Donatore> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		PreparedStatement st1;

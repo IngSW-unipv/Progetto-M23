@@ -5,5 +5,5 @@ import java.util.ArrayList;
 public interface IDonatoreDAO {
 
 	public ArrayList<Donatore> selectAll() throws SQLException;
-	public Donatore selectDonazioni(String cf);
+	public Donatore selectDonatore(String cf);
 }

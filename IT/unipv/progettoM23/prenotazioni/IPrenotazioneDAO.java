@@ -8,5 +8,6 @@ import IT.unipv.progettoM23.persona.Donatore;
 public interface IPrenotazioneDAO {
 public ArrayList<Prenotazione> selectDate(Date data);
 public void inserisciPrenotazione(Prenotazione p);
+public Prenotazione selectUltimaPrenotazione(String cf);
 
 }

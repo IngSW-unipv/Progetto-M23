@@ -35,4 +35,6 @@ public class Prenotazione {
 	p = codFiscale+" "+data+" "+ora;
 	return p;
 	}
+	
+
 }

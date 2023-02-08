@@ -15,8 +15,9 @@ import IT.unipv.progettoM23.sacche.ControllerSacche;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
-import IT.unipv.progettoM23.graphics.LoginPanel;
-import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
+import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
+//import IT.unipv.progettoM23.graphics.LoginPanel;
+//import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
 // import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
@@ -136,6 +137,20 @@ public class Persona {
 	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cf.setVisible(true);
 		
+		
+		Date d2= Date.valueOf("2001-01-01");
+		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
+		DonatorePanel dp =new DonatorePanel(donatore);
+		cf.add(dp);
+//	    DonazioneDAO d1 = new DonazioneDAO();
+//      ArrayList<Donazione> d3 = d1.selectDonazioni(donatore.getcodFiscale());
+		
+		PrenotazioneDAO p = new PrenotazioneDAO();
+		Prenotazione p1;
+		p1 = p.selectUltimaPrenotazione(donatore.getcodFiscale());
+		System.out.println(p1.getData());
+		
+		
 //		RegistrationPanel lp=new RegistrationPanel();
 		
 //		Container c=cf.getContentPane();
@@ -174,11 +189,10 @@ public class Persona {
 //		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
       //ld.inserisciUtente(l);
 //		ld.verificaUtente(l);
-		Date d1 = Date.valueOf("2023-02-02");
-		Date d2= Date.valueOf("2001-01-01");
-		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
-		Donazione donazione = new Donazione(donatore.getcodFiscale(), d1 );
-		DonazioneDAO donazioneDAO = new DonazioneDAO();
+	//	Date d1 = Date.valueOf("2023-01-02");
+		//Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
+	//	Donazione donazione = new Donazione(donatore.getcodFiscale(), d1 );
+	//	DonazioneDAO donazioneDAO = new DonazioneDAO();
 //		donazioneDAO.inserisciDonazione(donazione);
 		
 	}

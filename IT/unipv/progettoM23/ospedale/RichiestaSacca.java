@@ -8,12 +8,12 @@ public class RichiestaSacca {
 	private String effettuato;
 	GruppoSanguigno gruppo;
 	
-public RichiestaSacca(String cf, GruppoSanguigno gr, int q, String ne ) {
+public RichiestaSacca(String cf, GruppoSanguigno gr, int q) {
 	
 	this.CodiceFiscale=cf;
 	this.gruppo=gr;
 	this.quantità=q;
-	this.effettuato=ne;
+	this.effettuato="NON EFFETTUATO";
 			
 }
 
@@ -30,5 +30,10 @@ public RichiestaSacca(String cf, GruppoSanguigno gr, int q, String ne ) {
     }
     public String getEffettuato() {
     	return effettuato;
+    }
+    
+    public void setEffettuato() {
+    	this.effettuato = "EFFETTUATO";
+    	
     }
 }

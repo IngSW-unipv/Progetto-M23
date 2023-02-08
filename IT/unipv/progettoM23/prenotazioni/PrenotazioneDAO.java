@@ -19,7 +19,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	
 	private String schema;
 	private Connection conn;
-	Date data;
+
 	
 	public PrenotazioneDAO () 
 	{
@@ -33,7 +33,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
 		ResultSet rs1;
-		this.data=data;
+		
 	
            try{
 			
@@ -90,6 +90,35 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
    }
 	
 
+	public Prenotazione selectUltimaPrenotazione(String cf){
+		Prenotazione result = null;
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		Statement st1;
+		ResultSet rs1;
+		
+	
+        try{
+			
+			st1 = conn.createStatement();
+			String query="select * from prenotazione where CodiceFiscale='"+cf+"'"+"order by DataPrenotazione DESC" ;
+			rs1=st1.executeQuery(query);
+			
+			
+			rs1.next(); 
+			
+			Prenotazione p = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
+			result = p;
+		}
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+        return result;
+	
+}
 	
 }
 

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -50,7 +49,7 @@ public class DonazioneDAO implements IDonazioneDAO{
 		
 	}
 	
-	public ArrayList<Donazione> selectDonazioni(String cf) throws SQLException{
+	public ArrayList<Donazione> selectDonazioni(String cf){
 		ArrayList<Donazione> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
@@ -59,7 +58,7 @@ public class DonazioneDAO implements IDonazioneDAO{
 		try{
 			
 			st1 = conn.createStatement();
-			String query="select * from donazione="+cf;
+			String query="select * from donazione where CodiceFiscale='"+cf+"'"+"order by DataDonazione DESC";
 			rs1=st1.executeQuery(query);
 			
 		    while(rs1.next())

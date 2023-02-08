@@ -1,12 +1,17 @@
 package IT.unipv.progettoM23.graphics.DonatoreInterface;
 
 import java.awt.*;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
+import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
+import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.ContainerPanel;
 import IT.unipv.progettoM23.persona.Donatore;
+import IT.unipv.progettoM23.prenotazioni.Prenotazione;
+import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 
 public class DonatorePanel extends JPanel{
@@ -56,15 +61,21 @@ public class DonatorePanel extends JPanel{
 
 		////// crea JList 
 		
-		DefaultListModel<String> dlm=new DefaultListModel<>();
-
-		dlm.addElement("ciao");
-		dlm.addElement("prova");
-		dlm.addElement("lista");
-		dlm.addElement("ciao");
+		DefaultListModel<Date> dlm=new DefaultListModel<>();
 		
-		JList<String> lista=new JList<>(dlm);
-	    cp.add(lista);
+		DonazioneDAO dDAO = new DonazioneDAO();
+		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
+        
+		
+		
+        for(Donazione don:donazioni) {
+        	dlm.addElement(don.getData());
+        }
+		
+		JList<Date> lista=new JList<>(dlm);
+		JScrollPane scrollPane = new JScrollPane(lista);
+		
+	    cp.add(scrollPane);
 	    
     	this.add(cp);
     	
@@ -90,12 +101,18 @@ public class DonatorePanel extends JPanel{
         
     	
         
-        
-    	cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-    	testo=new JLabel("La tua prossima donazione: ");
+        PrenotazioneDAO p = new PrenotazioneDAO();
+		Prenotazione p1;
+		p1 = p.selectUltimaPrenotazione(d.getcodFiscale());
+    	
+        cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+    	testo=new JLabel("La tua prossima donazione:   "+p1.getData()+"   alle:   "+p1.getOra());
 		testo.setFont(new Font("Dialog",Font.PLAIN,20));
 		testo.setForeground(white);
         cp.add(testo);  
+        
+        
+        
         this.add(cp);
     	
     	
