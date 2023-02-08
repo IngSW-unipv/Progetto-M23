@@ -12,6 +12,8 @@ import com.google.protobuf.TextFormat.ParseException;
 
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
+import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
+import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.graphics.LoginPanel;
 import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
@@ -134,11 +136,11 @@ public class Persona {
 	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cf.setVisible(true);
 		
-		RegistrationPanel lp=new RegistrationPanel();
+//		RegistrationPanel lp=new RegistrationPanel();
 		
-		Container c=cf.getContentPane();
+//		Container c=cf.getContentPane();
 		
-		c.add(lp);
+//		c.add(lp);
 	   
 	    
 //	    PrenotazioneDAO p1 = new PrenotazioneDAO(); 
@@ -172,6 +174,13 @@ public class Persona {
 //		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
       //ld.inserisciUtente(l);
 //		ld.verificaUtente(l);
+		Date d1 = Date.valueOf("2023-02-02");
+		Date d2= Date.valueOf("2001-01-01");
+		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
+		Donazione donazione = new Donazione(donatore.getcodFiscale(), d1 );
+		DonazioneDAO donazioneDAO = new DonazioneDAO();
+//		donazioneDAO.inserisciDonazione(donazione);
+		
 	}
 	
 }
