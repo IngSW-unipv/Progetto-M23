@@ -1,16 +1,24 @@
 package IT.unipv.progettoM23.graphics.registrazine;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
+import IT.unipv.progettoM23.graphics.ContainerPanel;
 
-public class RegistrationPanel extends JPanel{
+
+public class RegistrationPanel extends JPanel implements ActionListener{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private JLabel testo;
 	private JTextField nomeTF,cognomeTF,giornoTF,meseTF,annoTF;
 	private MFbuttonsPanel buttonsMF;
 	private GroupsButtonsPanel buttonsGroup;
-	private JButton continuaButton;
+	private JButton indietro,continuaButton;
+	private ContainerPanel cp;
 	
 	
 	
@@ -26,9 +34,16 @@ public class RegistrationPanel extends JPanel{
 		
 		
 		
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		indietro =new JButton("Indietro");
+		cp.add(indietro);
+		this.add(cp);
 		
 		
-		ContainerPanel cp=new ContainerPanel();
+		
+		
+		
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 		
 	    testo = new JLabel("Nome: ");
 	    testo.setForeground(white);
@@ -43,7 +58,7 @@ public class RegistrationPanel extends JPanel{
 	    
 	    
 	    
-	    cp=new ContainerPanel();
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 	    
 	    testo = new JLabel("Cognome: ");
 	    testo.setForeground(white);
@@ -57,7 +72,7 @@ public class RegistrationPanel extends JPanel{
 	    
 	    
 	    
-	    cp=new ContainerPanel();
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 	    
 	    testo = new JLabel("Sesso: ");
 	    testo.setForeground(white);
@@ -71,7 +86,7 @@ public class RegistrationPanel extends JPanel{
         
         
         
-	    cp=new ContainerPanel();
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
         
 	    testo = new JLabel("Gruppo: ");
 	    testo.setForeground(white);
@@ -85,7 +100,7 @@ public class RegistrationPanel extends JPanel{
         
         
         
-	    cp=new ContainerPanel();
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 	    
 	    testo = new JLabel("Anno di nascita: ");
 	    testo.setForeground(white);
@@ -104,7 +119,7 @@ public class RegistrationPanel extends JPanel{
 	    
 	    
 	    
-	    cp=new ContainerPanel();
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 	    continuaButton=new JButton("Continua");
 	    continuaButton.setPreferredSize(new Dimension(100,25));
 	    cp.add(continuaButton);
@@ -112,6 +127,15 @@ public class RegistrationPanel extends JPanel{
 	    this.add(cp);
 	    
 	    
+		
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		//prende dati quando si preme il pulsante
 		
 	}
 

@@ -18,32 +18,44 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private JTextField userTextField;
 	private JLabel passwordLabel;
 	private JTextField passwordTextField;
-	private JButton loginButton;
+	private JButton indietro,loginButton;
+	private ContainerPanel cp;
 	
 	public LoginPanel(){
 		
-		this.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		Color white=new Color(255,255,255);
 		
 		
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		indietro =new JButton("Indietro");
+		cp.add(indietro);
+		this.add(cp);
+		
+		
+		
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		
 	    userLabel = new JLabel("Codice Fiscale:");
 	    userLabel.setForeground(white);
-	    this.add(userLabel);
+	    cp.add(userLabel);
 
 	    userTextField = new JTextField(25);
-	    this.add(userTextField);
+	    cp.add(userTextField);
 
 	    passwordLabel = new JLabel("Password:");
 	    passwordLabel.setForeground(white);
-	    this.add(passwordLabel);
+	    cp.add(passwordLabel);
 
 	    passwordTextField = new JPasswordField(25);
-	    this.add(passwordTextField);
+	    cp.add(passwordTextField);
 
 	    loginButton = new JButton("Accedi");
 	    loginButton.addActionListener(this);
-	    this.add(loginButton);
+	    cp.add(loginButton);
+	    
+	    this.add(cp);
 	    
 	    
 	    this.setBackground(new Color(100,0,0));
@@ -51,6 +63,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 	
 	
 	  public void actionPerformed(ActionEvent e) {
+		  
 		  String codFis = userTextField.getText();
 		  String password = passwordTextField.getText();
 		  
