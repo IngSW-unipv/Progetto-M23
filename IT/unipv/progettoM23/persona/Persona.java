@@ -12,9 +12,11 @@ import com.google.protobuf.TextFormat.ParseException;
 
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
+import controller.ControllerLoginPanel;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
+import IT.unipv.progettoM23.graphics.LoginPanel;
 import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
 //import IT.unipv.progettoM23.graphics.LoginPanel;
 //import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
@@ -140,8 +142,11 @@ public class Persona {
 		
 		Date d2= Date.valueOf("2001-01-01");
 		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
-		DonatorePanel dp =new DonatorePanel(donatore);
-		cf.add(dp);
+//		DonatorePanel dp =new DonatorePanel(donatore);
+//		cf.add(dp);
+		ControllerLoginPanel clp = new ControllerLoginPanel();
+		LoginPanel lp = new LoginPanel(clp);
+		cf.add(lp);
 //	    DonazioneDAO d1 = new DonazioneDAO();
 //      ArrayList<Donazione> d3 = d1.selectDonazioni(donatore.getcodFiscale());
 		
@@ -185,9 +190,15 @@ public class Persona {
       //    s.inserisciDonatore(new Donatore("TTTTTTTTT5566778", "VERDI","GABRIELE",e,"M", GruppoSanguigno.B));
           
 		
-//		LoginRegistrazione l = new LoginRegistrazione("DDDDDDDDDDDDDDDD", "12345679");
-//		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
-      //ld.inserisciUtente(l);
+		LoginRegistrazione l = new LoginRegistrazione("AAAAAAAAAAAAAAAA", "12345678");
+		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
+		
+//		System.out.println(ld.verificaUtente(l));
+
+//        ld.verificaCodiceFiscale(l.getCodiceFiscale());
+//        System.out.println(ld.verificaCodiceFiscale(l.getCodiceFiscale()));
+	
+		System.out.println(ld.inserisciUtente(l));
 //		ld.verificaUtente(l);
 	//	Date d1 = Date.valueOf("2023-01-02");
 		//Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );

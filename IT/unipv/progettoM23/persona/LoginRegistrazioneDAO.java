@@ -16,13 +16,13 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		this.schema = "dop";
 	}
 
-	public void verificaUtente(LoginRegistrazione lr){
+	public boolean verificaUtente(LoginRegistrazione lr){
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
 		ResultSet rs1;
-		//String b = null;
-		LoginRegistrazione lr1;
+		boolean b = false;
+//		LoginRegistrazione lr1;
 		try{
 			
 			st1 = conn.createStatement();
@@ -31,30 +31,66 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 			
 			rs1=st1.executeQuery(query);
 			rs1.next();
-			lr1= new LoginRegistrazione(rs1.getString(1), rs1.getString(2));
+			rs1.getString(1); 
+			rs1.getString(2);
+			b=true;
 			
-			System.out.println("Utente Verificato");
 						
 		}
 		
 		
 	
 		catch (Exception e) { 
-			e.printStackTrace();
+			b=false;
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);
 		
-        // return b;
+         return b;
+   }
+	
+	public boolean verificaCodiceFiscale(String cf){
+		
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		Statement st1;
+		ResultSet rs1;
+		Boolean b = false;
+//		LoginRegistrazione lr1 = null;
+		try{
+			
+			st1 = conn.createStatement();
+			String query="select * from log_reg where CodiceFiscale="+"'"+cf+"'";
+			
+			rs1=st1.executeQuery(query);
+			rs1.next();
+			
+			rs1.getString(1);
+			rs1.getString(2);
+			b = true;
+			
+			
+						
+		}
+		
+		
+	
+		catch (Exception e) { 
+		//e.printStackTrace();
+			b=false;
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+         return b;
    }
 	
 	
 	
-	
-	public void inserisciUtente(LoginRegistrazione lr){
+	public boolean inserisciUtente(LoginRegistrazione lr){
 	
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
+		boolean b = false;
 
 		
 		try{
@@ -68,17 +104,19 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 			
 			st1.executeUpdate(query);
 			
-			System.out.println("Data inserted successfully");
+			b = true;
 		}
 		
 		
 		
 		
-		catch (Exception e) {e.printStackTrace();
+		catch (Exception e) {
+			b = false;
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);
 		
-       
+    return b;   
    }
+	
 }

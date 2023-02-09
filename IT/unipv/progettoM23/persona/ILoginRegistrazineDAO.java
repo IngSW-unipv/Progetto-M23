@@ -3,6 +3,7 @@ package IT.unipv.progettoM23.persona;
 
 public interface ILoginRegistrazineDAO {
 
-	public void verificaUtente(LoginRegistrazione lr);
-	public void inserisciUtente(LoginRegistrazione lr);
+	public boolean verificaUtente(LoginRegistrazione lr);
+	public boolean inserisciUtente(LoginRegistrazione lr);
+	public boolean verificaCodiceFiscale(String cf);
 }
