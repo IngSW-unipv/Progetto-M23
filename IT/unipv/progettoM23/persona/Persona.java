@@ -15,7 +15,11 @@ import IT.unipv.progettoM23.sacche.ControllerSacche;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
+import IT.unipv.progettoM23.graphics.CercaDonatorePanel;
+import IT.unipv.progettoM23.graphics.LoginPanel;
+import IT.unipv.progettoM23.graphics.VisualPrenotazioniPanel;
 import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
+import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
 //import IT.unipv.progettoM23.graphics.LoginPanel;
 //import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
 // import IT.unipv.progettoM23.graphics.CenteredFrame;
@@ -137,18 +141,25 @@ public class Persona {
 	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cf.setVisible(true);
 		
+
+		
 		
 		Date d2= Date.valueOf("2001-01-01");
 		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
-		DonatorePanel dp =new DonatorePanel(donatore);
+		
+		
+		
+		VisualPrenotazioniPanel dp =new VisualPrenotazioniPanel();
 		cf.add(dp);
+		
+		
 //	    DonazioneDAO d1 = new DonazioneDAO();
 //      ArrayList<Donazione> d3 = d1.selectDonazioni(donatore.getcodFiscale());
 		
-		PrenotazioneDAO p = new PrenotazioneDAO();
-		Prenotazione p1;
-		p1 = p.selectUltimaPrenotazione(donatore.getcodFiscale());
-		System.out.println(p1.getData());
+		//PrenotazioneDAO p = new PrenotazioneDAO();
+		//Prenotazione p1;
+		//p1 = p.selectUltimaPrenotazione(donatore.getcodFiscale());
+		//System.out.println(p1.getData());
 		
 		
 //		RegistrationPanel lp=new RegistrationPanel();

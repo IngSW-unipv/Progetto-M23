@@ -10,7 +10,7 @@ import javax.swing.*;
 
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.DonatoreDAO;
-import controller.ControllerLoginPanel;
+
 
 public class LoginPanel extends JPanel implements ActionListener{
     
@@ -19,16 +19,14 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private JTextField userTextField;
 	private JLabel passwordLabel;
 	private JTextField passwordTextField;
-	private JButton indietro,loginButton;
+	private JButton indietro,loginButton,regButton;
 	private ContainerPanel cp;
 	
-	private ControllerLoginPanel control;
 	
-	public LoginPanel( ControllerLoginPanel c){
+	
+	public LoginPanel( ){
 		
-		this.control=c;
-		
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.setLayout(new GridLayout());
 		
 		Color white=new Color(255,255,255);
 		
@@ -40,7 +38,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 		
 		
 		
-		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 		
 	    userLabel = new JLabel("Codice Fiscale:");
 	    userLabel.setForeground(white);
@@ -55,10 +53,20 @@ public class LoginPanel extends JPanel implements ActionListener{
 
 	    passwordTextField = new JPasswordField(25);
 	    cp.add(passwordTextField);
+	    
+	    this.add(cp);
+	    
+	    
+	    
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.RIGHT));
 
 	    loginButton = new JButton("Accedi");
 	    loginButton.addActionListener(this);
 	    cp.add(loginButton);
+	    
+	    regButton = new JButton("Registrati");
+	    regButton.addActionListener(this);
+	    cp.add(regButton);
 	    
 	    this.add(cp);
 	    
@@ -73,9 +81,6 @@ public class LoginPanel extends JPanel implements ActionListener{
 		  
 			  String codFis = userTextField.getText();
 			  String password = passwordTextField.getText();
-			  
-			  
-			  if(this.controller.controllaSePresente(codFis)) {}
 			  
 		  }
 		  
