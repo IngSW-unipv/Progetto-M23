@@ -17,6 +17,8 @@ import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.graphics.CercaDonatorePanel;
 import IT.unipv.progettoM23.graphics.LoginPanel;
+import IT.unipv.progettoM23.graphics.PrenGiornoPanel;
+import IT.unipv.progettoM23.graphics.SacchePanel;
 import IT.unipv.progettoM23.graphics.VisualPrenotazioniPanel;
 import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
 import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
@@ -149,7 +151,7 @@ public class Persona {
 		
 		
 		
-		VisualPrenotazioniPanel dp =new VisualPrenotazioniPanel();
+		SacchePanel dp =new SacchePanel();
 		cf.add(dp);
 		
 		

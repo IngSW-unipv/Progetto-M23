@@ -12,7 +12,7 @@ public class VisualPrenotazioniPanel extends JPanel{
 	
 	private JLabel testo;
 	private ContainerPanel cp,container;
-	private JButton indietro,cerca;
+	private JButton indietro,cerca,conferma,cancella;
 	private JTextField giornoTF,meseTF,annoTF;
 	private JTable table;
 
@@ -97,31 +97,44 @@ public class VisualPrenotazioniPanel extends JPanel{
 	    
 	    PrenotazioneDAO pd=new PrenotazioneDAO();
 		String[] colonne= {"Codice Fiscale","Orario"};
-		//String[][] dati= pd.getArrayPrenotazioni(today);
-		
-		String[][] dati= {
-				{"kekeokeplekkfe","08:30"},
-				{"kekeokeplekkfe","08:30"},
-				{"kekeokeplekkfe","08:30"},
-				{"kekeokeplekkfe","08:30"},
-				{"kekeokeplekkfe","08:30"},
-				{"kekeokeplekkfe","08:30"},
-				{"kekeokeplekkfe","08:30"},
-		};
-		
+		String[][] dati= pd.getArrayPrenotazioni(today);
 		
 		table= new JTable(dati,colonne);
-		table.setPreferredSize(new Dimension(250,400));
+		table.setPreferredSize(new Dimension(250,500));
+		
+		System.out.println(table.getPreferredSize().getHeight()+" "+table.getRowCount());
 		
 	
-		if(dati.length!=0) {
-		    table.setRowHeight(400/dati.length);
+		if(table.getRowCount()!=0) {
+		    table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
 		}
 		
 		cp.add(table,BorderLayout.CENTER);
 	
 		this.add(cp,BorderLayout.CENTER);
 		
+		
+		
+		
+		///// crea panel east con i 2 pulsanti centrati /////////////////////////////////
+		
+	    container=new ContainerPanel(new GridLayout(0,1));
+	    
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
+	    container.add(cp);
+	    
+	    
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
+
+	    conferma =new JButton("Conferma");
+		cp.add(conferma);
+		
+		cancella =new JButton("Cancella");
+		cp.add(cancella);
+		
+		container.add(cp);
+		
+		this.add(container,BorderLayout.EAST);
 		
 	}
 	
