@@ -102,15 +102,7 @@ public class SacchePanel extends JPanel {
 	    cp.add(testo);
 	    
 	    this.add(cp);
-	    
-	    
-	    
-		
-		
-		
-		
-		
-		
+	   
 		
 	}
 }

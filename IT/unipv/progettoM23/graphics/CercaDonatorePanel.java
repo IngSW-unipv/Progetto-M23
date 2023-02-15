@@ -133,7 +133,7 @@ public class CercaDonatorePanel extends JPanel{
         	dlm.addElement(don.getData());
         }
 		
-		JList<Date> lista=new JList<>();//dlm);
+		JList<Date> lista=new JList<>();
 		JScrollPane scrollPane = new JScrollPane(lista);
 		scrollPane.setPreferredSize(new Dimension(100,60));
 	    cp.add(scrollPane);

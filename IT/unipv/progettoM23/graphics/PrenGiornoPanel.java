@@ -48,13 +48,14 @@ public class PrenGiornoPanel extends JPanel {
 	    PrenotazioneDAO pd=new PrenotazioneDAO();
 		String[] colonne= {"Codice Fiscale","Orario"};
 		//String[][] dati= pd.getArrayPrenotazioni(d);
-		String[][] dati= {{"kewiijefifj","krfrfko"},{"krfifmnkef",",ewf,rmfkmrf"},
-		                  {"kewiijefifj","krfrfko"},{"krfifmnkef",",ewf,rmfkmrf"},
-		                  {"kewiijefifj","krfrfko"},{"krfifmnkef",",ewf,rmfkmrf"}};
 		
+		String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
+
 		
 		table= new JTable(dati,colonne);
 		table.setPreferredSize(new Dimension(250,500));
+		
+		table.setEnabled(false);
 		
 	
 		if(table.getRowCount()!=0) {
