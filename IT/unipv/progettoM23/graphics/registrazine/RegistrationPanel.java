@@ -14,7 +14,7 @@ public class RegistrationPanel extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel testo;
-	private JTextField nomeTF,cognomeTF,giornoTF,meseTF,annoTF;
+	private JTextField nomeTF,cognomeTF,giornoTF,meseTF,annoTF,userTF,passwordTF;
 	private MFbuttonsPanel buttonsMF;
 	private GroupsButtonsPanel buttonsGroup;
 	private JButton indietro,continuaButton;
@@ -42,6 +42,34 @@ public class RegistrationPanel extends JPanel implements ActionListener{
 		
 		
 		
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
+		
+	    testo = new JLabel("Codice Fiscale:");
+	    testo.setForeground(white);
+	    cp.add(testo);
+
+	    userTF = new JTextField(25);
+	    cp.add(userTF);
+	    
+	    this.add(cp);
+	    
+	    
+	    
+	    
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
+ 
+	    testo = new JLabel("Password:");
+	    testo.setForeground(white);
+	    cp.add(testo);
+
+	    passwordTF = new JTextField(25);
+	    cp.add(passwordTF);
+	    
+	    this.add(cp);
+		
+		
+	    
+	
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 		
@@ -102,7 +130,7 @@ public class RegistrationPanel extends JPanel implements ActionListener{
         
 	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 	    
-	    testo = new JLabel("Anno di nascita: ");
+	    testo = new JLabel("Anno di nascita (GG/MM/AAAA): ");
 	    testo.setForeground(white);
 	    cp.add(testo); 
 	    
@@ -112,14 +140,14 @@ public class RegistrationPanel extends JPanel implements ActionListener{
 	    meseTF=new JTextField(2);
 	    cp.add(meseTF);
 	    
-	    annoTF=new JTextField(2);
+	    annoTF=new JTextField(4);
 	    cp.add(annoTF);
 	    
 	    this.add(cp);
 	    
 	    
 	    
-	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.RIGHT));
 	    continuaButton=new JButton("Continua");
 	    continuaButton.setPreferredSize(new Dimension(100,25));
 	    cp.add(continuaButton);

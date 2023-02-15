@@ -118,7 +118,44 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		
         return result;
 	
-}
+    }
+	
+	
+	
+	public String[][] getArrayPrenotazioni(Date data) {
+	
+	
+		ArrayList<String[]> result = new ArrayList<>();
+		
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		Statement st1;
+		ResultSet rs1;
+		
+	
+           try{
+			
+			st1 = conn.createStatement();
+			String query="select * from prenotazione where DataPrenotazione='"+data+"'" ;
+			rs1=st1.executeQuery(query);
+			
+			
+			while(rs1.next()) {
+			
+				String[] p= {rs1.getString(1), String.valueOf(rs1.getTime(3))};
+				result.add(p);
+			}
+           }
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+        return (String[][]) result.toArray() ;
+			           
+		
+	}
 	
 }
 
