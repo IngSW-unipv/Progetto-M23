@@ -3,8 +3,22 @@ package IT.unipv.progettoM23.graphics;
 import java.awt.*;
 import javax.swing.*;
 
+import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
+import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
+import java.awt.CardLayout;
 
 public class CenteredFrame extends JFrame{
+	
+	private LoginPanel loginView;
+	private DonatorePanel donatoreView;
+	private RegistrationPanel registrationView;
+	private MenuPanel menuView;
+	private InserisciCodFisPanel inserisciCodView;
+	private CercaDonatorePanel cercaDonatoreView;
+	private VisualPrenotazioniPanel prenotazioniView;
+	private PrenGiornoPanel prenGiornoView;
+	private SacchePanel saccheView;
+	
     
 	public CenteredFrame(int l,int a) {
 		
@@ -38,5 +52,7 @@ public class CenteredFrame extends JFrame{
 
 		
 	}
+	
+
 	
 }

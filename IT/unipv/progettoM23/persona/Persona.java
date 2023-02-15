@@ -16,7 +16,10 @@ import controller.ControllerLoginPanel;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
+import IT.unipv.progettoM23.graphics.CercaDonatorePanel;
 import IT.unipv.progettoM23.graphics.LoginPanel;
+import IT.unipv.progettoM23.graphics.PrenGiornoPanel;
+import IT.unipv.progettoM23.graphics.VisualPrenotazioniPanel;
 import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
 //import IT.unipv.progettoM23.graphics.LoginPanel;
 //import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
@@ -140,12 +143,12 @@ public class Persona {
 		cf.setVisible(true);
 		
 		
-		Date d2= Date.valueOf("2001-01-01");
+		Date d2= Date.valueOf("2022-01-01");
 		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
 //		DonatorePanel dp =new DonatorePanel(donatore);
 //		cf.add(dp);
-		ControllerLoginPanel clp = new ControllerLoginPanel();
-		LoginPanel lp = new LoginPanel(clp);
+		//ControllerLoginPanel clp = new ControllerLoginPanel();
+		VisualPrenotazioniPanel lp = new VisualPrenotazioniPanel();
 		cf.add(lp);
 //	    DonazioneDAO d1 = new DonazioneDAO();
 //      ArrayList<Donazione> d3 = d1.selectDonazioni(donatore.getcodFiscale());

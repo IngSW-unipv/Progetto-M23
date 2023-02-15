@@ -97,9 +97,8 @@ public class VisualPrenotazioniPanel extends JPanel{
 	    
 	    PrenotazioneDAO pd=new PrenotazioneDAO();
 		String[] colonne= {"Codice Fiscale","Orario"};
-		//String[][] dati= pd.getArrayPrenotazioni(today);
+		String[][] dati= pd.getArrayPrenotazioni(today);
 		
-		String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
 		
 		table= new JTable(dati,colonne);
 		table.setPreferredSize(new Dimension(250,500));
@@ -107,9 +106,8 @@ public class VisualPrenotazioniPanel extends JPanel{
 		System.out.println(table.getPreferredSize().getHeight()+" "+table.getRowCount());
 		
 	
-		if(table.getRowCount()!=0) {
-		    table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
-		}
+		table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
+		
 		
 		cp.add(table,BorderLayout.CENTER);
 	

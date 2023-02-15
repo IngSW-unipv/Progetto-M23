@@ -125,7 +125,8 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public String[][] getArrayPrenotazioni(Date data) {
 	
 	
-		ArrayList<String[]> result = new ArrayList<>();
+		//ArrayList<String[]> result = new ArrayList<>();
+		String[][] result= new String[10][2];
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
@@ -139,10 +140,12 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			rs1=st1.executeQuery(query);
 			
 			
+			int count=0;
 			while(rs1.next()) {
 			
 				String[] p= {rs1.getString(1), String.valueOf(rs1.getTime(3))};
-				result.add(p);
+				result[count]=p;
+				count++;
 			}
            }
 		
@@ -152,7 +155,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		
 		JavaDatabaseConn.closeConnection(conn);
 		
-        return (String[][]) result.toArray() ;
+        return  result ;
 			           
 		
 	}

@@ -27,7 +27,7 @@ public class CercaDonatorePanel extends JPanel{
 	private JButton indietro;
 	
 	
-	public CercaDonatorePanel(Donatore d) {
+	public CercaDonatorePanel(Donatore d2) {
 		
 		
         this.setLayout(new GridLayout(0,1));
@@ -47,7 +47,7 @@ public class CercaDonatorePanel extends JPanel{
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Cognome: "+d.getCognome());
+	    testo = new JLabel("    Cognome: "+d2.getCognome());
 	    testo.setForeground(white);
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    cp.add(testo);
@@ -58,19 +58,7 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Nome: "+d.getNome());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
-	    
-	    this.add(cp);
-	    
-	    
-	    
-	    
-		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-		
-	    testo = new JLabel("    Codice Fiscale: "+d.getcodFiscale());
+	    testo = new JLabel("    Nome: "+d2.getNome());
 	    testo.setForeground(white);
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    cp.add(testo);
@@ -82,7 +70,19 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Data di Nascita(AAAA/MM/GG):  "+d.getData());
+	    testo = new JLabel("    Codice Fiscale: "+d2.getcodFiscale());
+	    testo.setForeground(white);
+	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(testo);
+	    
+	    this.add(cp);
+	    
+	    
+	    
+	    
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		
+	    testo = new JLabel("    Data di Nascita(AAAA/MM/GG):  "+d2.getData());
 	    testo.setForeground(white);
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    cp.add(testo);
@@ -95,7 +95,7 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Sesso: "+d.getSesso());
+	    testo = new JLabel("    Sesso: "+d2.getSesso());
 	    testo.setForeground(white);
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    cp.add(testo);
@@ -107,7 +107,7 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Gruppo: "+d.getGruppo());
+	    testo = new JLabel("    Gruppo: "+d2.getGruppo());
 	    testo.setForeground(white);
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    cp.add(testo);
@@ -127,7 +127,7 @@ public class CercaDonatorePanel extends JPanel{
 		DefaultListModel<Date> dlm=new DefaultListModel<>();
 		
 		DonazioneDAO dDAO = new DonazioneDAO();
-		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
+		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d2.getcodFiscale());
         
         for(Donazione don:donazioni) {
         	dlm.addElement(don.getData());
