@@ -48,34 +48,6 @@ public class Donatore extends Persona {
 
 	
 	
-	public Time trovaOrario(Date d) {
-		Time p;
-		
-		PrenotazioneDAO pd=new PrenotazioneDAO();
-		
-		ArrayList<Prenotazione> prenDelGiorno = pd.selectDate(d);
-		
-		
-		if(prenDelGiorno.size()==8) {
-			p=null;
-		}
-		
-		else if(prenDelGiorno.size()==0){
-			p= Time.valueOf("08:00:00");		
-		}
-		
-		else {
-			
-			LocalTime lt=prenDelGiorno.get(-1).getOra().toLocalTime();
-			lt =lt.plusMinutes(30);
-			
-			p= Time.valueOf(lt);
-			
-		}
-		
-		return p;
 	
-
-	}
 
 }

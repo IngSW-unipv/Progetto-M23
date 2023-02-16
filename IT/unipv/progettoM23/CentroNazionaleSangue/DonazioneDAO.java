@@ -82,7 +82,36 @@ public class DonazioneDAO implements IDonazioneDAO{
         return result;
    }
 
-	
+	public Donazione selectUltimaDonazione(Donatore d) {
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		Statement st1;
+		ResultSet rs1;
+		Donazione d1=null;
+
+		
+		try{
+			
+			st1 = conn.createStatement();
+			
+			
+			String query="select * from donazione where CodiceFiscale = '"+d.getcodFiscale()+"'" + "order by DataDonazione desc";
+			
+			rs1 = st1.executeQuery(query);
+			
+			d1 = new Donazione(rs1.getString(1), rs1.getDate(2));
+		}
+		
+		
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+		return d1;
+		
+	}
 	
 	
 	
