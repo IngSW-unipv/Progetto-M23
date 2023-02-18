@@ -16,6 +16,7 @@ public class VisualPrenotazioniPanel extends JPanel{
 	private JTextField giornoTF,meseTF,annoTF;
 	private JTable table;
 
+
     
 	public VisualPrenotazioniPanel() {
 		
@@ -97,9 +98,9 @@ public class VisualPrenotazioniPanel extends JPanel{
 	    
 	    PrenotazioneDAO pd=new PrenotazioneDAO();
 		String[] colonne= {"Codice Fiscale","Orario"};
-		//String[][] dati= pd.getArrayPrenotazioni(today);
+		String[][] dati= pd.getArrayPrenotazioni(today);
 		
-		String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
+		//String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
 		
 		table= new JTable(dati,colonne);
 		table.setPreferredSize(new Dimension(250,500));

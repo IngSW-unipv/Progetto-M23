@@ -19,16 +19,20 @@ import javax.swing.JTextField;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.persona.Donatore;
+import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 public class CercaDonatorePanel extends JPanel{
 	
 	private JLabel testo;
 	private ContainerPanel cp;
 	private JButton indietro;
+	private Donatore d;
 	
 	
-	public CercaDonatorePanel(Donatore d) {
+	public CercaDonatorePanel() {
 		
+		d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
+
 		
         this.setLayout(new GridLayout(0,1));
 		
@@ -80,6 +84,40 @@ public class CercaDonatorePanel extends JPanel{
 	    
 	    
 	    
+	    
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		
+	    testo = new JLabel("    Donazioni: ");
+	    testo.setForeground(white);
+	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(testo);
+	    
+	    
+	    
+	    
+		DefaultListModel<Date> dlm=new DefaultListModel<>();
+		
+		DonazioneDAO dDAO = new DonazioneDAO();
+		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
+        
+        for(Donazione don:donazioni) {
+        	dlm.addElement(don.getData());
+        }
+		
+		JList<Date> lista=new JList<>(dlm);
+		JScrollPane scrollPane = new JScrollPane(lista);
+		scrollPane.setPreferredSize(new Dimension(100,50));
+		
+	    cp.add(scrollPane);
+	    
+    	this.add(cp);
+    	
+    	
+    	
+	    
+	    
+	    
+	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
 	    testo = new JLabel("    Data di Nascita(AAAA/MM/GG):  "+d.getData());
@@ -114,38 +152,10 @@ public class CercaDonatorePanel extends JPanel{
 	    
 	    this.add(cp);
 	    
-	    
-	    
-	    
-		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-		
-	    testo = new JLabel("    Donazioni: ");
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
-	    
-		DefaultListModel<Date> dlm=new DefaultListModel<>();
-		
-		DonazioneDAO dDAO = new DonazioneDAO();
-		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
-        
-        for(Donazione don:donazioni) {
-        	dlm.addElement(don.getData());
-        }
-		
-		JList<Date> lista=new JList<>();
-		JScrollPane scrollPane = new JScrollPane(lista);
-		scrollPane.setPreferredSize(new Dimension(100,60));
-	    cp.add(scrollPane);
-	    
-    	this.add(cp);
+	   
     	
-    	
-    	
-    	
-    	
-    	cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-    	this.add(cp);
+    	//cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+    	//this.add(cp);
 		
 	}
 

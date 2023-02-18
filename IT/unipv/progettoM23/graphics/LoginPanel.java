@@ -11,7 +11,7 @@ import javax.swing.*;
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.DonatoreDAO;
 import IT.unipv.progettoM23.persona.LoginRegistrazione;
-import controller.ControllerLoginPanel;
+
 
 public class LoginPanel extends JPanel implements ActionListener{
     
@@ -23,11 +23,9 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private JButton indietro,loginButton;
 	private ContainerPanel cp;
 	
-	private ControllerLoginPanel controller;
 	
-	public LoginPanel( ControllerLoginPanel c){
-		
-		this.controller=c;
+	public LoginPanel(){
+	
 		
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
@@ -75,16 +73,12 @@ public class LoginPanel extends JPanel implements ActionListener{
 			  String codFis = userTextField.getText();
 			  String password = passwordTextField.getText();
 			  
-			  JOptionPane.showMessageDialog(this, this.controller.controllaUtente(new LoginRegistrazione(codFis, password)));
+			  //JOptionPane.showMessageDialog(this, this.controller.controllaUtente(new LoginRegistrazione(codFis, password)));
 //			  if(this.controller.controllaSePresente(codFis)) {}
 			  
 		  }
 		  
 	  }
-	  
-	  
-	  public ControllerLoginPanel returnController() {
-		  return this.controller;
-	  }
+	 
 
 }

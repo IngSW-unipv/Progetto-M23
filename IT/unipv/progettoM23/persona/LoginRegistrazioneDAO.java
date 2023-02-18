@@ -38,8 +38,6 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 						
 		}
 		
-		
-	
 		catch (Exception e) { 
 			b=false;
 	    }
@@ -48,6 +46,8 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		
          return b;
    }
+	
+	
 	
 	public boolean verificaCodiceFiscale(String cf){
 		

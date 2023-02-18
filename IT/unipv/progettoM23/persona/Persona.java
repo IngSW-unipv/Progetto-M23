@@ -12,7 +12,6 @@ import com.google.protobuf.TextFormat.ParseException;
 
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
-import controller.ControllerLoginPanel;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
@@ -134,26 +133,27 @@ public class Persona {
 //	    System.out.println(d1.getCognome());
 	    
 	    
-	    CenteredFrame cf= new CenteredFrame(800,600);
-	    
-	    cf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		cf.setVisible(true);
+	    CenteredFrame cf= new CenteredFrame(800,600); 
+	   
+	    cf.showView("utente");
+	   
 		
 		
-		Date d2= Date.valueOf("2001-01-01");
-		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
+//		Date d2= Date.valueOf("2001-01-01");
+//		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
 //		DonatorePanel dp =new DonatorePanel(donatore);
 //		cf.add(dp);
-		ControllerLoginPanel clp = new ControllerLoginPanel();
-		LoginPanel lp = new LoginPanel(clp);
-		cf.add(lp);
+		
+		//ControllerLoginPanel clp = new ControllerLoginPanel();
+		//LoginPanel lp = new LoginPanel(clp);
+		//cf.add(lp);
 //	    DonazioneDAO d1 = new DonazioneDAO();
 //      ArrayList<Donazione> d3 = d1.selectDonazioni(donatore.getcodFiscale());
 		
-		PrenotazioneDAO p = new PrenotazioneDAO();
-		Prenotazione p1;
-		p1 = p.selectUltimaPrenotazione(donatore.getcodFiscale());
-		System.out.println(p1.getData());
+//		PrenotazioneDAO p = new PrenotazioneDAO();
+///		Prenotazione p1;
+//		p1 = p.selectUltimaPrenotazione(donatore.getcodFiscale());
+//		System.out.println(p1.getData());
 		
 		
 //		RegistrationPanel lp=new RegistrationPanel();
@@ -190,15 +190,15 @@ public class Persona {
       //    s.inserisciDonatore(new Donatore("TTTTTTTTT5566778", "VERDI","GABRIELE",e,"M", GruppoSanguigno.B));
           
 		
-		LoginRegistrazione l = new LoginRegistrazione("AAAAAAAAAAAAAAAA", "12345678");
-		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
+//		LoginRegistrazione l = new LoginRegistrazione("AAAAAAAAAAAAAAAA", "12345678");
+//		LoginRegistrazioneDAO ld = new LoginRegistrazioneDAO();
 		
 //		System.out.println(ld.verificaUtente(l));
 
 //        ld.verificaCodiceFiscale(l.getCodiceFiscale());
 //        System.out.println(ld.verificaCodiceFiscale(l.getCodiceFiscale()));
 	
-		System.out.println(ld.inserisciUtente(l));
+//		System.out.println(ld.inserisciUtente(l));
 //		ld.verificaUtente(l);
 	//	Date d1 = Date.valueOf("2023-01-02");
 		//Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );

@@ -13,9 +13,10 @@ public class PrenGiornoPanel extends JPanel {
 	private ContainerPanel cp;
 	private JTable table;
 	private JButton indietro;
+	private Date d;
 
 	
-	public PrenGiornoPanel(Date d) {
+	public PrenGiornoPanel() {
 		
 		this.setLayout(new BorderLayout());
 		
@@ -25,6 +26,7 @@ public class PrenGiornoPanel extends JPanel {
 		
 		
 		
+		d=Date.valueOf("2001-01-01");  /////////////////////////// da cabiare con data passata da controller
 		
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
@@ -47,9 +49,9 @@ public class PrenGiornoPanel extends JPanel {
 	    
 	    PrenotazioneDAO pd=new PrenotazioneDAO();
 		String[] colonne= {"Codice Fiscale","Orario"};
-		//String[][] dati= pd.getArrayPrenotazioni(d);
+		String[][] dati= pd.getArrayPrenotazioni(d);
 		
-		String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
+		//String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
 
 		
 		table= new JTable(dati,colonne);

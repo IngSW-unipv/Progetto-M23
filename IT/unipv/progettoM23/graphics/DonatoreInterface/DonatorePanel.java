@@ -10,17 +10,21 @@ import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.ContainerPanel;
 import IT.unipv.progettoM23.persona.Donatore;
+import IT.unipv.progettoM23.persona.GruppoSanguigno;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 
 public class DonatorePanel extends JPanel{
     
+	private Donatore d;
 	private JLabel testo;
 	private ContainerPanel cp;
 	private JButton indietro,prenota,cancella;
 	
-	public DonatorePanel(Donatore d) {
+	public DonatorePanel() {
+		
+		d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
 		
 		this.setLayout(new GridLayout(0,1));
 		
@@ -54,11 +58,12 @@ public class DonatorePanel extends JPanel{
 		
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-		testo=new JLabel("Queste sono le tue ultime donazioni:    ");
+		testo=new JLabel("Queste sono le tue donazioni:    ");
 		testo.setFont(new Font("Dialog",Font.PLAIN,20));
 		testo.setForeground(white);
 		cp.add(testo);
 
+		
 		////// crea JList 
 		
 		DefaultListModel<Date> dlm=new DefaultListModel<>();
