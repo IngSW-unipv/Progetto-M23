@@ -1,50 +1,116 @@
 package Model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
+import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.DonatoreDAO;
 import IT.unipv.progettoM23.persona.LoginRegistrazione;
 import IT.unipv.progettoM23.persona.LoginRegistrazioneDAO;
+import IT.unipv.progettoM23.prenotazioni.Prenotazione;
+import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 public class ModelDonatore {
 	
 	private static ModelDonatore jModelDonatore;
-    private Donatore donatore;
-    private LoginRegistrazioneDAO lrDAO;
-    private Boolean b;
-    private LoginRegistrazione lr;
+	
+    private LoginRegistrazione login;
     private Donatore donatoreLoggato;
+    private Prenotazione prossimaPrenotazione;
+    
+    private LoginRegistrazioneDAO lrDAO;
     private DonatoreDAO dDAO;
+    private PrenotazioneDAO pDAO;
+    private DonazioneDAO donDAO;
 
 
-  
-private ModelDonatore() {
-	this.lrDAO = new LoginRegistrazioneDAO();
-	this.dDAO = new DonatoreDAO();
 	
-}
-
-public boolean VerificaUtente1(LoginRegistrazione lr){
-	
-	b= lrDAO.verificaCodiceFiscale(lr.getCodiceFiscale());
-	return b;
+	  
+	public ModelDonatore() {
+		this.lrDAO = new LoginRegistrazioneDAO();
+		this.dDAO = new DonatoreDAO();
+		
+	}
 	
 	
-}
-
-public boolean VerificaUtente2(LoginRegistrazione lr){
 	
-	b= lrDAO.verificaUtente(lr);
-	return b;
-}
-
-
-//una volta loggato
-
-public Donatore PrendiDatiDonatore(LoginRegistrazione lr) {
+	public void setLogin(String cf,String psw) {             ///// chiamata quando l user preme il pulsante login, dati passati da controller
+		
+		login=new LoginRegistrazione(cf,psw);
+	}
 	
-	return donatoreLoggato = dDAO.selectDonatore(lr.getCodiceFiscale());
-}
+	
+	
+	public boolean verificaCF(){            ///step 1 dopo aver premuto pulsante login, se false controller manda messaggio popup
+		
+		return( lrDAO.verificaCodiceFiscale(login.getCodiceFiscale()));
+	}
+	
+	
+	
+	public boolean verificaPSW(){           ///step 2 dopo aver premuto pulsante login, se false controller manda messaggio popup
+		
+		return( lrDAO.verificaUtente(login));
+	}
 
+	
 
-
+	
+	public void effettuaLogin(LoginRegistrazione l) {             ////step 3, ora abbiamo il donatore loggato
+		
+		this.donatoreLoggato=dDAO.selectDonatore(this.login.getCodiceFiscale());
+	}
+	
+	
+	
+	public boolean puoDonare() {                               //// step 1 quando l user preme il pulsante prenota 
+		return this.donatoreLoggato.puòDonare();
+	}
+	
+	
+	public boolean puoPrenotare() {                    ///// step 2 quando l user preme il pulsante prenota, controlla se ha già prenotazioni future
+		return this.donatoreLoggato.puoPrenotare();
+	}	
+    
+	
+	
+	public void assegnaPrenotazione() {                     ///step3 chiamata se step1 e step2 sono true, crea la prenotazione per il donatore e la aggiunge al database
+		pDAO.inserisciPrenotazione(this.donatoreLoggato.creaPrenotazione());
+	}
+	
+	
+	
+	public void cancellaPrenotazione() {}                ///serve metodo cancellaPrenotazione su PrenotazioneDAO, chiamato quando user preme pulsante cancella
+	
+	
+	
+	public ArrayList<Donazione> getDonazioniDonatore(){                          ////verrà passato al controller e poi all int grafica, solo per visualizzare i dati
+		return donDAO.selectDonazioni(this.donatoreLoggato.getcodFiscale());
+	}
+	
+	
+	public String getNomeDonatore() {            /// verrà passato a int grafica, solo per visualizzare
+		return this.donatoreLoggato.getNome();
+	}
+	
+	public String getCognomeDonatore() {          /// verrà passato a int grafica, solo per visualizzare
+		return this.donatoreLoggato.getCognome();
+	}
+	
+	
+	public Prenotazione getPrenotazioneDonatore() {    //verrà passato a int grafica, solo per visualizzare
+		if (!this.donatoreLoggato.puoPrenotare()) {
+		    return pDAO.selectUltimaPrenotazione(this.donatoreLoggato.getcodFiscale());
+		}
+		else {
+			return null;
+		}
+	}
+	
+    
+	public LoginRegistrazione getLogin() {
+		return this.login;
+	}
 }

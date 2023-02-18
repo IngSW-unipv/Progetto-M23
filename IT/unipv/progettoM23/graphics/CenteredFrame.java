@@ -100,4 +100,20 @@ public class CenteredFrame extends JFrame{
 		
 	}
 	
+	
+	
+	public LoginPanel getloginView(){
+		return this.loginView;
+	}
+	
+	public DonatorePanel getUtenteView() {
+		return this.utenteView;
+	}
+	
+	public RegistrationPanel getRegistrationView() {
+		return this.registrationView;
+	}
+	
+	
+	
 }

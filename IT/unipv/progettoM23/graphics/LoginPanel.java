@@ -13,7 +13,7 @@ import IT.unipv.progettoM23.persona.DonatoreDAO;
 import IT.unipv.progettoM23.persona.LoginRegistrazione;
 
 
-public class LoginPanel extends JPanel implements ActionListener{
+public class LoginPanel extends JPanel {
     
 	private static final long serialVersionUID = 1L;
 	private JLabel userLabel;
@@ -56,7 +56,6 @@ public class LoginPanel extends JPanel implements ActionListener{
 	    cp.add(passwordTextField);
 
 	    loginButton = new JButton("Accedi");
-	    loginButton.addActionListener(this);
 	    cp.add(loginButton);
 	    
 	    this.add(cp);
@@ -66,19 +65,20 @@ public class LoginPanel extends JPanel implements ActionListener{
 	}
 	
 	
-	  public void actionPerformed(ActionEvent e) {
-		  
-		  if(e.getSource()==loginButton) {
-		  
-			  String codFis = userTextField.getText();
-			  String password = passwordTextField.getText();
-			  
-			  //JOptionPane.showMessageDialog(this, this.controller.controllaUtente(new LoginRegistrazione(codFis, password)));
-//			  if(this.controller.controllaSePresente(codFis)) {}
-			  
-		  }
-		  
-	  }
+	
+	
+	public JButton getAccediButton() {
+		return this.loginButton;
+	}
+	
+	public String getContenutoCF() {
+		return userTextField.getText();
+	}
+		
+	public String getContenutoPSW() {
+		return passwordTextField.getText();
+	}
+	  
 	 
 
 }
