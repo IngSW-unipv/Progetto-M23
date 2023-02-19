@@ -1,4 +1,4 @@
-package IT.unipv.progettoM23.graphics.DonatoreInterface;
+package IT.unipv.progettoM23.graphics;
 
 import java.awt.*;
 import java.sql.Date;
@@ -8,7 +8,6 @@ import javax.swing.*;
 
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
-import IT.unipv.progettoM23.graphics.ContainerPanel;
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;

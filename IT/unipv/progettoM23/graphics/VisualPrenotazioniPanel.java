@@ -105,7 +105,6 @@ public class VisualPrenotazioniPanel extends JPanel{
 		table= new JTable(dati,colonne);
 		table.setPreferredSize(new Dimension(250,500));
 		
-		System.out.println(table.getPreferredSize().getHeight()+" "+table.getRowCount());
 		
 	
 		if(table.getRowCount()!=0) {

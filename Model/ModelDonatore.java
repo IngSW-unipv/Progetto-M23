@@ -1,5 +1,6 @@
 package Model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -7,6 +8,7 @@ import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.DonatoreDAO;
+import IT.unipv.progettoM23.persona.GruppoSanguigno;
 import IT.unipv.progettoM23.persona.LoginRegistrazione;
 import IT.unipv.progettoM23.persona.LoginRegistrazioneDAO;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
@@ -86,6 +88,19 @@ public class ModelDonatore {
 	
 	
 	
+	
+	public void creaDonatore(String cf,String p,String c,String n, Date d, String s,GruppoSanguigno g) {
+		this.donatoreLoggato=new Donatore(cf,c,n,d,s,g);
+		this.login=new LoginRegistrazione(cf,p);
+		
+		lrDAO.inserisciUtente(login);
+		//dDAO.inserisciDonatore(this.donatoreLoggato); metodo da implementare su donatoreDAO
+	}
+	
+	
+	
+	
+	
 	public ArrayList<Donazione> getDonazioniDonatore(){                          ////verrà passato al controller e poi all int grafica, solo per visualizzare i dati
 		return donDAO.selectDonazioni(this.donatoreLoggato.getcodFiscale());
 	}
@@ -113,4 +128,44 @@ public class ModelDonatore {
 	public LoginRegistrazione getLogin() {
 		return this.login;
 	}
+	
+	
+	
+	
+	////// metodi che controllano il formato dei dati nella registrazione
+	
+    public boolean cfValido(String cf) {
+    	return (cf.length()==16);
+    }
+    
+    public boolean pswValida(String psw) {
+    	return (psw.length()>5);
+    }
+    
+    public boolean nomeValido(String n) {
+    	return (n.length()!=0);
+    }
+    
+    public boolean cognomeValido(String c) {
+    	return (c.length()!=0);
+    }
+    
+    public boolean sessoValido(String s) {
+    	return s!=null;
+    }
+    
+    public boolean gruppoValido(GruppoSanguigno g) {
+    	return g!=null;
+    } 
+    
+    public boolean dataValida(Date d) {
+    	return d!=null;
+    }
+    
+	
+	
+	
+	
+	
+	
 }

@@ -1,24 +1,25 @@
-package IT.unipv.progettoM23.graphics.registrazine;
+package IT.unipv.progettoM23.graphics;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import javax.swing.*;
 
-import IT.unipv.progettoM23.graphics.ContainerPanel;
+import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 
-public class RegistrationPanel extends JPanel implements ActionListener{
+public class RegistrationPanel extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel testo;
 	private JTextField nomeTF,cognomeTF,giornoTF,meseTF,annoTF,userTF,passwordTF;
-	private MFbuttonsPanel buttonsMF;
-	private GroupsButtonsPanel buttonsGroup;
+	private JRadioButton buttonM,buttonF,buttonA,buttonB,buttonAB,buttonZ;
+	private ButtonGroup buttonsMF,groupButtons;
 	private JButton indietro,continuaButton;
-	private ContainerPanel cp;
+	private ContainerPanel cp,cp1;
 	
 	
 	
@@ -99,17 +100,29 @@ public class RegistrationPanel extends JPanel implements ActionListener{
 	    
 	    
 	    
-	    
 	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 	    
 	    testo = new JLabel("Sesso: ");
 	    testo.setForeground(white);
 	    cp.add(testo);
 	    
-        buttonsMF=new MFbuttonsPanel();
-        cp.add(buttonsMF);
+	    
+	    cp1=new ContainerPanel(new GridLayout(1,1));
+	    
+	    buttonM = new JRadioButton("M");
+	    buttonF = new JRadioButton("F");
+	    
+	    buttonsMF=new ButtonGroup();
+	    buttonsMF.add(buttonM);
+	    buttonsMF.add(buttonF);
+	    
+	    cp1.add(buttonM);
+	    cp1.add(buttonF);
+	    
+	    cp.add(cp1);
         
         this.add(cp);
+        
         
         
         
@@ -119,11 +132,30 @@ public class RegistrationPanel extends JPanel implements ActionListener{
 	    testo = new JLabel("Gruppo: ");
 	    testo.setForeground(white);
 	    cp.add(testo);       
+	    
+	    
+	    cp1=new ContainerPanel(new GridLayout(1,1));
         
-        buttonsGroup=new GroupsButtonsPanel();
-        cp.add(buttonsGroup);
+	    buttonA = new JRadioButton("A");
+	    buttonB = new JRadioButton("B");
+	    buttonAB = new JRadioButton("AB");
+	    buttonZ = new JRadioButton("0");
+	    
+	    groupButtons=new ButtonGroup();
+	    groupButtons.add(buttonA);
+	    groupButtons.add(buttonB);
+	    groupButtons.add(buttonAB);
+	    groupButtons.add(buttonZ);
+	    
+	    cp1.add(buttonA);
+	    cp1.add(buttonB);
+	    cp1.add(buttonAB);
+	    cp1.add(buttonZ);
         
+	    cp.add(cp1);
+
         this.add(cp);
+        
         
         
         
@@ -157,14 +189,72 @@ public class RegistrationPanel extends JPanel implements ActionListener{
 	    
 		
 	}
-
-
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	
+	
+	
+	public JButton getContinuaButton() {
+		return this.continuaButton;
+	}
+	
+	public String getContenutoCF() {
+		return userTF.getText();
+	}
 		
-		//prende dati quando si preme il pulsante
+	public String getContenutoPSW() {
+		return passwordTF.getText();
+	}
+	
+	public String getContenutoNome() {
+		return nomeTF.getText();
+	}
+	
+	public String getContenutoCogn() {
+		return cognomeTF.getText();
+	}
+	
+	public String getContenutoSesso() {
+		if(buttonM.isSelected()) {
+			return "M";
+		}
+		else if (buttonF.isSelected()) {
+			return "F";
+		}
+		else {
+			return null;
+		}
+	}
+	
+	
+	public GruppoSanguigno getContenutoGruppo() {
 		
+		if(buttonA.isSelected()) {
+			return GruppoSanguigno.A;
+		}
+		else if(buttonB.isSelected()) {
+			return GruppoSanguigno.B;
+		}
+		else if(buttonAB.isSelected()) {
+			return GruppoSanguigno.AB;
+		}
+		else if(buttonZ.isSelected()) {
+			return GruppoSanguigno.ZERO;
+		}
+		else {
+			return null;
+		}
+		
+	}
+	
+	
+	public Date getContenutoData() {
+		
+		try {
+		    return Date.valueOf(annoTF.getText()+"-"+meseTF.getText()+"-"+giornoTF.getText());
+		}
+		
+		catch(Exception e) {
+			return null;
+		}
 	}
 
 }

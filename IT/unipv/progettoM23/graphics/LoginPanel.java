@@ -20,14 +20,14 @@ public class LoginPanel extends JPanel {
 	private JTextField userTextField;
 	private JLabel passwordLabel;
 	private JTextField passwordTextField;
-	private JButton indietro,loginButton;
+	private JButton indietro,loginButton,registrButton;
 	private ContainerPanel cp;
 	
 	
 	public LoginPanel(){
 	
 		
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.setLayout(new BorderLayout());
 		
 		Color white=new Color(255,255,255);
 		
@@ -35,7 +35,7 @@ public class LoginPanel extends JPanel {
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		indietro =new JButton("Indietro");
 		cp.add(indietro);
-		this.add(cp);
+		this.add(cp,BorderLayout.NORTH);
 		
 		
 		
@@ -54,11 +54,18 @@ public class LoginPanel extends JPanel {
 
 	    passwordTextField = new JPasswordField(25);
 	    cp.add(passwordTextField);
+	    this.add(cp,BorderLayout.CENTER);
 
+	    
+	    
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.RIGHT));
 	    loginButton = new JButton("Accedi");
 	    cp.add(loginButton);
 	    
-	    this.add(cp);
+	    registrButton = new JButton("Registrati");
+	    cp.add(registrButton);
+	    
+	    this.add(cp,BorderLayout.SOUTH);
 	    
 	    
 	    this.setBackground(new Color(100,0,0));
@@ -79,6 +86,11 @@ public class LoginPanel extends JPanel {
 		return passwordTextField.getText();
 	}
 	  
+	public JButton getRegistraButton() {
+		return this.registrButton;
+	}
+	
+
 	 
 
 }

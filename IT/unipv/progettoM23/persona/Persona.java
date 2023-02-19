@@ -17,8 +17,8 @@ import controller.ControllerDonatore;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
+import IT.unipv.progettoM23.graphics.DonatorePanel;
 import IT.unipv.progettoM23.graphics.LoginPanel;
-import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
 //import IT.unipv.progettoM23.graphics.LoginPanel;
 //import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
 // import IT.unipv.progettoM23.graphics.CenteredFrame;
@@ -65,9 +65,10 @@ public class Persona {
 		return this.gruppo;
 	}
 	
+	
 	public static class MappaGruppi {
 		
-		public final HashMap<GruppoSanguigno, GruppoSanguigno[] > mappaGruppi = new HashMap<GruppoSanguigno, GruppoSanguigno[] >();
+		private final HashMap<GruppoSanguigno, GruppoSanguigno[] > mappaGruppi = new HashMap<GruppoSanguigno, GruppoSanguigno[] >();
 		
 		
 		public MappaGruppi() {

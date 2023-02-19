@@ -1,10 +1,10 @@
 package IT.unipv.progettoM23.graphics;
 
 import java.awt.*;
-import javax.swing.*;
+import java.util.BitSet;
+import java.util.HashMap;
 
-import IT.unipv.progettoM23.graphics.DonatoreInterface.DonatorePanel;
-import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
+import javax.swing.*;
 
 
 public class CenteredFrame extends JFrame{
@@ -23,6 +23,8 @@ public class CenteredFrame extends JFrame{
     private PrenGiornoPanel preGiornoView;
     private SacchePanel saccheView;
     private RichiestePanel richiesteView;
+    
+    private final HashMap<String,String> mappaPaginaPrecedente=new HashMap<String,String>();
     
     
     
@@ -52,6 +54,20 @@ public class CenteredFrame extends JFrame{
 		this.setVisible(true);
 		
 		 this.creaCardPanel();
+		 
+		 
+		 
+		 this.mappaPaginaPrecedente.put("login","principale");
+		 this.mappaPaginaPrecedente.put("utente","login");
+		 this.mappaPaginaPrecedente.put("registrazione","login");
+		 this.mappaPaginaPrecedente.put("menu","principale");
+		 this.mappaPaginaPrecedente.put("cerca","menu");
+		 this.mappaPaginaPrecedente.put("mostraDonatore","cerca");
+		 this.mappaPaginaPrecedente.put("prenotazioni","menu");
+		 this.mappaPaginaPrecedente.put("prenotazioniGiorno","prenotazioni");
+		 this.mappaPaginaPrecedente.put("sacche","menu");
+		 this.mappaPaginaPrecedente.put("richieste","menu");
+
 		
 	}
 	
