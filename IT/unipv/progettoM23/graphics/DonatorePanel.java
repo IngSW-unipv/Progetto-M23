@@ -161,5 +161,8 @@ public class DonatorePanel extends JPanel{
 	public void setCognome(String c) {
 		this.cognome=c;
 	}
+    public void setPrenotazione(Prenotazione p) {
+    	this.p1=p;
+    }
 	
 }

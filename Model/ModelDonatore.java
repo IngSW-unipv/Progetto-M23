@@ -33,6 +33,8 @@ public class ModelDonatore {
 	public ModelDonatore() {
 		this.lrDAO = new LoginRegistrazioneDAO();
 		this.dDAO = new DonatoreDAO();
+		this.pDAO = new PrenotazioneDAO();
+		this.donDAO = new DonazioneDAO();
 		
 	}
 	

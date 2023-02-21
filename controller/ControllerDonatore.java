@@ -41,13 +41,14 @@ public class ControllerDonatore {
 				}
 					
 				else {
-					//model.effettuaLogin(model.getLogin());
+					model.effettuaLogin(model.getLogin());
 					
 			    	view.getUtenteView().setNome(model.getNomeDonatore());
 			    	view.getUtenteView().setCognome(model.getCognomeDonatore());
 			    	view.getUtenteView().changeSaluto();
 			    	
-			    	model.getPrenotazioneDonatore();
+			    	view.getUtenteView().setPrenotazione(model.getPrenotazioneDonatore());
+			    	//model.getPrenotazioneDonatore();
 			    	view.getUtenteView().changeTestoPren();		    	
 					
 					
