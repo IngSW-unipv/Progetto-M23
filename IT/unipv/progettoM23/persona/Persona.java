@@ -213,6 +213,22 @@ public class Persona {
 	//	Donazione donazione = new Donazione(donatore.getcodFiscale(), d1 );
 	//	DonazioneDAO donazioneDAO = new DonazioneDAO();
 //		donazioneDAO.inserisciDonazione(donazione);
+	    
+	    DonatoreDAO donat = new DonatoreDAO();
+	//  donat.selectDonatore("DDDDDDDDDDDDDDDD");
+	    
+	//  PrenotazioneDAO prenDao = new PrenotazioneDAO();
+	 // Prenotazione pren = new Prenotazione("TTTTTTTTTTTTTTTT", Date.valueOf("2023-01-01"), Time.valueOf("9:30:00"));
+	    
+	 // prenDao.inserisciPrenotazione(pren);
+	//  prenDao.cancellaPrenotazione(pren); 
+	    
+	 // LoginRegistrazioneDAO lrDAO = new LoginRegistrazioneDAO();
+	//   LoginRegistrazione lr = new LoginRegistrazione("VVVVVVVVVVVVVVVV", "1234567");
+	//   lrDAO.inserisciUtente(lr);
+	   
+	//   Donatore donatore = new Donatore("VVVVVVVVVVVVVVVV", "VVVVVVVVVVVVVVVV", "GIOVANNI", Date.valueOf("2002-01-03"), "M", GruppoSanguigno.AB);
+	//   donat.inserisciDonatore(donatore);
 		
 	}
 	

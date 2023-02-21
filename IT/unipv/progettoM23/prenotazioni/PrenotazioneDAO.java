@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.sql.Date;
 import java.sql.Driver;
+import java.sql.PreparedStatement;
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.persona.Donatore;
@@ -158,6 +159,36 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 			           
 		
 	}
+	
+
+public void  cancellaPrenotazione(Prenotazione p){
+		
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		PreparedStatement st1;
+
+
+		try{
+			
+			String query="Delete prenotazione from prenotazione where CodiceFiscale = ? and DataPrenotazione = ?";
+			st1 = conn.prepareStatement(query);
+			
+            st1.setString(1, p.getCodiceFiscale());
+            st1.setDate(2, p.getData() );
+			
+			st1.executeUpdate();
+			
+		}
+		
+		
+		
+		
+		catch (Exception e) {e.printStackTrace();
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+       
+   }
 	
 }
 
