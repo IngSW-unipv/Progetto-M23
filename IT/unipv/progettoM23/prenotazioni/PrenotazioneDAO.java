@@ -112,7 +112,8 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		}
 		
 		
-		catch (Exception e) {e.printStackTrace();
+		catch (Exception e) {
+			return null;
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);

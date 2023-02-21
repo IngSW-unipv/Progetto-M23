@@ -94,7 +94,7 @@ public class ModelDonatore {
 		this.login=new LoginRegistrazione(cf,p);
 		
 		lrDAO.inserisciUtente(login);
-		//dDAO.inserisciDonatore(this.donatoreLoggato); metodo da implementare su donatoreDAO
+		dDAO.inserisciDonatore(this.donatoreLoggato); //metodo da implementare su donatoreDAO
 	}
 	
 	
@@ -163,6 +163,11 @@ public class ModelDonatore {
     }
     
 	
+    
+    
+//    public Donatore getDonatoreLoggato() {
+//    	return this.donatoreLoggato;
+//    }
 	
 	
 	

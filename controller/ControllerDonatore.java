@@ -42,6 +42,15 @@ public class ControllerDonatore {
 					
 				else {
 					//model.effettuaLogin(model.getLogin());
+					
+			    	view.getUtenteView().setNome(model.getNomeDonatore());
+			    	view.getUtenteView().setCognome(model.getCognomeDonatore());
+			    	view.getUtenteView().changeSaluto();
+			    	
+			    	model.getPrenotazioneDonatore();
+			    	view.getUtenteView().changeTestoPren();		    	
+					
+					
 					view.showView("utente");
 				}
 				
@@ -112,6 +121,14 @@ public class ControllerDonatore {
 				
 				else {
 					model.creaDonatore(cf, psw, cognome, nome, data, sesso, gruppo);
+					
+			    	view.getUtenteView().setNome(model.getNomeDonatore());
+			    	view.getUtenteView().setCognome(model.getCognomeDonatore());
+			    	view.getUtenteView().changeSaluto();
+					
+			    	model.getPrenotazioneDonatore();
+			    	view.getUtenteView().changeTestoPren();
+			    	
 					view.showView("utente");
 				}
 				
@@ -121,12 +138,6 @@ public class ControllerDonatore {
     	 };
     	 
     	 view.getRegistrationView().getContinuaButton().addActionListener(continuaListener);
-    	 
-    	 
-    	 
-    	 
-    	 
-    	 
     	 
     	 
         

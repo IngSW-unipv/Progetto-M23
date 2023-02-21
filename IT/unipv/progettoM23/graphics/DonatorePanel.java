@@ -17,9 +17,15 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 public class DonatorePanel extends JPanel{
     
 	private Donatore d;
-	private JLabel testo;
+	private JLabel testo,saluto,testoPren;
 	private ContainerPanel cp;
 	private JButton indietro,prenota,cancella;
+	
+	
+	private String nome;
+	private String cognome;
+	private Prenotazione p1;
+	
 	
 	public DonatorePanel() {
 		
@@ -44,11 +50,12 @@ public class DonatorePanel extends JPanel{
 		
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-		testo=new JLabel("Ciao "+d.getNome()+" "+d.getCognome()+"!");
-		testo.setFont(new Font("Serif",Font.PLAIN,50));
+		saluto=new JLabel();
+//	    saluto.setText();
+		saluto.setFont(new Font("Serif",Font.PLAIN,50));
 		//testo.setPreferredSize();
-		testo.setForeground(white);
-		cp.add(testo);
+		saluto.setForeground(white);
+		cp.add(saluto);
 		this.add(cp);
 		
 		
@@ -110,18 +117,49 @@ public class DonatorePanel extends JPanel{
 		p1 = p.selectUltimaPrenotazione(d.getcodFiscale());
     	
         cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-    	testo=new JLabel("La tua prossima donazione:   "+p1.getData()+"   alle:   "+p1.getOra());
-		testo.setFont(new Font("Dialog",Font.PLAIN,20));
-		testo.setForeground(white);
-        cp.add(testo);  
+    	testoPren=new JLabel();
+    	testoPren.setFont(new Font("Dialog",Font.PLAIN,20));
+    	testoPren.setForeground(white);
+        cp.add(testoPren);  
         
         
         
         this.add(cp);
-    	
-    	
-    
-    	
-		
 	}
+	
+	
+	public JLabel getSaluto() {
+		return this.saluto;
+	}
+	
+	public JLabel getTestoPren() {
+		return this.testoPren;
+	}
+	
+	public void changeSaluto() {
+		this.getSaluto().setText("Ciao "+this.nome+" "+this.cognome+"!");
+		this.getSaluto().paintImmediately(this.getSaluto().getVisibleRect());
+	}
+	
+	public void changeTestoPren() {
+		
+		if (p1!=null) {
+			this.getTestoPren().setText("La tua prossima donazione:   "+p1.getData()+"   alle:   "+p1.getOra());
+			this.getTestoPren().paintImmediately(this.getTestoPren().getVisibleRect());
+		}
+		else {
+			this.getTestoPren().setText("Nessuna prenotazione");
+			this.getTestoPren().paintImmediately(this.getTestoPren().getVisibleRect());			
+		}
+	}
+	
+	
+	
+	public void setNome(String n) {
+		this.nome=n;
+	}
+	public void setCognome(String c) {
+		this.cognome=c;
+	}
+	
 }

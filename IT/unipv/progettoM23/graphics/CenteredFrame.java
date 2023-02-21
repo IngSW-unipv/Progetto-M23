@@ -113,7 +113,6 @@ public class CenteredFrame extends JFrame{
 	public void showView(String key) {
 		
 		this.cardLayout.show(this.cards, key);
-		
 	}
 	
 	
