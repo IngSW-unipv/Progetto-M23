@@ -49,8 +49,11 @@ public class ControllerDonatore {
 			    	
 			    	view.getUtenteView().setPrenotazione(model.getPrenotazioneDonatore());
 			    	//model.getPrenotazioneDonatore();
-			    	view.getUtenteView().changeTestoPren();		    	
-					
+			    	view.getUtenteView().changeTestoPren();	
+			    	
+			    	view.getUtenteView().setDonazioni(model.getDonazioniDonatore());
+			    	view.getUtenteView().changeDonazioni();
+			    	
 					
 					view.showView("utente");
 				}
@@ -130,6 +133,10 @@ public class ControllerDonatore {
 			    	model.getPrenotazioneDonatore();
 			    	view.getUtenteView().changeTestoPren();
 			    	
+			    	view.getUtenteView().setDonazioni(model.getDonazioniDonatore());
+			    	view.getUtenteView().changeDonazioni();
+			    	
+			    	
 					view.showView("utente");
 				}
 				
@@ -139,6 +146,65 @@ public class ControllerDonatore {
     	 };
     	 
     	 view.getRegistrationView().getContinuaButton().addActionListener(continuaListener);
+    	 
+    	 
+    	 
+    	 
+    	 ActionListener prenotaListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                if(!model.puoDonare()) {
+                	JOptionPane.showMessageDialog(view.getUtenteView(), "Devono Passare almeno 6 mesi se femmina o 3 se maschio dall'ultima donazione");
+                	
+                }
+                
+                else if (!model.puoPrenotare()) {
+                	
+                	JOptionPane.showMessageDialog(view.getUtenteView(), "Ha gia una prenotaione in corso");	
+                }
+				
+                else {
+                	model.assegnaPrenotazione();
+                	
+                	view.getUtenteView().setPrenotazione(model.getPrenotazioneDonatore());
+			    	view.getUtenteView().changeTestoPren();
+                }
+			}
+    		 
+    		 
+    	 };
+    	 
+    	 view.getUtenteView().getPrenotaButton().addActionListener(prenotaListener);
+    	 
+    	 
+    	 
+    	 
+    	 
+    	 
+    	 ActionListener cancellaListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(model.puoPrenotare()) {
+					JOptionPane.showMessageDialog(view.getUtenteView(), "Non hai nessuna prenotazione in corso");
+				}
+				else {
+					
+					model.cancellaPrenotazione();
+					view.getUtenteView().setPrenotazione(null);
+					view.getUtenteView().changeTestoPren();
+				}
+				
+			}
+    		 
+    	 };
+    	 
+    	 view.getUtenteView().getCancellaButton().addActionListener(cancellaListener);
+    	 
+    	 
+    	 
     	 
     	 
         

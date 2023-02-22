@@ -97,6 +97,8 @@ public class DonazioneDAO implements IDonazioneDAO{
 			String query="select * from donazione where CodiceFiscale = '"+d.getcodFiscale()+"'" + "order by DataDonazione desc";
 			
 			rs1 = st1.executeQuery(query);
+			rs1.next();
+			
 			
 			d1 = new Donazione(rs1.getString(1), rs1.getDate(2));
 		}
@@ -104,7 +106,8 @@ public class DonazioneDAO implements IDonazioneDAO{
 		
 		
 		
-		catch (Exception e) {e.printStackTrace();
+		catch (Exception e) {
+			return null;
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);

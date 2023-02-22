@@ -56,45 +56,52 @@ public class Donatore extends Persona {
 	public boolean puòDonare() {
 		boolean b = false;
 		LocalDate d = LocalDate.now();
-		Donazione donazione;
+		Donazione donazione = null;
 		DonazioneDAO dDAO = new DonazioneDAO();
 		
+		
 		donazione = dDAO.selectUltimaDonazione(this);
+		
+		
+		if (donazione == null) {
+			return true;
+		}
+		
+
 		Date data = donazione.getData();
 		LocalDate d1 = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-	
-		if (this.getSesso()=="M")
-		{
-			
+	    
+	    
+		if (this.getSesso()=="M"){
 			
 			d1 = d1.plusMonths(3);
+			
 			if (d1.isBefore(d)) {
 				b=  true;
-				
 			}
+			
 			else {
 				b = false;
 			}
-			
 		}
 		
-		else if (this.getSesso()=="F")
-		{
+		else if (this.getSesso()=="F"){
 			d1 = d1.plusMonths(6);
 			
-			if (d1.isBefore(d))
-			{
+			if (d1.isBefore(d)){
 				b = true;
 			}
 			
 			else {
 				b = false;
-					}
 			}
-		
+			
+	    }
 		
 		return b;
-			}
+	}
+	
+	
 
 	
 	
@@ -162,7 +169,7 @@ public class Donatore extends Persona {
 		
 		else {
 			
-			LocalTime lt=prenDelGiorno.get(-1).getOra().toLocalTime();
+			LocalTime lt=prenDelGiorno.get(prenDelGiorno.size()-1).getOra().toLocalTime();
 			lt =lt.plusMinutes(30);
 			
 			p=new Prenotazione(this.getcodFiscale(),d, Time.valueOf(lt));	

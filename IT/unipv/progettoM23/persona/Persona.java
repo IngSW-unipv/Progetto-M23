@@ -136,7 +136,7 @@ public class Persona {
 //	    System.out.println(d1.getCognome());
 	    
 	    
-	    CenteredFrame cf= new CenteredFrame(800,600); 
+       CenteredFrame cf= new CenteredFrame(800,600); 
 	   
 	    //cf.showView("utente");
 	    
@@ -208,13 +208,13 @@ public class Persona {
 	
 //		System.out.println(ld.inserisciUtente(l));
 //		ld.verificaUtente(l);
-	//	Date d1 = Date.valueOf("2023-01-02");
-		//Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
+//		Date d1 = Date.valueOf("2023-01-02");
+//		Donatore donatore = new Donatore ("DDDDDDDDDDDDDDDD","ROSSI", "MARIO",d1 ,"M", GruppoSanguigno.ZERO );
 	//	Donazione donazione = new Donazione(donatore.getcodFiscale(), d1 );
 	//	DonazioneDAO donazioneDAO = new DonazioneDAO();
 //		donazioneDAO.inserisciDonazione(donazione);
 	    
-	    DonatoreDAO donat = new DonatoreDAO();
+	//    DonatoreDAO donat = new DonatoreDAO();
 	//  donat.selectDonatore("DDDDDDDDDDDDDDDD");
 	    
 	//  PrenotazioneDAO prenDao = new PrenotazioneDAO();
@@ -229,6 +229,10 @@ public class Persona {
 	   
 	//   Donatore donatore = new Donatore("VVVVVVVVVVVVVVVV", "VVVVVVVVVVVVVVVV", "GIOVANNI", Date.valueOf("2002-01-03"), "M", GruppoSanguigno.AB);
 	//   donat.inserisciDonatore(donatore);
+	   
+	    
+//	    DonazioneDAO donazioneDAO = new DonazioneDAO();
+//	    donazioneDAO.selectUltimaDonazione(donatore);
 		
 	}
 	

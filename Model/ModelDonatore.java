@@ -86,7 +86,9 @@ public class ModelDonatore {
 	
 	
 	
-	public void cancellaPrenotazione() {}                ///serve metodo cancellaPrenotazione su PrenotazioneDAO, chiamato quando user preme pulsante cancella
+	public void cancellaPrenotazione() {
+		pDAO.cancellaPrenotazione(getPrenotazioneDonatore());
+	}                ///serve metodo cancellaPrenotazione su PrenotazioneDAO, chiamato quando user preme pulsante cancella
 	
 	
 	

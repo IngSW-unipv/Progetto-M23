@@ -16,20 +16,24 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 public class DonatorePanel extends JPanel{
     
-	private Donatore d;
+	//private Donatore d;
 	private JLabel testo,saluto,testoPren;
 	private ContainerPanel cp;
 	private JButton indietro,prenota,cancella;
+	private JList<Date> lista;
+	private DefaultListModel<Date> dlm;
+	private JScrollPane scrollPane;
 	
 	
 	private String nome;
 	private String cognome;
 	private Prenotazione p1;
+	ArrayList<Donazione> donazioni;
 	
 	
 	public DonatorePanel() {
 		
-		d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
+		//d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
 		
 		this.setLayout(new GridLayout(0,1));
 		
@@ -72,22 +76,15 @@ public class DonatorePanel extends JPanel{
 		
 		////// crea JList 
 		
-		DefaultListModel<Date> dlm=new DefaultListModel<>();
+		dlm=new DefaultListModel<>();
 		
-		DonazioneDAO dDAO = new DonazioneDAO();
-		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
-        
+		//DonazioneDAO dDAO = new DonazioneDAO();
+		//ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
 		
-		
-        for(Donazione don:donazioni) {
-        	dlm.addElement(don.getData());
-        }
-		
-		JList<Date> lista=new JList<>(dlm);
-		JScrollPane scrollPane = new JScrollPane(lista);
+		lista=new JList<>(dlm);
+		scrollPane = new JScrollPane(lista);
 		
 	    cp.add(scrollPane);
-	    
     	this.add(cp);
     	
     	
@@ -112,9 +109,9 @@ public class DonatorePanel extends JPanel{
         
     	
         
-        PrenotazioneDAO p = new PrenotazioneDAO();
-		Prenotazione p1;
-		p1 = p.selectUltimaPrenotazione(d.getcodFiscale());
+        //PrenotazioneDAO p = new PrenotazioneDAO();
+		//Prenotazione p1;
+		//p1 = p.selectUltimaPrenotazione(d.getcodFiscale());
     	
         cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
     	testoPren=new JLabel();
@@ -155,6 +152,20 @@ public class DonatorePanel extends JPanel{
 	
 	
 	
+	public void changeDonazioni() {
+		dlm=new DefaultListModel<>();
+		
+		if (this.donazioni!=null) {
+	        for(Donazione don:this.donazioni) {
+	        	dlm.addElement(don.getData());
+	        }
+		}
+		
+		lista.setModel(dlm);
+	}
+	
+	
+	
 	public void setNome(String n) {
 		this.nome=n;
 	}
@@ -164,5 +175,20 @@ public class DonatorePanel extends JPanel{
     public void setPrenotazione(Prenotazione p) {
     	this.p1=p;
     }
+    
+    public JButton getPrenotaButton() {
+    	return this.prenota;
+    }
 	
+    public JButton getCancellaButton() {
+    	return this.cancella;
+    }
+    
+    public void setDonazioni(ArrayList<Donazione> a) {
+    	this.donazioni=a;
+    }
+    
+    public JScrollPane getListaPanel() {
+    	return this.scrollPane;
+    }
 }
