@@ -13,6 +13,7 @@ public class CenteredFrame extends JFrame{
 	private JPanel cards;
 	
 	
+	private FirstPanel firstView;
 	private LoginPanel loginView;
 	private DonatorePanel utenteView;
     private RegistrationPanel registrationView;
@@ -23,6 +24,7 @@ public class CenteredFrame extends JFrame{
     private PrenGiornoPanel preGiornoView;
     private SacchePanel saccheView;
     private RichiestePanel richiesteView;
+    private OspedalePanel ospedaleView;
     
     private final HashMap<String,String> mappaPaginaPrecedente=new HashMap<String,String>();
     
@@ -67,6 +69,7 @@ public class CenteredFrame extends JFrame{
 		 this.mappaPaginaPrecedente.put("prenotazioniGiorno","prenotazioni");
 		 this.mappaPaginaPrecedente.put("sacche","menu");
 		 this.mappaPaginaPrecedente.put("richieste","menu");
+		 this.mappaPaginaPrecedente.put("ospedale","principale");
 
 		
 	}
@@ -74,6 +77,7 @@ public class CenteredFrame extends JFrame{
 	
 	public void creaCardPanel() {
 		
+		firstView=new FirstPanel();
 		loginView =new LoginPanel();
 		utenteView=new DonatorePanel();
 		registrationView= new RegistrationPanel();
@@ -84,25 +88,28 @@ public class CenteredFrame extends JFrame{
 		preGiornoView=new PrenGiornoPanel();
 		saccheView=new SacchePanel();
 		richiesteView=new RichiestePanel();
+		ospedaleView=new OspedalePanel();
+		
 		
 		
 		
 		this.cardLayout=new CardLayout();
 		this.cards =new JPanel(cardLayout);
 		
-		String[] keys= {"login","utente","registrazione","menu","cerca","mostraDonatore","prenotazioni","prenotazioniGiorno","sacche","richieste"};
+		String[] keys= {"principale","login","utente","registrazione","menu","cerca","mostraDonatore","prenotazioni","prenotazioniGiorno","sacche","richieste","ospedale"};
 		
-
-		cards.add(loginView,keys[0]);
-		cards.add(utenteView,keys[1]);
-		cards.add(registrationView,keys[2]);
-		cards.add(menuView,keys[3]);
-		cards.add(cercaView,keys[4]);
-		cards.add(mostraDonatoreView,keys[5]);
-		cards.add(prenotazioniView,keys[6]);
-		cards.add(preGiornoView,keys[7]);
-     	cards.add(saccheView,keys[8]);
-		cards.add(richiesteView,keys[9]);
+		cards.add(firstView,keys[0]);
+		cards.add(loginView,keys[1]);
+		cards.add(utenteView,keys[2]);
+		cards.add(registrationView,keys[3]);
+		cards.add(menuView,keys[4]);
+		cards.add(cercaView,keys[5]);
+		cards.add(mostraDonatoreView,keys[6]);
+		cards.add(prenotazioniView,keys[7]);
+		cards.add(preGiornoView,keys[8]);
+     	cards.add(saccheView,keys[9]);
+		cards.add(richiesteView,keys[10]);
+		cards.add(ospedaleView,keys[11]);
 		
 		
 		this.add(cards);
