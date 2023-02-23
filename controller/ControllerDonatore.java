@@ -43,16 +43,11 @@ public class ControllerDonatore {
 				else {
 					model.effettuaLogin(model.getLogin());
 					
-			    	view.getUtenteView().setNome(model.getNomeDonatore());
-			    	view.getUtenteView().setCognome(model.getCognomeDonatore());
-			    	view.getUtenteView().changeSaluto();
+			    	view.getUtenteView().changeSaluto(model.getDonatore().getNome(),model.getDonatore().getCognome());
+
+			    	view.getUtenteView().changeTestoPren(model.getPrenotazioneDonatore());	
 			    	
-			    	view.getUtenteView().setPrenotazione(model.getPrenotazioneDonatore());
-			    	//model.getPrenotazioneDonatore();
-			    	view.getUtenteView().changeTestoPren();	
-			    	
-			    	view.getUtenteView().setDonazioni(model.getDonazioniDonatore());
-			    	view.getUtenteView().changeDonazioni();
+			    	view.getUtenteView().changeDonazioni(model.getDonazioniDonatore());
 			    	
 					
 					view.showView("utente");
@@ -126,16 +121,11 @@ public class ControllerDonatore {
 				else {
 					model.creaDonatore(cf, psw, cognome, nome, data, sesso, gruppo);
 					
-			    	view.getUtenteView().setNome(model.getNomeDonatore());
-			    	view.getUtenteView().setCognome(model.getCognomeDonatore());
-			    	view.getUtenteView().changeSaluto();
-					
-			    	model.getPrenotazioneDonatore();
-			    	view.getUtenteView().changeTestoPren();
+			    	view.getUtenteView().changeSaluto(model.getDonatore().getNome(),model.getDonatore().getCognome());
+
+			    	view.getUtenteView().changeTestoPren(model.getPrenotazioneDonatore());	
 			    	
-			    	view.getUtenteView().setDonazioni(model.getDonazioniDonatore());
-			    	view.getUtenteView().changeDonazioni();
-			    	
+			    	view.getUtenteView().changeDonazioni(model.getDonazioniDonatore());
 			    	
 					view.showView("utente");
 				}
@@ -166,9 +156,8 @@ public class ControllerDonatore {
 				
                 else {
                 	model.assegnaPrenotazione();
-                	
-                	view.getUtenteView().setPrenotazione(model.getPrenotazioneDonatore());
-			    	view.getUtenteView().changeTestoPren();
+
+			    	view.getUtenteView().changeTestoPren(model.getPrenotazioneDonatore());
                 }
 			}
     		 
@@ -193,8 +182,7 @@ public class ControllerDonatore {
 				else {
 					
 					model.cancellaPrenotazione();
-					view.getUtenteView().setPrenotazione(null);
-					view.getUtenteView().changeTestoPren();
+					view.getUtenteView().changeTestoPren(null);
 				}
 				
 			}

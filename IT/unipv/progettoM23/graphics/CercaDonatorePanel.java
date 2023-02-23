@@ -23,10 +23,14 @@ import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 public class CercaDonatorePanel extends JPanel{
 	
-	private JLabel testo;
+	private JLabel nome,cognome,cf,dob,sesso,gruppo,donazioni;
 	private ContainerPanel cp;
 	private JButton indietro;
 	private Donatore d;
+	private JList<Date> lista;
+	private DefaultListModel<Date> dlm;
+	private JScrollPane scrollPane;
+	
 	
 	
 	public CercaDonatorePanel() {
@@ -51,10 +55,10 @@ public class CercaDonatorePanel extends JPanel{
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Cognome: "+d.getCognome());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+	    cognome = new JLabel();
+	    cognome.setForeground(white);
+	    cognome.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(cognome);
 	    
 	    this.add(cp);
 	    
@@ -62,10 +66,10 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Nome: "+d.getNome());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+	    nome = new JLabel();
+	    nome.setForeground(white);
+	    nome.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(nome);
 	    
 	    this.add(cp);
 	    
@@ -74,10 +78,10 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Codice Fiscale: "+d.getcodFiscale());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+	    cf = new JLabel();
+	    cf.setForeground(white);
+	    cf.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(cf);
 	    
 	    this.add(cp);
 	    
@@ -87,25 +91,18 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Donazioni: ");
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+		donazioni = new JLabel("    Donazioni:  ");
+		donazioni.setForeground(white);
+		donazioni.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(donazioni);
 	    
 	    
 	    
 	    
-		DefaultListModel<Date> dlm=new DefaultListModel<>();
+		dlm=new DefaultListModel<>();
 		
-		DonazioneDAO dDAO = new DonazioneDAO();
-		ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
-        
-        for(Donazione don:donazioni) {
-        	dlm.addElement(don.getData());
-        }
-		
-		JList<Date> lista=new JList<>(dlm);
-		JScrollPane scrollPane = new JScrollPane(lista);
+		lista=new JList<>(dlm);
+		scrollPane = new JScrollPane(lista);
 		scrollPane.setPreferredSize(new Dimension(100,50));
 		
 	    cp.add(scrollPane);
@@ -120,10 +117,10 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Data di Nascita(AAAA/MM/GG):  "+d.getData());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+	    dob = new JLabel();
+	    dob.setForeground(white);
+	    dob.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(dob);
 	    
 	    this.add(cp);
 	    
@@ -133,10 +130,10 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Sesso: "+d.getSesso());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+	    sesso = new JLabel();
+	    sesso.setForeground(white);
+	    sesso.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(sesso);
 	    
 	    this.add(cp);
 	    
@@ -145,10 +142,10 @@ public class CercaDonatorePanel extends JPanel{
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
-	    testo = new JLabel("    Gruppo: "+d.getGruppo());
-	    testo.setForeground(white);
-	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
-	    cp.add(testo);
+	    gruppo = new JLabel();
+	    gruppo.setForeground(white);
+	    gruppo.setFont(new Font("Dialog",Font.PLAIN,20));
+	    cp.add(gruppo);
 	    
 	    this.add(cp);
 	    
@@ -157,6 +154,69 @@ public class CercaDonatorePanel extends JPanel{
     	//cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
     	//this.add(cp);
 		
+	}
+	
+	
+	public JLabel getNomeLabel() {
+		return this.nome;
+	}
+	
+	public JLabel getCognomeLabel() {
+		return this.cognome;
+	}
+	
+	public JLabel getSessoLabel() {
+		return this.sesso;
+	}
+	
+	public JLabel getGruppoLabel() {
+		return this.gruppo;
+	}
+	
+	public JLabel getDOBLabel() {
+		return this.dob;
+	}
+	
+	public JLabel getCFLabel() {
+		return this.cf;
+	}
+	
+	
+	
+	public void changeDati(String n,String c,String cf,String dob,String s,String g) {
+		
+		this.getNomeLabel().setText("    Nome: "+n);
+		this.getNomeLabel().paintImmediately(this.getNomeLabel().getVisibleRect());
+		
+		this.getCognomeLabel().setText("    Cognome: "+c);
+		this.getCognomeLabel().paintImmediately(this.getCognomeLabel().getVisibleRect());
+		
+		this.getCFLabel().setText("    CodiceFiscale: "+cf);
+		this.getCFLabel().paintImmediately(this.getCFLabel().getVisibleRect());
+		
+		this.getDOBLabel().setText("    Data di Nascita(AAAA/MM/GG): "+dob);
+		this.getDOBLabel().paintImmediately(this.getDOBLabel().getVisibleRect());
+		
+		this.getSessoLabel().setText("    Sesso: "+s);
+		this.getSessoLabel().paintImmediately(this.getSessoLabel().getVisibleRect());
+		
+		this.getGruppoLabel().setText("    Gruppo: "+g);
+		this.getGruppoLabel().paintImmediately(this.getGruppoLabel().getVisibleRect());
+		
+	}
+	
+	
+	public void changeDonazioni(ArrayList<Donazione> listaDon) {
+		
+		dlm=new DefaultListModel<>();
+		
+		if (listaDon!=null) {
+	        for(Donazione don:listaDon) {
+	        	dlm.addElement(don.getData());
+	        }
+		}
+		
+		lista.setModel(dlm);
 	}
 
 }

@@ -12,7 +12,9 @@ import com.google.protobuf.TextFormat.ParseException;
 
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
+import Model.ModelCentroDonazioni;
 import Model.ModelDonatore;
+import controller.ControllerCentroDonazioni;
 import controller.ControllerDonatore;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
@@ -144,8 +146,11 @@ public class Persona {
 	    //Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );
 	    //System.out.println(donatore.puoPrenotare());
 	    
-	    ModelDonatore model =new ModelDonatore();
-	    ControllerDonatore cntr =new ControllerDonatore(cf,model);
+	    //ModelDonatore model =new ModelDonatore();
+	    //ControllerDonatore cntr =new ControllerDonatore(cf,model);
+       
+       ModelCentroDonazioni model =new ModelCentroDonazioni();
+       ControllerCentroDonazioni controller = new ControllerCentroDonazioni(cf, model);
 		
 //		Date d2= Date.valueOf("2001-01-01");
 //		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );

@@ -7,7 +7,7 @@ package IT.unipv.progettoM23.graphics;
 
   public class MenuPanel extends JPanel  {
 
-	  
+	  private JButton indietro;
 	  private JButton CDButton;
 	  private JButton VPButton;
 	  private JButton CSButton;
@@ -21,6 +21,12 @@ package IT.unipv.progettoM23.graphics;
 	    this.setBackground(new Color(100,0,0));
 
 	    this.setLayout(new GridLayout(0,1));
+	    
+	    
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		indietro =new JButton("Indietro");
+		cp.add(indietro);
+		this.add(cp);
 	    
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
@@ -46,5 +52,28 @@ package IT.unipv.progettoM23.graphics;
 	    cp.add(VRButton);
 	    this.add(cp);
 	  }
-	
+	  
+	  
+	  
+	  public JButton getButton1() {
+		  return this.CDButton;
+	  }
+	  
+	  public JButton getButton2() {
+		  return this.VPButton;
+	  }
+	  
+	  public JButton getButton3() {
+		  return this.CSButton;
+	  }
+	  
+	  public JButton getButton4() {
+		  return this.VRButton;
+	  }
+	 
   }
+  
+  
+  
+  
+  

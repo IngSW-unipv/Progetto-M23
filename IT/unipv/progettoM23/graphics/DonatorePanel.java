@@ -25,10 +25,7 @@ public class DonatorePanel extends JPanel{
 	private JScrollPane scrollPane;
 	
 	
-	private String nome;
-	private String cognome;
-	private Prenotazione p1;
-	ArrayList<Donazione> donazioni;
+	//ArrayList<Donazione> donazioni;
 	
 	
 	public DonatorePanel() {
@@ -125,6 +122,10 @@ public class DonatorePanel extends JPanel{
 	}
 	
 	
+	
+	
+	
+	
 	public JLabel getSaluto() {
 		return this.saluto;
 	}
@@ -133,12 +134,12 @@ public class DonatorePanel extends JPanel{
 		return this.testoPren;
 	}
 	
-	public void changeSaluto() {
-		this.getSaluto().setText("Ciao "+this.nome+" "+this.cognome+"!");
+	public void changeSaluto(String n,String c) {
+		this.getSaluto().setText("Ciao "+n+" "+c+"!");
 		this.getSaluto().paintImmediately(this.getSaluto().getVisibleRect());
 	}
 	
-	public void changeTestoPren() {
+	public void changeTestoPren(Prenotazione p1) {
 		
 		if (p1!=null) {
 			this.getTestoPren().setText("La tua prossima donazione:   "+p1.getData()+"   alle:   "+p1.getOra());
@@ -152,11 +153,11 @@ public class DonatorePanel extends JPanel{
 	
 	
 	
-	public void changeDonazioni() {
+	public void changeDonazioni(ArrayList<Donazione> listaDon) {
 		dlm=new DefaultListModel<>();
 		
-		if (this.donazioni!=null) {
-	        for(Donazione don:this.donazioni) {
+		if (listaDon!=null) {
+	        for(Donazione don:listaDon) {
 	        	dlm.addElement(don.getData());
 	        }
 		}
@@ -166,15 +167,15 @@ public class DonatorePanel extends JPanel{
 	
 	
 	
-	public void setNome(String n) {
-		this.nome=n;
-	}
-	public void setCognome(String c) {
-		this.cognome=c;
-	}
-    public void setPrenotazione(Prenotazione p) {
-    	this.p1=p;
-    }
+//	public void setNome(String n) {
+//		this.nome=n;
+//	}
+//	public void setCognome(String c) {
+//		this.cognome=c;
+//	}
+//    public void setPrenotazione(Prenotazione p) {
+//    	this.p1=p;
+//    }
     
     public JButton getPrenotaButton() {
     	return this.prenota;
@@ -184,9 +185,9 @@ public class DonatorePanel extends JPanel{
     	return this.cancella;
     }
     
-    public void setDonazioni(ArrayList<Donazione> a) {
-    	this.donazioni=a;
-    }
+//    public void setDonazioni(ArrayList<Donazione> a) {
+//    	this.donazioni=a;
+//    }
     
     public JScrollPane getListaPanel() {
     	return this.scrollPane;

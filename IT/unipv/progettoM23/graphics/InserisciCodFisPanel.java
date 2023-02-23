@@ -10,7 +10,7 @@ package IT.unipv.progettoM23.graphics;
 	  private JLabel testo;
 	  private JTextField userTextField;
 	  private ContainerPanel cp;
-	  private JButton indietro;
+	  private JButton indietro,cerca;
 
 
 	  public InserisciCodFisPanel() {
@@ -41,8 +41,21 @@ package IT.unipv.progettoM23.graphics;
 	    userTextField = new JTextField(25);
 	    cp.add(userTextField);
 	    
+	    cerca=new JButton("cerca");
+	    cp.add(cerca);
+	    
 	    this.add(cp,BorderLayout.CENTER);
 
 
 	  }    
+	  
+	  
+	  public JButton getCercaButton() {
+		  return this.cerca;
+	  }
+	  
+	  public String getContenutoBarra() {
+		  return this.userTextField.getText();
+	  }
+	  
    }

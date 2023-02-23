@@ -110,13 +110,10 @@ public class ModelDonatore {
 	}
 	
 	
-	public String getNomeDonatore() {            /// verrà passato a int grafica, solo per visualizzare
-		return this.donatoreLoggato.getNome();
+	public Donatore getDonatore() {            /// verrà passato a int grafica, solo per visualizzare
+		return this.donatoreLoggato;
 	}
-	
-	public String getCognomeDonatore() {          /// verrà passato a int grafica, solo per visualizzare
-		return this.donatoreLoggato.getCognome();
-	}
+
 	
 	
 	public Prenotazione getPrenotazioneDonatore() {    //verrà passato a int grafica, solo per visualizzare

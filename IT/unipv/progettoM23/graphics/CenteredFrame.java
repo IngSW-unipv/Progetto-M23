@@ -120,6 +120,8 @@ public class CenteredFrame extends JFrame{
 	public void showView(String key) {
 		
 		this.cardLayout.show(this.cards, key);
+		
+		System.out.println();
 	}
 	
 	
@@ -136,6 +138,38 @@ public class CenteredFrame extends JFrame{
 		return this.registrationView;
 	}
 	
+	public MenuPanel getMenuView() {
+		return this.menuView;
+	}
+	
+	public InserisciCodFisPanel getCercaView() {
+		return this.cercaView;
+	}
+	
+	public CercaDonatorePanel getMostraDonatoreView() {
+		return this.mostraDonatoreView;
+	}
+	
+	public VisualPrenotazioniPanel getPrenotazioniView() {
+		return this.prenotazioniView;
+	}
+	
+	public PrenGiornoPanel getPreGiornoView() {
+		return this.preGiornoView;
+	}
 	
 	
+	public SacchePanel getSaccheView() {
+		return this.saccheView;
+	}
+	
+	public RichiestePanel getRichiesteView() {
+		return this.richiesteView;
+	}
+	
+	public OspedalePanel getOspedaleView() {
+		return this.ospedaleView;
+	}
+	
+
 }
