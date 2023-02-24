@@ -69,8 +69,9 @@ public class Donatore extends Persona {
 		
 
 		Date data = donazione.getData();
-		LocalDate d1 = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-	    
+		//LocalDate d1 = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate d1 = data.toLocalDate();
+
 	    
 		if (this.getSesso()=="M"){
 			
@@ -130,59 +131,132 @@ public class Donatore extends Persona {
 
 	
 	
+//	public Prenotazione creaPrenotazione() {
+//		Prenotazione p=null;
+//		Date d;
+//		Time t;
+		
+//		LocalDate giornosucc=LocalDate.now().plusDays(1);
+//		//LocalDate domani = LocalDate.now().plusDays(1);
+//		d = Date.valueOf(giornosucc);
+		
+//		boolean b=false;
+		
+		
+//		PrenotazioneDAO pd=new PrenotazioneDAO();
+		
+//		Prenotazione UltimaprenDelGiorno = pd.selectUltimaPrenGiorno(d);
+//		Prenotazione PrimaprenDelGiorno = pd.selectPrimaPrenGiorno(d);
+		
+				
+		
+//		while (b==false) {  
+			
+//			if(UltimaprenDelGiorno==null) {
+//				t= Time.valueOf("08:00:00");	
+//				p=new Prenotazione(this.getcodFiscale(),d, t);
+				
+//				return p;
+//			}
+			
+//			else if (!PrimaprenDelGiorno.getOra().equals(Time.valueOf("8:00:00")))
+//					{
+				
+//				LocalTime lt=PrimaprenDelGiorno.getOra().toLocalTime();
+//				lt =lt.plusMinutes(-30);
+				
+//				p=new Prenotazione();	
+			 
+//			return p;
+//			}
+	    	
+//			else if (!UltimaprenDelGiorno.getOra().equals(Time.valueOf("12:30:00"))) {
+//	            b=true;
+//	        }
+	     
+//	        else  {
+//	            giornosucc = giornosucc.plusDays(1);
+//	            d = Date.valueOf(giornosucc);
+//	            UltimaprenDelGiorno = pd.selectUltimaPrenGiorno(d);	
+	        
+//	    }
+//	    }
+		
+//	    	LocalTime lt=UltimaprenDelGiorno.getOra().toLocalTime();
+//			lt =lt.plusMinutes(30);
+			
+//			p=new Prenotazione(this.getcodFiscale(),d, Time.valueOf(lt));	
+		
+	    
+//		return p;
+//	}
+//}
+
+	
 	public Prenotazione creaPrenotazione() {
 		Prenotazione p=null;
 		Date d;
 		Time t;
+		Boolean b=false;
 		
 		LocalDate giornosucc=LocalDate.now().plusDays(1);
-		//LocalDate domani = LocalDate.now().plusDays(1);
 		d = Date.valueOf(giornosucc);
+
 		
-		boolean b=false;
-		
-		
-		PrenotazioneDAO pd=new PrenotazioneDAO();
-		
-		ArrayList<Prenotazione> prenDelGiorno = pd.selectDate(d);
-		
-	    while (b==false) {
+	    Time primaOra = Time.valueOf("8:00:00");
+	    
+	    ArrayList<Prenotazione> Prenotazioni = new ArrayList<>();
+	    PrenotazioneDAO pd=new PrenotazioneDAO();
+	    Prenotazioni = pd.selectDate(d);
+	   
+	    
+	 while (b == false) {
 	    	
-	        if(	prenDelGiorno.size()!=8) {
-	            b=true;
-	        }
-	     
-	        else {
-	            giornosucc = giornosucc.plusDays(1);
-	            d = Date.valueOf(giornosucc);
-	            prenDelGiorno = pd.selectDate(d);	
-	        }
+	    
+	    if (Prenotazioni.size() == 0){
+	    	p = new Prenotazione(this.getcodFiscale(),d, primaOra);
+	    	return p;
 	    }
 	
-	        
-		
-		if(prenDelGiorno.size()==0){
-			t= Time.valueOf("08:00:00");	
-			p=new Prenotazione(this.getcodFiscale(),d, t);
-			
-		}
-		
-		else {
-			
-			LocalTime lt=prenDelGiorno.get(prenDelGiorno.size()-1).getOra().toLocalTime();
-			lt =lt.plusMinutes(30);
-			
-			p=new Prenotazione(this.getcodFiscale(),d, Time.valueOf(lt));	
-		}
+	    	
+	    else if(Prenotazioni.size()== 8) {
+	        giornosucc = giornosucc.plusDays(1);
+	    	b=false;	
+	    	d = Date.valueOf(giornosucc);
+	        Prenotazioni = pd.selectDate(d);
+	    	
+	    	}
 	    
-		return p;
+	    	else b = true;
+	    }
+	    
+	
+	int i = 1;
+	LocalTime lt = LocalTime.of(8, 30);
+	Time secondaOra = Time.valueOf(lt);
+	boolean c = false; 
+	int j = Prenotazioni.size()-1;
+	
+	while(c==false)
+	{
+	if(j>=i && Prenotazioni.get(i).getOra().equals(secondaOra)) 
+	{
+        lt = lt.plusMinutes(30);
+		secondaOra = Time.valueOf(lt);
+		
+		i++;
+		c=false;
 	}
-}
+	else c=true;
+	}
+	
+	return p = new Prenotazione(this.getcodFiscale(),d, secondaOra);
+	
+	}
+	
 
-	
-	
-	
-	
+}
+	   
 	
 	
 

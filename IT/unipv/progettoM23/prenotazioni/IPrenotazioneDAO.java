@@ -14,5 +14,9 @@ public interface IPrenotazioneDAO {
     public Prenotazione selectUltimaPrenotazione(String cf);
     
     public String[][] getArrayPrenotazioni(Date data);
+    
+    public Prenotazione selectUltimaPrenGiorno(Date data);
+    
+    public Prenotazione selectPrimaPrenGiorno(Date data);
 
 }

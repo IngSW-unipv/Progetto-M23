@@ -33,6 +33,8 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 //import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.awt.Container;
 import java.sql.Date;
 import java.sql.Time;
@@ -149,8 +151,8 @@ public class Persona {
 	    ModelDonatore model =new ModelDonatore();
 	    ControllerDonatore cntr =new ControllerDonatore(cf,model);
        
-       //ModelCentroDonazioni model =new ModelCentroDonazioni();
-       //ControllerCentroDonazioni controller = new ControllerCentroDonazioni(cf, model);
+//       ModelCentroDonazioni model =new ModelCentroDonazioni();
+//       ControllerCentroDonazioni controller = new ControllerCentroDonazioni(cf, model);
 		
 //		Date d2= Date.valueOf("2001-01-01");
 //		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
@@ -239,6 +241,37 @@ public class Persona {
 //	    DonazioneDAO donazioneDAO = new DonazioneDAO();
 //	    donazioneDAO.selectUltimaDonazione(donatore);
 		
+	    ArrayList<Prenotazione> Prenotazioni = new ArrayList<>();
+	    PrenotazioneDAO pd = new PrenotazioneDAO();
+	    LocalDate giornosucc=LocalDate.now().plusDays(1);
+	    Date d;
+		d = Date.valueOf(giornosucc);
+	    Prenotazioni = pd.selectDate(d);
+//	    System.out.println(Prenotazioni.get(0));
+//	    System.out.println(Prenotazioni.size());
+	    
+	    LocalTime lt = LocalTime.of(8, 30);
+		Time secondaOra = Time.valueOf(lt);
+//		boolean c = false; 
+
+//       secondaOra = Time.valueOf(lt.plusMinutes(30));
+       
+//       System.out.println(secondaOra);
+       
+//       System.out.println(Prenotazioni.size()-1);
+		
+//		System.out.println(Prenotazioni.get(1).getOra());
+		
+//		System.out.println(secondaOra);
+		
+//		if (Prenotazioni.get(1).getOra().equals(secondaOra)){
+			
+//		secondaOra = Time.valueOf(lt.plusMinutes(30));	
+			
+//		}
+		
+//		System.out.println(secondaOra);
+			
 	}
 	
 }

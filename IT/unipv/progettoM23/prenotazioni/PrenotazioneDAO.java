@@ -30,7 +30,8 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	
 	
 	public ArrayList<Prenotazione> selectDate(Date data){
-		ArrayList<Prenotazione> result = new ArrayList<>();
+		ArrayList<Prenotazione> result = new ArrayList<>(10);
+		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
 		ResultSet rs1;
@@ -39,7 +40,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
            try{
 			
 			st1 = conn.createStatement();
-			String query="select * from prenotazione where DataPrenotazione='"+data+"'" ;
+			String query="select * from prenotazione where DataPrenotazione='"+data+"'"+"order by OraPrenotazione ASC" ;
 			rs1=st1.executeQuery(query);
 			
 			
@@ -191,6 +192,75 @@ public void  cancellaPrenotazione(Prenotazione p){
        
    }
 	
+public Prenotazione selectUltimaPrenGiorno(Date data) {
+	
+	
+	Prenotazione result;
+	
+	conn = JavaDatabaseConn.startConnection(conn, schema);
+	PreparedStatement st1;
+	ResultSet rs1;
+	
+	
+
+       try{
+    	   
+    	String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione DESC" ;
+		st1 = conn.prepareStatement(query);
+		st1.setDate(1, data);
+		
+		rs1=st1.executeQuery();
+		
+		rs1.next();
+		
+		result = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
+       }
+	
+	
+	catch (Exception e) {result = null;
+    }
+	
+	JavaDatabaseConn.closeConnection(conn);
+	
+    return result;
+		           
+	
+}
+
+public Prenotazione selectPrimaPrenGiorno(Date data) {
+	
+	
+	Prenotazione result;
+	
+	conn = JavaDatabaseConn.startConnection(conn, schema);
+	PreparedStatement st1;
+	ResultSet rs1;
+	
+	
+
+       try{
+    	   
+    	String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione ASC" ;
+		st1 = conn.prepareStatement(query);
+		st1.setDate(1, data);
+		
+		rs1=st1.executeQuery();
+		
+		rs1.next();
+		
+		result = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
+       }
+	
+	
+	catch (Exception e) {result = null;
+    }
+	
+	JavaDatabaseConn.closeConnection(conn);
+	
+    return result;
+		           
+	
+}
 }
 
 
