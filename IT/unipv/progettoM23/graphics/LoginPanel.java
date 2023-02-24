@@ -13,7 +13,7 @@ import IT.unipv.progettoM23.persona.DonatoreDAO;
 import IT.unipv.progettoM23.persona.LoginRegistrazione;
 
 
-public class LoginPanel extends JPanel {
+public class LoginPanel extends CartaPanel {
     
 	private static final long serialVersionUID = 1L;
 	private JLabel userLabel;
@@ -25,7 +25,8 @@ public class LoginPanel extends JPanel {
 	
 	
 	public LoginPanel(){
-	
+		
+		this.setKey("login");
 		
 		this.setLayout(new BorderLayout());
 		
@@ -89,6 +90,13 @@ public class LoginPanel extends JPanel {
 	public JButton getRegistraButton() {
 		return this.registrButton;
 	}
+	
+	public JButton getIndietroButton() {
+		return indietro;
+	}
+
+	
+
 	
 
 	 

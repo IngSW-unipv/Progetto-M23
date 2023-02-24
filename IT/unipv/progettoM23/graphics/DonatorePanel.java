@@ -14,7 +14,7 @@ import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 
-public class DonatorePanel extends JPanel{
+public class DonatorePanel extends CartaPanel{
     
 	//private Donatore d;
 	private JLabel testo,saluto,testoPren;
@@ -31,6 +31,8 @@ public class DonatorePanel extends JPanel{
 	public DonatorePanel() {
 		
 		//d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
+		
+		this.setKey("utente");
 		
 		this.setLayout(new GridLayout(0,1));
 		
@@ -192,4 +194,8 @@ public class DonatorePanel extends JPanel{
     public JScrollPane getListaPanel() {
     	return this.scrollPane;
     }
+    
+	public JButton getIndietroButton() {
+		return indietro;
+	}
 }

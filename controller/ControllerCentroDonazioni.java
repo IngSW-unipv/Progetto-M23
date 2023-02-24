@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import IT.unipv.progettoM23.graphics.CenteredFrame;
@@ -37,6 +38,10 @@ public class ControllerCentroDonazioni {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				view.getPrenotazioniView().visualizzaPrenotazioni(model.getTodaysPrenotazioni());
+				
+				
 				view.showView("prenotazioni");	
 			}
    	    	
@@ -86,11 +91,11 @@ public class ControllerCentroDonazioni {
 				String cf=view.getCercaView().getContenutoBarra();
 				
 				if(!model.cfValido(cf)) {
-					JOptionPane.showMessageDialog(view.getloginView(), "Inserire Codice Fiscale di 16 caratteri");
+					JOptionPane.showMessageDialog(view.getCercaView(), "Inserire Codice Fiscale di 16 caratteri");
 				}
 				
 				else if (!model.verificaCF(cf)){
-					JOptionPane.showMessageDialog(view.getloginView(), "Utente Inesistente");
+					JOptionPane.showMessageDialog(view.getCercaView(), "Utente Inesistente");
 				}
 				
 				else {
@@ -102,12 +107,31 @@ public class ControllerCentroDonazioni {
 					view.getMostraDonatoreView().changeDonazioni(model.getDonazioniDonatore());
 					
 					view.showView("mostraDonatore");
+					
 				}
 			}
    	    }; 
    	    
    	    
    	    view.getCercaView().getCercaButton().addActionListener(cercaListener);
+   	    
+   	    
+   	    
+   	    
+        ActionListener confermaListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				model.registraDonazione(view.getPrenotazioniView().getSelectedValueOfTable());
+				
+			}
+        };
+        
+        view.getPrenotazioniView().getConfermaButton().addActionListener(confermaListener);
 		
 	}
+    
+   
+    
 }

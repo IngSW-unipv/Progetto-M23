@@ -21,7 +21,7 @@ import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
-public class CercaDonatorePanel extends JPanel{
+public class CercaDonatorePanel extends CartaPanel{
 	
 	private JLabel nome,cognome,cf,dob,sesso,gruppo,donazioni;
 	private ContainerPanel cp;
@@ -34,6 +34,8 @@ public class CercaDonatorePanel extends JPanel{
 	
 	
 	public CercaDonatorePanel() {
+		
+		this.setKey("mostraDonatore");
 		
 		d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
 

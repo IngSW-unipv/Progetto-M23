@@ -7,7 +7,7 @@ import javax.swing.*;
 
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
-public class PrenGiornoPanel extends JPanel {
+public class PrenGiornoPanel extends CartaPanel {
 	
 	private JLabel testo;
 	private ContainerPanel cp;
@@ -17,6 +17,8 @@ public class PrenGiornoPanel extends JPanel {
 
 	
 	public PrenGiornoPanel() {
+		
+		this.setKey("prenotazioniGiorno");
 		
 		this.setLayout(new BorderLayout());
 		

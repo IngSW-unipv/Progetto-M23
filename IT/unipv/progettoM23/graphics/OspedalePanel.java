@@ -7,7 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-public class OspedalePanel extends JPanel{
+public class OspedalePanel extends CartaPanel{
     
 	private ContainerPanel cp,cp1;
 	private JButton indietro,mandaRichiesta;
@@ -17,6 +17,8 @@ public class OspedalePanel extends JPanel{
 	private JRadioButton buttonA,buttonB,buttonAB,buttonZ;
 	
 	public OspedalePanel() {
+		
+		this.setKey("ospedale");
 		
 		this.setLayout(new GridLayout(0,1));
 		

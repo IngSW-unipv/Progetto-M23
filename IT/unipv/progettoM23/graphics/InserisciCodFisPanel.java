@@ -5,7 +5,7 @@ package IT.unipv.progettoM23.graphics;
   import java.awt.event.ActionListener;
   import javax.swing.*;
 
-  public class InserisciCodFisPanel extends JPanel {
+  public class InserisciCodFisPanel extends CartaPanel {
 
 	  private JLabel testo;
 	  private JTextField userTextField;
@@ -15,7 +15,7 @@ package IT.unipv.progettoM23.graphics;
 
 	  public InserisciCodFisPanel() {
 	
-
+		this.setKey("cerca");
 	    
 		this.setLayout(new BorderLayout());
 		

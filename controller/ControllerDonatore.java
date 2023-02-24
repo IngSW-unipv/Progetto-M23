@@ -195,6 +195,54 @@ public class ControllerDonatore {
     	 
     	 
     	 
+    	 
+    	 ActionListener indietroLoginListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getloginView().getKey()));
+				
+			}
+    		 
+    	 };
+    	 
+    	 view.getloginView().getIndietroButton().addActionListener(indietroLoginListener);
+        
+    	 
+    	 
+    	 
+    	 
+    	 ActionListener indietroRegistraListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getRegistrationView().getKey()));
+				
+			}
+    		 
+    	 };
+    	 
+    	 view.getRegistrationView().getIndietroButton().addActionListener(indietroRegistraListener);
+        
+    	 
+    	 
+    	 
+    	 
+    	 
+    	 ActionListener indietroUtenteListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getUtenteView().getKey()));
+				
+			}
+    		 
+    	 };
+    	 
+    	 view.getUtenteView().getIndietroButton().addActionListener(indietroUtenteListener);
         
      }
 }

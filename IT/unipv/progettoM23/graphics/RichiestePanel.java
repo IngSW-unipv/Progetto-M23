@@ -11,10 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 import IT.unipv.progettoM23.ospedale.RichiestaSaccaDAO;
 
-public class RichiestePanel extends JPanel{
+public class RichiestePanel extends CartaPanel{
  
 	
 	public RichiestePanel() {
+		
+		this.setKey("richieste");
+		
 	    this.setLayout(new BorderLayout());
 	    
 	    this.setBackground(new Color(100,0,0));

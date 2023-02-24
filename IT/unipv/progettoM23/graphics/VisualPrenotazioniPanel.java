@@ -5,10 +5,11 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
-public class VisualPrenotazioniPanel extends JPanel{
+public class VisualPrenotazioniPanel extends CartaPanel{
 	
 	private JLabel testo;
 	private ContainerPanel cp,container;
@@ -19,6 +20,8 @@ public class VisualPrenotazioniPanel extends JPanel{
 
     
 	public VisualPrenotazioniPanel() {
+		
+		this.setKey("prenotazioni");
 		
 		this.setLayout(new BorderLayout());
 		
@@ -95,21 +98,8 @@ public class VisualPrenotazioniPanel extends JPanel{
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    cp.add(testo,BorderLayout.NORTH);
 	    
-	    
-	    PrenotazioneDAO pd=new PrenotazioneDAO();
-		String[] colonne= {"Codice Fiscale","Orario"};
-		String[][] dati= pd.getArrayPrenotazioni(today);
-		
-		//String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
-		
-		table= new JTable(dati,colonne);
-		table.setPreferredSize(new Dimension(250,500));
-		
-		
-	
-		if(table.getRowCount()!=0) {
-		    table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
-		}
+		table= new JTable();
+		table.setPreferredSize(new Dimension(250,500));	
 		
 		cp.add(table,BorderLayout.CENTER);
 	
@@ -131,13 +121,40 @@ public class VisualPrenotazioniPanel extends JPanel{
 	    conferma =new JButton("Conferma");
 		cp.add(conferma);
 		
-		cancella =new JButton("Cancella");
-		cp.add(cancella);
-		
 		container.add(cp);
 		
 		this.add(container,BorderLayout.EAST);
 		
+	}
+	
+	
+	public JTable getTabellaPrenotazioni() {
+		return this.table;
+	}
+	
+	public JButton getConfermaButton() {
+		return this.conferma;
+	}
+	
+	
+	
+	public void visualizzaPrenotazioni(String[][] dati) {
+		String[] colonne= {"Codice Fiscale","Orario"};
+		
+		DefaultTableModel tabModel =new DefaultTableModel(dati,colonne);
+		
+		this.table.setModel(tabModel);
+		
+		if(table.getRowCount()!=0) {
+		    table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
+		}
+	}
+	
+	
+	public String getSelectedValueOfTable() {
+		String res= (String)this.table.getValueAt(this.table.getSelectedRow(),0);
+		
+		return res;
 	}
 	
 	

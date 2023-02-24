@@ -4,12 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 
 
-public class FirstPanel extends JPanel {
+public class FirstPanel extends CartaPanel {
 	
 	private ContainerPanel cp,cp1;
 	private JButton iDonatoreButton,iOspedaleButton,iCentroButton;
     
 	public FirstPanel() {
+		
+		this.setKey("principale");
 	    
 	    this.setBackground(new Color(100,0,0));
 

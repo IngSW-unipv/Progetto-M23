@@ -10,7 +10,7 @@ import javax.swing.*;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 
-public class RegistrationPanel extends JPanel{
+public class RegistrationPanel extends CartaPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -24,6 +24,8 @@ public class RegistrationPanel extends JPanel{
 	
 	
 	public RegistrationPanel() {
+		
+		this.setKey("registrazione");
 	
 		this.setLayout(new GridLayout(0,1));
 		
@@ -255,6 +257,12 @@ public class RegistrationPanel extends JPanel{
 		catch(Exception e) {
 			return null;
 		}
+	}
+	
+	
+	
+	public JButton getIndietroButton() {
+		return indietro;
 	}
 
 }

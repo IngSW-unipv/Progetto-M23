@@ -5,7 +5,7 @@ package IT.unipv.progettoM23.graphics;
   import java.awt.event.ActionListener;
   import javax.swing.*;
 
-  public class MenuPanel extends JPanel  {
+  public class MenuPanel extends CartaPanel  {
 
 	  private JButton indietro;
 	  private JButton CDButton;
@@ -17,6 +17,8 @@ package IT.unipv.progettoM23.graphics;
 
 	  
 	  public MenuPanel() {
+		  
+		this.setKey("menu");
 	    
 	    this.setBackground(new Color(100,0,0));
 

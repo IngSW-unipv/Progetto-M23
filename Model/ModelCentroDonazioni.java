@@ -98,4 +98,15 @@ public class ModelCentroDonazioni {
 		return dDAO.selectDonazioni(this.donatoreCercato.getcodFiscale());
 	}
 	
+	
+	public void registraDonazione(String cf) {
+	
+		if(cf!=null) {
+			Date today=Date.valueOf(LocalDate.now());
+			Donazione donazione=new Donazione(cf,today);
+			
+			dDAO.inserisciDonazione(donazione);
+		}
+	}
+	
 }

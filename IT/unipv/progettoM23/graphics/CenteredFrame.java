@@ -96,20 +96,19 @@ public class CenteredFrame extends JFrame{
 		this.cardLayout=new CardLayout();
 		this.cards =new JPanel(cardLayout);
 		
-		String[] keys= {"principale","login","utente","registrazione","menu","cerca","mostraDonatore","prenotazioni","prenotazioniGiorno","sacche","richieste","ospedale"};
 		
-		cards.add(firstView,keys[0]);
-		cards.add(loginView,keys[1]);
-		cards.add(utenteView,keys[2]);
-		cards.add(registrationView,keys[3]);
-		cards.add(menuView,keys[4]);
-		cards.add(cercaView,keys[5]);
-		cards.add(mostraDonatoreView,keys[6]);
-		cards.add(prenotazioniView,keys[7]);
-		cards.add(preGiornoView,keys[8]);
-     	cards.add(saccheView,keys[9]);
-		cards.add(richiesteView,keys[10]);
-		cards.add(ospedaleView,keys[11]);
+		cards.add(firstView,firstView.getKey());
+		cards.add(loginView,loginView.getKey());
+		cards.add(utenteView,utenteView.getKey());
+		cards.add(registrationView,registrationView.getKey());
+		cards.add(menuView,menuView.getKey());
+		cards.add(cercaView,cercaView.getKey());
+		cards.add(mostraDonatoreView,mostraDonatoreView.getKey());
+		cards.add(prenotazioniView,prenotazioniView.getKey());
+		cards.add(preGiornoView,preGiornoView.getKey());
+     	cards.add(saccheView,saccheView.getKey());
+		cards.add(richiesteView,richiesteView.getKey());
+		cards.add(ospedaleView, ospedaleView.getKey());
 		
 		
 		this.add(cards);
@@ -122,6 +121,11 @@ public class CenteredFrame extends JFrame{
 		this.cardLayout.show(this.cards, key);
 		
 		System.out.println();
+	}
+	
+	
+	public String getViewPrecedente(String k) {
+		return this.mappaPaginaPrecedente.get(k);
 	}
 	
 	

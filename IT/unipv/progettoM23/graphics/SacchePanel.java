@@ -10,7 +10,7 @@ import javax.swing.*;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
 
-public class SacchePanel extends JPanel {
+public class SacchePanel extends CartaPanel {
 	
 	private JLabel testo;
 	private ContainerPanel cp;
@@ -18,6 +18,8 @@ public class SacchePanel extends JPanel {
 
     
 	public SacchePanel() {
+		
+		this.setKey("sacche");
 		
 		this.setLayout(new GridLayout(0,1));
 		
