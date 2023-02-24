@@ -112,6 +112,7 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		
 		catch (Exception e) {
 			b = false;
+			//e.printStackTrace();
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);

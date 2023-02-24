@@ -184,6 +184,10 @@ public class CercaDonatorePanel extends CartaPanel{
 	}
 	
 	
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
+	
 	
 	public void changeDati(String n,String c,String cf,String dob,String s,String g) {
 		

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import IT.unipv.progettoM23.persona.Donatore;
 
 public interface IDonazioneDAO {
-	public void inserisciDonazione(Donazione d);
+	public boolean inserisciDonazione(Donazione d);
 	public ArrayList<Donazione> selectDonazioni(String cf);
 	public Donazione selectUltimaDonazione(Donatore d);
 

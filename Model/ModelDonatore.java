@@ -97,8 +97,8 @@ public class ModelDonatore {
 		this.donatoreLoggato=new Donatore(cf,c,n,d,s,g);
 		this.login=new LoginRegistrazione(cf,p);
 		
-		lrDAO.inserisciUtente(login);
-		dDAO.inserisciDonatore(this.donatoreLoggato); //metodo da implementare su donatoreDAO
+		System.out.println(lrDAO.inserisciUtente(login));
+		System.out.println(dDAO.inserisciDonatore(this.donatoreLoggato)); //metodo da implementare su donatoreDAO
 	}
 	
 	

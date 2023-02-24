@@ -58,4 +58,8 @@ package IT.unipv.progettoM23.graphics;
 		  return this.userTextField.getText();
 	  }
 	  
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
+	  
    }

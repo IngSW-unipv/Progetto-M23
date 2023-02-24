@@ -72,6 +72,11 @@ package IT.unipv.progettoM23.graphics;
 	  public JButton getButton4() {
 		  return this.VRButton;
 	  }
+	  
+	  
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
 	 
   }
   

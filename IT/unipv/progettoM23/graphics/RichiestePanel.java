@@ -3,6 +3,9 @@ package IT.unipv.progettoM23.graphics;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,6 +17,11 @@ import IT.unipv.progettoM23.ospedale.RichiestaSaccaDAO;
 public class RichiestePanel extends CartaPanel{
  
 	
+	private JTable table;
+	private JButton indietro;
+	private ContainerPanel cp;
+	
+	
 	public RichiestePanel() {
 		
 		this.setKey("richieste");
@@ -23,25 +31,33 @@ public class RichiestePanel extends CartaPanel{
 	    this.setBackground(new Color(100,0,0));
 	    
 	    
-	    RichiestaSaccaDAO rd= new RichiestaSaccaDAO();
-	
-	    String[] columnNames = {"CF paziente","Gruppo", "Quantità" };
-//	    String[][] data = {
-//	      {"A", "1","10-11-2022", "VVSPLJ00H54Z314X"},
-//	      {"B", "5", "27-09-2022", "LLETFJ88F21S12B"},
-//	      {"AB", "10","09-02-2022", "PLSJSH22F48X192A"},
-//	       {"0", "20", "12-10-2022", "SLSKDA98B38S281B"}
-//	      };
+		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
+		indietro =new JButton("Indietro");
+		cp.add(indietro);
+		this.add(cp,BorderLayout.NORTH);
 	    
-	    String[][] data=rd.getArrayRichieste();
-	
-	    DefaultTableModel model = new DefaultTableModel(data, columnNames);
-	    
-	    JTable table = new JTable(model);
+
+	    table = new JTable();
 	    JScrollPane scrollPane = new JScrollPane(table);
-	    //scrollPane.setPreferredSize(new Dimension(400, 200));
 	
 	    this.add(scrollPane,BorderLayout.CENTER);
 	    
 	}
+	
+	
+	public void visualizzaRichieste(String[][] dati) {
+		
+		String[] colonne= {"CF paziente","Gruppo", "Quantità" };
+		
+		DefaultTableModel tabModel =new DefaultTableModel(dati,colonne);
+		
+		this.table.setModel(tabModel);
+		
+	}
+	
+	
+	
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
   }

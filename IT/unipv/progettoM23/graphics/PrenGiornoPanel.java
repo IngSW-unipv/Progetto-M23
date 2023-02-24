@@ -4,6 +4,7 @@ import java.awt.*;
 import java.sql.Date;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
@@ -47,29 +48,54 @@ public class PrenGiornoPanel extends CartaPanel {
 	    testo.setFont(new Font("Dialog",Font.PLAIN,20));
 	    testo.setForeground(white);
 	    cp.add(testo);
-	    
-	    
-	    PrenotazioneDAO pd=new PrenotazioneDAO();
-		String[] colonne= {"Codice Fiscale","Orario"};
-		String[][] dati= pd.getArrayPrenotazioni(d);
 		
 		//String[][] dati= {{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"},{"jeidjwojo","8:30"}};
 
 		
-		table= new JTable(dati,colonne);
+		table= new JTable();
 		table.setPreferredSize(new Dimension(250,500));
 		
 		table.setEnabled(false);
-		
 	
-		if(table.getRowCount()!=0) {
-		    table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
-		}
 		
 		cp.add(table);
 		
 		
 		this.add(cp,BorderLayout.CENTER);
 	}
+	
+	
+	
+	public void visualizzaPrenotazioni(String[][] dati) {
+		String[] colonne= {"Codice Fiscale","Orario"};
+		
+		DefaultTableModel tabModel =new DefaultTableModel(dati,colonne);
+		
+		this.table.setModel(tabModel);
+		
+		if(table.getRowCount()!=0) {
+		    table.setRowHeight((int) (table.getPreferredSize().getHeight()/table.getRowCount()));
+		}
+	}
+	
+	
+	public void visualizzaGiorno(Date d) {
+		
+		this.testo.setText("  Prenotazioni del giorno  "+d+" :");
+		this.testo.paintImmediately(this.testo.getVisibleRect());
+	}
+	
+	
+	public String getSelectedValueOfTable() {
+		String res= (String)this.table.getValueAt(this.table.getSelectedRow(),0);
+		
+		return res;
+	}
+	
+	
+	
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
 
 }

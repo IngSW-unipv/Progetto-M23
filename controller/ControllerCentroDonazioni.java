@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -57,6 +58,9 @@ public class ControllerCentroDonazioni {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				view.getSaccheView().visualizzaNumSacche(model.getNumSacche());
+				
 				view.showView("sacche");	
 			}
    	    	
@@ -72,6 +76,9 @@ public class ControllerCentroDonazioni {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				view.getRichiesteView().visualizzaRichieste(model.getRichiesteEffettuate());
+				
 				view.showView("richieste");	
 			}
    	    	
@@ -123,15 +130,184 @@ public class ControllerCentroDonazioni {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				model.registraDonazione(view.getPrenotazioniView().getSelectedValueOfTable());
+				if (model.registraDonazione(view.getPrenotazioniView().getSelectedValueOfTable())) {
+				
+				    JOptionPane.showMessageDialog(view.getPrenotazioniView(), "Donazione Registrata");
+				}
 				
 			}
         };
         
         view.getPrenotazioniView().getConfermaButton().addActionListener(confermaListener);
+        
+        
+        
+        
+        
+        ActionListener cercaGiornoListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Date d=view.getPrenotazioniView().getContenutoData();
+				
+				if(d==null) {
+					 JOptionPane.showMessageDialog(view.getPrenotazioniView(), "Data inserita non valida");
+				}
+				
+				else {
+					view.getPreGiornoView().visualizzaPrenotazioni(model.getPrenotazioniGiorno(d));
+					view.getPreGiornoView().visualizzaGiorno(d);
+					
+					view.showView("prenotazioniGiorno");
+				}
+				
+			}
+        };
+        
+        view.getPrenotazioniView().getCercaButton().addActionListener(cercaGiornoListener);
 		
-	}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+	   	 ActionListener indietroCercaListener =new ActionListener() {
+	
+	 		@Override
+	 		public void actionPerformed(ActionEvent e) {
+	 			
+	 			view.showView(view.getViewPrecedente(view.getCercaView().getKey()));
+	 			
+	 		}
+	 		 
+	 	 };
+	 	 
+	 	 view.getCercaView().getIndietroButton().addActionListener(indietroCercaListener);
+	    
+        
+        
+        
+        
+        
+        
+		 ActionListener indietroTrovaListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getMostraDonatoreView().getKey()));
+				
+			}
+			 
+		 };
+		 
+		 view.getMostraDonatoreView().getIndietroButton().addActionListener(indietroTrovaListener);
+	   
+		 
+		 
+		 
+		 
+		 ActionListener indietroPrenListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getPrenotazioniView().getKey()));
+				
+			}
+			 
+		 };
+		 
+		 view.getPrenotazioniView().getIndietroButton().addActionListener(indietroPrenListener);
+	   
+		 
+		 
+		 
+		 
+		 
+		 ActionListener indietroPrenGiornoListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getPreGiornoView().getKey()));
+				
+			}
+			 
+		 };
+		 
+		 view.getPreGiornoView().getIndietroButton().addActionListener(indietroPrenGiornoListener);
+	   
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 ActionListener indietroSaccheListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getSaccheView().getKey()));
+				
+			}
+			 
+		 };
+		 
+		 view.getSaccheView().getIndietroButton().addActionListener(indietroSaccheListener);
+	   
+		 
+		 
+		 
+		 
+		 
+		 
+		 ActionListener indietroRichiesteListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getRichiesteView().getKey()));
+				
+			}
+			 
+		 };
+		 
+		 view.getRichiesteView().getIndietroButton().addActionListener(indietroRichiesteListener);
+	   
+		 
+		 
+		 
+		 
+		 
+		 ActionListener indietroMenuListener =new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				view.showView(view.getViewPrecedente(view.getMenuView().getKey()));
+				
+			}
+			 
+		 };
+		 
+		 view.getMenuView().getIndietroButton().addActionListener(indietroMenuListener);
+	   
+		 
     
-   
+    
+        
+	}
+ 
     
 }

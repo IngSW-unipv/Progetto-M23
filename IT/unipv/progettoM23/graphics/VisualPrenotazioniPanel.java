@@ -136,6 +136,15 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 		return this.conferma;
 	}
 	
+	public JButton getCercaButton() {
+		return this.cerca;
+	}	
+	
+	
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
+	
 	
 	
 	public void visualizzaPrenotazioni(String[][] dati) {
@@ -152,9 +161,35 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 	
 	
 	public String getSelectedValueOfTable() {
-		String res= (String)this.table.getValueAt(this.table.getSelectedRow(),0);
 		
-		return res;
+		try {
+		    return (String)this.table.getValueAt(this.table.getSelectedRow(),0);
+		}
+		
+		catch(Exception e) {
+		   return null;
+		}
+
+	}
+	
+	
+	
+	public Date getContenutoData() {
+		
+		String giorno=this.giornoTF.getText();
+		String mese=this.meseTF.getText();
+		String anno=this.annoTF.getText();
+		
+		try {
+		    Date d= Date.valueOf(anno+"-"+mese+"-"+giorno); 
+		    return d;
+		}
+		
+		catch (Exception e) {
+			return null;
+		}
+		
+		
 	}
 	
 	

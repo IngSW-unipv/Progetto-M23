@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public class ModelCentroDonazioni {
 	private DonatoreDAO donDAO;
     
 	private Donatore donatoreCercato;
+	private ControllerSacche cs;
 	//private LoginRegistrazione lrDonatoreCercato;
 	
 	public ModelCentroDonazioni() {
@@ -55,7 +57,7 @@ public class ModelCentroDonazioni {
 	
 	
 	public int[] getNumSacche() {
-		ControllerSacche cs=new ControllerSacche();
+		cs=new ControllerSacche();
 		
 		int[] numSacche = new int[4];
 		
@@ -99,13 +101,19 @@ public class ModelCentroDonazioni {
 	}
 	
 	
-	public void registraDonazione(String cf) {
+	public boolean registraDonazione(String cf) {
 	
 		if(cf!=null) {
+		
 			Date today=Date.valueOf(LocalDate.now());
 			Donazione donazione=new Donazione(cf,today);
 			
-			dDAO.inserisciDonazione(donazione);
+			
+			return dDAO.inserisciDonazione(donazione);
+			
+		}
+		else {
+			return false;
 		}
 	}
 	

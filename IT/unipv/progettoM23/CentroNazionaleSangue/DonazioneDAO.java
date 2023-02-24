@@ -21,7 +21,7 @@ public class DonazioneDAO implements IDonazioneDAO{
 		this.schema = "dop";
 	}
 
-	public void inserisciDonazione(Donazione d) {
+	public boolean inserisciDonazione(Donazione d) {
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
 
@@ -36,18 +36,24 @@ public class DonazioneDAO implements IDonazioneDAO{
 			
 			st1.executeUpdate(query);
 			
-			System.out.println("Data inserted successfully");
+			JavaDatabaseConn.closeConnection(conn);
+			
+			return true;
 		}
 		
 		
 		
 		
-		catch (Exception e) {e.printStackTrace();
+		catch (Exception e) {
+			
+			JavaDatabaseConn.closeConnection(conn);
+			return false;
 	    }
 		
-		JavaDatabaseConn.closeConnection(conn);
-		
 	}
+	
+	
+	
 	
 	public ArrayList<Donazione> selectDonazioni(String cf){
 		ArrayList<Donazione> result = new ArrayList<>();

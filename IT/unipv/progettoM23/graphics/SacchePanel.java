@@ -12,7 +12,7 @@ import IT.unipv.progettoM23.sacche.ControllerSacche;
 
 public class SacchePanel extends CartaPanel {
 	
-	private JLabel testo;
+	private JLabel testo,testoA,testoB,testoAB,testo0;
 	private ContainerPanel cp;
 	private JButton indietro;
 
@@ -40,29 +40,23 @@ public class SacchePanel extends CartaPanel {
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
 
-	    testo = new JLabel("  Sacche rimanenti per ogni gruppo:");
-	    testo.setFont(new Font("Dialog",Font.PLAIN,30));
-	    testo.setForeground(white);
+		testo = new JLabel("  Sacche rimanenti per ogni gruppo:");
+		testo.setFont(new Font("Dialog",Font.PLAIN,30));
+		testo.setForeground(white);
 	    cp.add(testo);
 	    
 	    this.add(cp);
-	    
-	    
-	    
-	    
-	    
-	    ControllerSacche contrSacche=new ControllerSacche();
 	    
 	    
 	   
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 
-	    testo = new JLabel("  A: "+contrSacche.getNumSacche(GruppoSanguigno.A));
+	    testoA = new JLabel();
 	    
-	    testo.setFont(new Font("Dialog",Font.PLAIN,30));
-	    testo.setForeground(white);
-	    cp.add(testo);
+	    testoA.setFont(new Font("Dialog",Font.PLAIN,30));
+	    testoA.setForeground(white);
+	    cp.add(testoA);
 	    
 	    this.add(cp);
 	    
@@ -70,11 +64,11 @@ public class SacchePanel extends CartaPanel {
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 
-	    testo = new JLabel("  B: "+contrSacche.getNumSacche(GruppoSanguigno.B));
+	    testoB = new JLabel();
 	    
-	    testo.setFont(new Font("Dialog",Font.PLAIN,30));
-	    testo.setForeground(white);
-	    cp.add(testo);
+	    testoB.setFont(new Font("Dialog",Font.PLAIN,30));
+	    testoB.setForeground(white);
+	    cp.add(testoB);
 	    
 	    this.add(cp);
 	    
@@ -83,11 +77,11 @@ public class SacchePanel extends CartaPanel {
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 
-	    testo = new JLabel("  AB: "+contrSacche.getNumSacche(GruppoSanguigno.AB));
+	    testoAB = new JLabel();
 	    
-	    testo.setFont(new Font("Dialog",Font.PLAIN,30));
-	    testo.setForeground(white);
-	    cp.add(testo);
+	    testoAB.setFont(new Font("Dialog",Font.PLAIN,30));
+	    testoAB.setForeground(white);
+	    cp.add(testoAB);
 	    
 	    this.add(cp);
 	    
@@ -97,14 +91,36 @@ public class SacchePanel extends CartaPanel {
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 
-	    testo = new JLabel("  0: "+contrSacche.getNumSacche(GruppoSanguigno.ZERO));
+	    testo0 = new JLabel();
 	    
-	    testo.setFont(new Font("Dialog",Font.PLAIN,30));
-	    testo.setForeground(white);
-	    cp.add(testo);
+	    testo0.setFont(new Font("Dialog",Font.PLAIN,30));
+	    testo0.setForeground(white);
+	    cp.add(testo0);
 	    
 	    this.add(cp);
 	   
 		
 	}
+	
+	
+	public void visualizzaNumSacche(int[] num) {
+		
+		this.testoA.setText("  A: "+num[0]);
+		this.testoA.paintImmediately(testoA.getVisibleRect());
+		
+		this.testoB.setText("  B: "+num[1]);
+		this.testoB.paintImmediately(testoB.getVisibleRect());
+		
+		this.testoAB.setText("  AB: "+num[2]);
+		this.testoAB.paintImmediately(testoAB.getVisibleRect());
+		
+		this.testo0.setText("  0: "+num[3]);
+		this.testo0.paintImmediately(testo0.getVisibleRect());
+		
+	}
+	
+	
+	  public JButton getIndietroButton() {
+		  return this.indietro;
+	  }
 }
