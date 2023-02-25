@@ -121,16 +121,30 @@ public class CentroNazionaleSangue {
 				
 				while(quantita!=0) {
 					
-					if (cs.getNumSacche(gruppiDonatori[count])>=quantita) {
+					//System.out.println(quantita);
+					
+					if ( cs.getNumSacche(gruppiDonatori[count])>=quantita) {
 						
+						//System.out.println("1");
+
+						cs.cambiaNumSacche(gruppiDonatori[count], (-1)*quantita);
 						quantita=0;
-						cs.cambiaNumSacche(gruppiDonatori[count], -quantita);
+						
+						//System.out.println(quantita);
+						//System.out.println(gruppiDonatori[count]);
+
 					}
 					else {
+						//System.out.println("2");
+						
 						quantita-=cs.getNumSacche(gruppiDonatori[count]);
 						
-						cs.cambiaNumSacche(gruppiDonatori[count], - cs.getNumSacche(gruppiDonatori[count]));
+						cs.cambiaNumSacche(gruppiDonatori[count], (-1)*cs.getNumSacche(gruppiDonatori[count]));
+						
+						//System.out.println(quantita);
 					}	
+					
+					count++;
 				}
 				
 				

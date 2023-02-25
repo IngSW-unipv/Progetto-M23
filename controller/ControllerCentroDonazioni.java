@@ -18,6 +18,8 @@ public class ControllerCentroDonazioni {
     public ControllerCentroDonazioni(CenteredFrame view, ModelCentroDonazioni model) {
 		
    	    //view.showView("menu");
+    	
+    	model.soddisfaRichieste();
    	    
    	    
    	    ActionListener pulsanteMenu1Listener = new ActionListener() {
@@ -25,6 +27,7 @@ public class ControllerCentroDonazioni {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.showView("cerca");	
+				
 			}
    	    	
    	    };
@@ -132,18 +135,11 @@ public class ControllerCentroDonazioni {
 				if (model.registraDonazione(view.getPrenotazioniView().getSelectedValueOfTable())) {
 					
 					model.aggiungiSacca(view.getPrenotazioniView().getSelectedValueOfTable());
+					
+					model.soddisfaRichieste();
 				
 				    JOptionPane.showMessageDialog(view.getPrenotazioniView(), "Donazione Registrata");
 				}
-				
-//				else {
-//					//System.out.println(view.getPrenotazioniView().getSelectedValueOfTable());
-//					
-//					DonatoreDAO dd=new DonatoreDAO();
-//					dd.selectDonatore(view.getPrenotazioniView().getSelectedValueOfTable());
-//					
-//					System.out.println(dd.selectDonatore(view.getPrenotazioniView().getSelectedValueOfTable()).getGruppo());
-//				}
 				
 			}
         };

@@ -108,7 +108,7 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
            try{
 			
 			st1 = conn.createStatement();
-			String query="select * from richiesta where EffettuatoONo='NON EFFETTUATO'" ;
+			String query="select * from richiesta where EffettuatoONo='NON EFFETTUATO' order by NUMID ASC" ;
 			rs1=st1.executeQuery(query);
 			
 			

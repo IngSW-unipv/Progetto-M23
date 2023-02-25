@@ -145,7 +145,11 @@ public class Persona {
 //	    Persona d1 = don.selectDonatore(cf1);
 //	    System.out.println(d1.getCognome());
 	    ControllerSacche cs=new ControllerSacche();
-	    cs.cambiaNumSacche(GruppoSanguigno.AB, 2);
+	    
+//	    System.out.println(cs.getNumSacche(GruppoSanguigno.A));
+//	    cs.cambiaNumSacche(GruppoSanguigno.A, -2);
+//	    System.out.println(cs.getNumSacche(GruppoSanguigno.A));
+//  
 	    
        CenteredFrame cf= new CenteredFrame(800,600); 
 	   

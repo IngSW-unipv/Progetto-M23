@@ -106,4 +106,9 @@ public class ModelCentroDonazioni {
 		this.centro.getControllerSacche().cambiaNumSacche(g, 1);
 	}
 	
+	
+	public void soddisfaRichieste() {
+		this.centro.soddisfaRichieste();
+	}
+	
 }
