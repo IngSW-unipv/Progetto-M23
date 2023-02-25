@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.persona.Donatore;
+import IT.unipv.progettoM23.persona.DonatoreDAO;
 import Model.ModelCentroDonazioni;
 
 
@@ -129,9 +130,20 @@ public class ControllerCentroDonazioni {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (model.registraDonazione(view.getPrenotazioniView().getSelectedValueOfTable())) {
+					
+					model.aggiungiSacca(view.getPrenotazioniView().getSelectedValueOfTable());
 				
 				    JOptionPane.showMessageDialog(view.getPrenotazioniView(), "Donazione Registrata");
 				}
+				
+//				else {
+//					//System.out.println(view.getPrenotazioniView().getSelectedValueOfTable());
+//					
+//					DonatoreDAO dd=new DonatoreDAO();
+//					dd.selectDonatore(view.getPrenotazioniView().getSelectedValueOfTable());
+//					
+//					System.out.println(dd.selectDonatore(view.getPrenotazioniView().getSelectedValueOfTable()).getGruppo());
+//				}
 				
 			}
         };

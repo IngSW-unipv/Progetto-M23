@@ -99,4 +99,11 @@ public class ModelCentroDonazioni {
 		return this.centro.registraDonazione(cf);
 	}
 	
+	
+	public void aggiungiSacca(String cf) {
+		GruppoSanguigno g=donDAO.selectDonatore(cf).getGruppo();
+		
+		this.centro.getControllerSacche().cambiaNumSacche(g, 1);
+	}
+	
 }
