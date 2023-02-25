@@ -12,15 +12,21 @@ import com.google.protobuf.TextFormat.ParseException;
 
 //import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.sacche.ControllerSacche;
+import Model.MainModel;
 import Model.ModelCentroDonazioni;
 import Model.ModelDonatore;
+import Model.ModelOspedale;
 import controller.ControllerCentroDonazioni;
 import controller.ControllerDonatore;
+import controller.ControllerOspedale;
+import controller.MainController;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.graphics.DonatorePanel;
 import IT.unipv.progettoM23.graphics.LoginPanel;
+import IT.unipv.progettoM23.ospedale.RichiestaSacca;
+import IT.unipv.progettoM23.ospedale.RichiestaSaccaDAO;
 //import IT.unipv.progettoM23.graphics.LoginPanel;
 //import IT.unipv.progettoM23.graphics.registrazine.RegistrationPanel;
 // import IT.unipv.progettoM23.graphics.CenteredFrame;
@@ -151,8 +157,19 @@ public class Persona {
 	    //ModelDonatore model =new ModelDonatore();
 	    //ControllerDonatore cntr =new ControllerDonatore(cf,model);
        
-       ModelCentroDonazioni model =new ModelCentroDonazioni();
-       ControllerCentroDonazioni controller = new ControllerCentroDonazioni(cf, model);
+       //ModelCentroDonazioni model =new ModelCentroDonazioni();
+       //ControllerCentroDonazioni controller = new ControllerCentroDonazioni(cf, model);
+       
+       
+       //ModelOspedale model=new ModelOspedale();
+       //ControllerOspedale controller=new ControllerOspedale(model, cf);
+       
+       
+       MainModel model= new MainModel();
+       MainController controller= new MainController(cf,model);
+       
+       
+       
 		
 //		Date d2= Date.valueOf("2001-01-01");
 //		Donatore donatore = new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",d2 ,"M", GruppoSanguigno.ZERO );
@@ -241,17 +258,17 @@ public class Persona {
 //	    DonazioneDAO donazioneDAO = new DonazioneDAO();
 //	    donazioneDAO.selectUltimaDonazione(donatore);
 		
-	    ArrayList<Prenotazione> Prenotazioni = new ArrayList<>();
-	    PrenotazioneDAO pd = new PrenotazioneDAO();
-	    LocalDate giornosucc=LocalDate.now().plusDays(1);
-	    Date d;
-		d = Date.valueOf(giornosucc);
-	    Prenotazioni = pd.selectDate(d);
+//	    ArrayList<Prenotazione> Prenotazioni = new ArrayList<>();
+//	    PrenotazioneDAO pd = new PrenotazioneDAO();
+//	    LocalDate giornosucc=LocalDate.now().plusDays(1);
+//	    Date d;
+//		d = Date.valueOf(giornosucc);
+//	    Prenotazioni = pd.selectDate(d);
 //	    System.out.println(Prenotazioni.get(0));
 //	    System.out.println(Prenotazioni.size());
 	    
-	    LocalTime lt = LocalTime.of(8, 30);
-		Time secondaOra = Time.valueOf(lt);
+//	    LocalTime lt = LocalTime.of(8, 30);
+//		Time secondaOra = Time.valueOf(lt);
 //		boolean c = false; 
 
 //       secondaOra = Time.valueOf(lt.plusMinutes(30));
@@ -272,6 +289,9 @@ public class Persona {
 		
 //		System.out.println(secondaOra);
 			
+//       RichiestaSacca r = new RichiestaSacca("TTTTTOOOOPPPPSSD", GruppoSanguigno.A, 2);
+//       RichiestaSaccaDAO rdao = new RichiestaSaccaDAO();
+//       rdao.inserisciRichiesta(r);
 	}
 	
 }

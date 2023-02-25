@@ -32,18 +32,34 @@ public class FirstPanel extends CartaPanel {
 	    cp1.add(cp);
 	    
 	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
-	    iOspedaleButton=new JButton("Interfaccia Centro Donazioni");
-	    iOspedaleButton.setPreferredSize(new Dimension(500,45));
-	    cp.add(iOspedaleButton);
-	    cp1.add(cp);
-	    
-	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
-	    iCentroButton=new JButton("Interfaccia Ospedale");
+	    iCentroButton=new JButton("Interfaccia Centro Donazioni");
 	    iCentroButton.setPreferredSize(new Dimension(500,45));
 	    cp.add(iCentroButton);
 	    cp1.add(cp);
 	    
+	    cp=new ContainerPanel(new FlowLayout(FlowLayout.CENTER));
+	    iOspedaleButton=new JButton("Interfaccia Ospedale");
+	    iOspedaleButton.setPreferredSize(new Dimension(500,45));
+	    cp.add(iOspedaleButton);
+	    cp1.add(cp);
+	    
 	    this.add(cp1,BorderLayout.CENTER);
+	}
+	
+	
+	
+	public JButton getIDonatoreButton() {
+		return this.iDonatoreButton;
+	}
+	
+	
+	public JButton getICentroButton() {
+		return this.iCentroButton;
+	}
+	
+	
+	public JButton getIOspedaleButton() {
+		return this.iOspedaleButton;
 	}
 	
 	

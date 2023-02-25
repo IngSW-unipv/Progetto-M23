@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import IT.unipv.progettoM23.CentroNazionaleSangue.CentroNazionaleSangue;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
 import IT.unipv.progettoM23.ospedale.RichiestaSacca;
@@ -20,21 +21,23 @@ import IT.unipv.progettoM23.sacche.ControllerSacche;
 public class ModelCentroDonazioni {
 	
 	private PrenotazioneDAO pDAO;
-	private DonazioneDAO dDAO;
 	private RichiestaSaccaDAO rDAO;
 	private LoginRegistrazioneDAO lrDAO;
 	private DonatoreDAO donDAO;
+	private DonazioneDAO dDAO;
     
 	private Donatore donatoreCercato;
-	private ControllerSacche cs;
+	private CentroNazionaleSangue centro;
 	//private LoginRegistrazione lrDonatoreCercato;
 	
 	public ModelCentroDonazioni() {
 		pDAO=new PrenotazioneDAO();
-		dDAO=new DonazioneDAO();
 		rDAO=new RichiestaSaccaDAO();
 		lrDAO=new LoginRegistrazioneDAO();
 		donDAO=new DonatoreDAO();
+		dDAO=new DonazioneDAO();
+		
+		centro=new CentroNazionaleSangue();
 	}
 	
 	
@@ -48,26 +51,16 @@ public class ModelCentroDonazioni {
 	}
 	
 	
-	public void confermaPrenotazione(String cf) {
-		
-		Donazione don=new Donazione(cf,Date.valueOf(LocalDate.now()));
-		dDAO.inserisciDonazione(don);
-	}
-	
+//	public void confermaPrenotazione(String cf) {
+//		
+//		this.centro.confermaPrenotazione(cf);
+//	}
+//	
 	
 	
 	public int[] getNumSacche() {
-		cs=new ControllerSacche();
 		
-		int[] numSacche = new int[4];
-		
-		numSacche[0]=cs.getNumSacche(GruppoSanguigno.A);
-		numSacche[1]=cs.getNumSacche(GruppoSanguigno.B);
-		numSacche[2]=cs.getNumSacche(GruppoSanguigno.AB);
-		numSacche[3]=cs.getNumSacche(GruppoSanguigno.ZERO);
-		
-		
-		return numSacche;
+		return this.centro.getNumSacche();
 	}
 	
 	
@@ -103,18 +96,7 @@ public class ModelCentroDonazioni {
 	
 	public boolean registraDonazione(String cf) {
 	
-		if(cf!=null) {
-		
-			Date today=Date.valueOf(LocalDate.now());
-			Donazione donazione=new Donazione(cf,today);
-			
-			
-			return dDAO.inserisciDonazione(donazione);
-			
-		}
-		else {
-			return false;
-		}
+		return this.centro.registraDonazione(cf);
 	}
 	
 }

@@ -12,11 +12,8 @@ import Model.ModelDonatore;
 
 public class ControllerDonatore {
 	
+	
      public ControllerDonatore(CenteredFrame view,ModelDonatore model) {
-    	 
-    	 
-    	 view.showView("login");
-    	 
     	 
     	 
     	 ActionListener accediListener=new ActionListener() {
@@ -245,4 +242,5 @@ public class ControllerDonatore {
     	 view.getUtenteView().getIndietroButton().addActionListener(indietroUtenteListener);
         
      }
+     
 }

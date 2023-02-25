@@ -34,12 +34,14 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 			st1 = conn.createStatement();
 			
 			
-			String query="Insert into Donazione values ('"+rd.getCodiceFiscale()+"','"+
-	        rd.getGruppo()+"','"+rd.getQuantità()+ "','"+ rd.getEffettuato() +"')";
+			String query="Insert into richiesta values ('"+rd.getCodiceFiscale()+"','"+
+	        rd.getGruppo1()+"','"+rd.getQuantità()+ "','NON EFFETTUATO')";
 			
 			st1.executeUpdate(query);
 			
 			System.out.println("Data inserted successfully");
+			
+			JavaDatabaseConn.closeConnection(conn);
 		}
 		
 		

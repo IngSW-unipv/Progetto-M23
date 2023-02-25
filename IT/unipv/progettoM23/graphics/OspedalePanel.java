@@ -7,6 +7,8 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+import IT.unipv.progettoM23.persona.GruppoSanguigno;
+
 public class OspedalePanel extends CartaPanel{
     
 	private ContainerPanel cp,cp1;
@@ -104,5 +106,58 @@ public class OspedalePanel extends CartaPanel{
 		this.add(cp);
 	    
 		
+	}
+	
+	
+	
+	
+	public String getContenutoCF() {
+		return cfPaziente.getText();
+	}
+	
+	
+	public GruppoSanguigno getContenutoGruppo() {
+		
+		if(buttonA.isSelected()) {
+			return GruppoSanguigno.A;
+		}
+		else if(buttonB.isSelected()) {
+			return GruppoSanguigno.B;
+		}
+		else if(buttonAB.isSelected()) {
+			return GruppoSanguigno.AB;
+		}
+		else if(buttonZ.isSelected()) {
+			return GruppoSanguigno.ZERO;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	
+	public int getContenutoQuantita() {
+		String s= numSacche.getText();
+		
+		try {
+			int i=Integer.valueOf(s);
+			
+			return i;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+	
+	
+	
+	public JButton getMandaButton() {
+		return this.mandaRichiesta;
+	}
+	
+	
+	
+	public JButton getIndietroButton() {
+		return indietro;
 	}
 }

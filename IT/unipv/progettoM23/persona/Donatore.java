@@ -219,7 +219,7 @@ public class Donatore extends Persona {
 	    }
 	
 	    	
-	    else if(Prenotazioni.size()== 8) {
+	    else if(Prenotazioni.size()== 10) {
 	        giornosucc = giornosucc.plusDays(1);
 	    	b=false;	
 	    	d = Date.valueOf(giornosucc);

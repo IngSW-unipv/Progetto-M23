@@ -175,5 +175,9 @@ public class CenteredFrame extends JFrame{
 		return this.ospedaleView;
 	}
 	
+	public FirstPanel getFirstView() {
+		return this.firstView;
+	}
+	
 
 }

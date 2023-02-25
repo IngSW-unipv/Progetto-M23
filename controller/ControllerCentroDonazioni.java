@@ -16,9 +16,7 @@ public class ControllerCentroDonazioni {
 
     public ControllerCentroDonazioni(CenteredFrame view, ModelCentroDonazioni model) {
 		
-   	    view.showView("menu");
-   	    
-   	    
+   	    //view.showView("menu");
    	    
    	    
    	    ActionListener pulsanteMenu1Listener = new ActionListener() {
