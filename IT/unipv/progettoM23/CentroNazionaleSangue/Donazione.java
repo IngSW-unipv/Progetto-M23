@@ -2,7 +2,6 @@ package IT.unipv.progettoM23.CentroNazionaleSangue;
 
 import java.sql.Date;
 
-import IT.unipv.progettoM23.persona.Donatore;
 
 public class Donazione {
 	private String donatore;

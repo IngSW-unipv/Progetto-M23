@@ -1,8 +1,6 @@
 package IT.unipv.progettoM23.graphics;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Date;
 
 import javax.swing.*;
@@ -13,7 +11,6 @@ import IT.unipv.progettoM23.persona.GruppoSanguigno;
 public class RegistrationPanel extends CartaPanel{
 	
 	private static final long serialVersionUID = 1L;
-	
 	private JLabel testo;
 	private JTextField nomeTF,cognomeTF,giornoTF,meseTF,annoTF,userTF,passwordTF;
 	private JRadioButton buttonM,buttonF,buttonA,buttonB,buttonAB,buttonZ;

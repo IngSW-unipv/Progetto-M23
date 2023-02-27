@@ -1,14 +1,13 @@
 package IT.unipv.progettoM23.graphics;
 
 import java.awt.*;
-import java.util.BitSet;
 import java.util.HashMap;
-
 import javax.swing.*;
 
 
 public class CenteredFrame extends JFrame{
 	
+	private static final long serialVersionUID = 1L;
 	private CardLayout cardLayout;
 	private JPanel cards;
 	
@@ -18,9 +17,9 @@ public class CenteredFrame extends JFrame{
 	private DonatorePanel utenteView;
     private RegistrationPanel registrationView;
     private MenuPanel menuView;
-    private InserisciCodFisPanel cercaView;
+    private CercaPanel cercaView;
     private CercaDonatorePanel mostraDonatoreView;
-    private VisualPrenotazioniPanel prenotazioniView;
+    private PrenotazioniPanel prenotazioniView;
     private PrenGiornoPanel preGiornoView;
     private SacchePanel saccheView;
     private RichiestePanel richiesteView;
@@ -82,9 +81,9 @@ public class CenteredFrame extends JFrame{
 		utenteView=new DonatorePanel();
 		registrationView= new RegistrationPanel();
 		menuView= new MenuPanel();
-		cercaView=new InserisciCodFisPanel();
+		cercaView=new CercaPanel();
 		mostraDonatoreView=new CercaDonatorePanel();
-		prenotazioniView=new VisualPrenotazioniPanel();
+		prenotazioniView=new PrenotazioniPanel();
 		preGiornoView=new PrenGiornoPanel();
 		saccheView=new SacchePanel();
 		richiesteView=new RichiestePanel();
@@ -146,7 +145,7 @@ public class CenteredFrame extends JFrame{
 		return this.menuView;
 	}
 	
-	public InserisciCodFisPanel getCercaView() {
+	public CercaPanel getCercaView() {
 		return this.cercaView;
 	}
 	
@@ -154,7 +153,7 @@ public class CenteredFrame extends JFrame{
 		return this.mostraDonatoreView;
 	}
 	
-	public VisualPrenotazioniPanel getPrenotazioniView() {
+	public PrenotazioniPanel getPrenotazioniView() {
 		return this.prenotazioniView;
 	}
 	

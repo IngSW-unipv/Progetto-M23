@@ -35,7 +35,6 @@ public class ControllerSacche {
 			}
 			
 			fileTesto.close();
-			//fr.close();
 		}
 		
 		

@@ -1,19 +1,18 @@
 package IT.unipv.progettoM23.graphics;
 
   import java.awt.*;
-  import java.awt.event.ActionEvent;
-  import java.awt.event.ActionListener;
   import javax.swing.*;
 
-  public class InserisciCodFisPanel extends CartaPanel {
-
+  public class CercaPanel extends CartaPanel {
+      
+	  private static final long serialVersionUID = 1L;
 	  private JLabel testo;
 	  private JTextField userTextField;
 	  private ContainerPanel cp;
 	  private JButton indietro,cerca;
 
 
-	  public InserisciCodFisPanel() {
+	  public CercaPanel() {
 	
 		this.setKey("cerca");
 	    

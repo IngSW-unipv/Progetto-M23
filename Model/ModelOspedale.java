@@ -1,19 +1,14 @@
 package Model;
 
+import IT.unipv.progettoM23.ospedale.Ospedale;
 import IT.unipv.progettoM23.ospedale.RichiestaSacca;
-import IT.unipv.progettoM23.ospedale.RichiestaSaccaDAO;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 public class ModelOspedale {
 	
-	private RichiestaSaccaDAO rDAO;
-	
 	private RichiestaSacca richiesta;
     
-	public ModelOspedale() {
-		
-		rDAO=new RichiestaSaccaDAO();
-	}
+	public ModelOspedale() {}
 	
 	
 	public void creaRichiesta(String cf,GruppoSanguigno g,int q) {
@@ -21,7 +16,7 @@ public class ModelOspedale {
 	}
 	
 	public void mandaRichiesta() {
-		rDAO.inserisciRichiesta(this.richiesta);
+		Ospedale.getIstanza().mandaRichiesta(this.richiesta);
 	}
 	
 	

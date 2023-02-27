@@ -22,7 +22,8 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		Statement st1;
 		ResultSet rs1;
 		boolean b = false;
-//		LoginRegistrazione lr1;
+		
+		
 		try{
 			
 			st1 = conn.createStatement();
@@ -55,7 +56,7 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		Statement st1;
 		ResultSet rs1;
 		Boolean b = false;
-//		LoginRegistrazione lr1 = null;
+
 		try{
 			
 			st1 = conn.createStatement();
@@ -75,7 +76,7 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		
 	
 		catch (Exception e) { 
-		//e.printStackTrace();
+
 			b=false;
 	    }
 		
@@ -112,7 +113,6 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 		
 		catch (Exception e) {
 			b = false;
-			//e.printStackTrace();
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);

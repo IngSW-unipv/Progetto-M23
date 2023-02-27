@@ -1,7 +1,6 @@
 package Model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
@@ -16,11 +15,8 @@ import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 public class ModelDonatore {
 	
-	private static ModelDonatore jModelDonatore;
-	
     private LoginRegistrazione login;
     private Donatore donatoreLoggato;
-    private Prenotazione prossimaPrenotazione;
     
     private LoginRegistrazioneDAO lrDAO;
     private DonatoreDAO dDAO;
@@ -140,7 +136,7 @@ public class ModelDonatore {
     }
     
     public boolean pswValida(String psw) {
-    	return (psw.length()>5);
+    	return (psw.length()>7)&&(psw.length()<9);
     }
     
     public boolean nomeValido(String n) {
@@ -163,15 +159,5 @@ public class ModelDonatore {
     	return d!=null;
     }
     
-	
-    
-    
-//    public Donatore getDonatoreLoggato() {
-//    	return this.donatoreLoggato;
-//    }
-	
-	
-	
-	
 	
 }

@@ -7,31 +7,24 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
-import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
-import IT.unipv.progettoM23.persona.Donatore;
-import IT.unipv.progettoM23.persona.GruppoSanguigno;
 import IT.unipv.progettoM23.prenotazioni.Prenotazione;
-import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
+
 
 
 public class DonatorePanel extends CartaPanel{
     
-	//private Donatore d;
+	private static final long serialVersionUID = 1L;
 	private JLabel testo,saluto,testoPren;
 	private ContainerPanel cp;
 	private JButton indietro,prenota,cancella;
 	private JList<Date> lista;
 	private DefaultListModel<Date> dlm;
 	private JScrollPane scrollPane;
-	
-	
-	//ArrayList<Donazione> donazioni;
+
 	
 	
 	public DonatorePanel() {
-		
-		//d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
-		
+				
 		this.setKey("utente");
 		
 		this.setLayout(new GridLayout(0,1));
@@ -54,9 +47,7 @@ public class DonatorePanel extends CartaPanel{
 		
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		saluto=new JLabel();
-//	    saluto.setText();
 		saluto.setFont(new Font("Serif",Font.PLAIN,50));
-		//testo.setPreferredSize();
 		saluto.setForeground(white);
 		cp.add(saluto);
 		this.add(cp);
@@ -73,13 +64,9 @@ public class DonatorePanel extends CartaPanel{
 		cp.add(testo);
 
 		
-		////// crea JList 
 		
 		dlm=new DefaultListModel<>();
-		
-		//DonazioneDAO dDAO = new DonazioneDAO();
-		//ArrayList<Donazione> donazioni = dDAO.selectDonazioni(d.getcodFiscale());
-		
+			
 		lista=new JList<>(dlm);
 		scrollPane = new JScrollPane(lista);
 		
@@ -107,10 +94,6 @@ public class DonatorePanel extends CartaPanel{
         
         
     	
-        
-        //PrenotazioneDAO p = new PrenotazioneDAO();
-		//Prenotazione p1;
-		//p1 = p.selectUltimaPrenotazione(d.getcodFiscale());
     	
         cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
     	testoPren=new JLabel();
@@ -136,10 +119,36 @@ public class DonatorePanel extends CartaPanel{
 		return this.testoPren;
 	}
 	
+	
+    public JButton getPrenotaButton() {
+    	return this.prenota;
+    }
+	
+    public JButton getCancellaButton() {
+    	return this.cancella;
+    }
+    
+    
+    public JScrollPane getListaPanel() {
+    	return this.scrollPane;
+    }
+    
+	public JButton getIndietroButton() {
+		return indietro;
+	}
+	
+	
+	
+	
+	
 	public void changeSaluto(String n,String c) {
 		this.getSaluto().setText("Ciao "+n+" "+c+"!");
 		this.getSaluto().paintImmediately(this.getSaluto().getVisibleRect());
 	}
+	
+	
+	
+	
 	
 	public void changeTestoPren(Prenotazione p1) {
 		
@@ -155,6 +164,8 @@ public class DonatorePanel extends CartaPanel{
 	
 	
 	
+	
+	
 	public void changeDonazioni(ArrayList<Donazione> listaDon) {
 		dlm=new DefaultListModel<>();
 		
@@ -167,35 +178,5 @@ public class DonatorePanel extends CartaPanel{
 		lista.setModel(dlm);
 	}
 	
-	
-	
-//	public void setNome(String n) {
-//		this.nome=n;
-//	}
-//	public void setCognome(String c) {
-//		this.cognome=c;
-//	}
-//    public void setPrenotazione(Prenotazione p) {
-//    	this.p1=p;
-//    }
-    
-    public JButton getPrenotaButton() {
-    	return this.prenota;
-    }
-	
-    public JButton getCancellaButton() {
-    	return this.cancella;
-    }
-    
-//    public void setDonazioni(ArrayList<Donazione> a) {
-//    	this.donazioni=a;
-//    }
-    
-    public JScrollPane getListaPanel() {
-    	return this.scrollPane;
-    }
-    
-	public JButton getIndietroButton() {
-		return indietro;
-	}
+
 }

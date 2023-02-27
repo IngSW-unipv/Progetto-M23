@@ -1,17 +1,12 @@
 package IT.unipv.progettoM23.graphics;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-
+import java.awt.*;
 import javax.swing.*;
 
-import IT.unipv.progettoM23.persona.GruppoSanguigno;
-import IT.unipv.progettoM23.sacche.ControllerSacche;
 
 public class SacchePanel extends CartaPanel {
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel testo,testoA,testoB,testoAB,testo0;
 	private ContainerPanel cp;
 	private JButton indietro;
@@ -59,6 +54,7 @@ public class SacchePanel extends CartaPanel {
 	    cp.add(testoA);
 	    
 	    this.add(cp);
+	    
 	    
 	    
 	    

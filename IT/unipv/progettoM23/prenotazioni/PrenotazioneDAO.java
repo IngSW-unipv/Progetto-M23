@@ -5,15 +5,11 @@ import java.util.ArrayList;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.sql.Date;
-import java.sql.Driver;
 import java.sql.PreparedStatement;
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
-import IT.unipv.progettoM23.persona.Donatore;
-import IT.unipv.progettoM23.persona.DonatoreDAO;
-import IT.unipv.progettoM23.persona.GruppoSanguigno;
+
  	 
 
 public class PrenotazioneDAO implements IPrenotazioneDAO {
@@ -192,75 +188,75 @@ public void  cancellaPrenotazione(Prenotazione p){
        
    }
 	
-public Prenotazione selectUltimaPrenGiorno(Date data) {
-	
-	
-	Prenotazione result;
-	
-	conn = JavaDatabaseConn.startConnection(conn, schema);
-	PreparedStatement st1;
-	ResultSet rs1;
-	
-	
-
-       try{
-    	   
-    	String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione DESC" ;
-		st1 = conn.prepareStatement(query);
-		st1.setDate(1, data);
+	public Prenotazione selectUltimaPrenGiorno(Date data) {
 		
-		rs1=st1.executeQuery();
 		
-		rs1.next();
+		Prenotazione result;
 		
-		result = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
-       }
-	
-	
-	catch (Exception e) {result = null;
-    }
-	
-	JavaDatabaseConn.closeConnection(conn);
-	
-    return result;
-		           
-	
-}
-
-public Prenotazione selectPrimaPrenGiorno(Date data) {
-	
-	
-	Prenotazione result;
-	
-	conn = JavaDatabaseConn.startConnection(conn, schema);
-	PreparedStatement st1;
-	ResultSet rs1;
-	
-	
-
-       try{
-    	   
-    	String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione ASC" ;
-		st1 = conn.prepareStatement(query);
-		st1.setDate(1, data);
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
 		
-		rs1=st1.executeQuery();
 		
-		rs1.next();
+	
+	       try{
+	    	   
+	    	String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione DESC" ;
+			st1 = conn.prepareStatement(query);
+			st1.setDate(1, data);
+			
+			rs1=st1.executeQuery();
+			
+			rs1.next();
+			
+			result = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
+	       }
 		
-		result = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
-       }
+		
+		catch (Exception e) {result = null;
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+	    return result;
+			           
+		
+	}
 	
+	public Prenotazione selectPrimaPrenGiorno(Date data) {
+		
+		
+		Prenotazione result;
+		
+		conn = JavaDatabaseConn.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+		
+		
 	
-	catch (Exception e) {result = null;
-    }
-	
-	JavaDatabaseConn.closeConnection(conn);
-	
-    return result;
-		           
-	
-}
+	       try{
+	    	   
+	    	String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione ASC" ;
+			st1 = conn.prepareStatement(query);
+			st1.setDate(1, data);
+			
+			rs1=st1.executeQuery();
+			
+			rs1.next();
+			
+			result = new Prenotazione(rs1.getString(1), rs1.getDate(2), rs1.getTime(3));
+	       }
+		
+		
+		catch (Exception e) {result = null;
+	    }
+		
+		JavaDatabaseConn.closeConnection(conn);
+		
+	    return result;
+			           
+		
+	}
 }
 
 

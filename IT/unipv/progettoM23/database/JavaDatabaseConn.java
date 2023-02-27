@@ -15,7 +15,9 @@ public class JavaDatabaseConn {
 		String username=null;
 		String password=null;
 	
-		DbDriver= "com.mysql.jdbc.Driver";
+		//DbDriver= "com.mysql.jdbc.Driver";
+		
+		DbDriver="com.mysql.cj.jdbc.Driver";
 		DbURL= "jdbc:mysql://127.0.0.1:3306/"+schema;
 		username="root";
 		password ="root";
@@ -28,7 +30,7 @@ public class JavaDatabaseConn {
 		
 		try 
 		{
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName(DbDriver);
 			conn = DriverManager.getConnection(DbURL, username, password);
 			
 		}

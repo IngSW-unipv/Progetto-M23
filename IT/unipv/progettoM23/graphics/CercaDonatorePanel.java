@@ -12,21 +12,16 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
-import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
-import IT.unipv.progettoM23.persona.Donatore;
-import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 public class CercaDonatorePanel extends CartaPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel nome,cognome,cf,dob,sesso,gruppo,donazioni;
 	private ContainerPanel cp;
 	private JButton indietro;
-	private Donatore d;
 	private JList<Date> lista;
 	private DefaultListModel<Date> dlm;
 	private JScrollPane scrollPane;
@@ -37,8 +32,6 @@ public class CercaDonatorePanel extends CartaPanel{
 		
 		this.setKey("mostraDonatore");
 		
-		d=new Donatore ("TTTTTTTTTTTTTTTT","ROSSI", "MARIO",Date.valueOf("2001-01-01") ,"M", GruppoSanguigno.ZERO );    ////////// da cambiare con donatore passato da controller
-
 		
         this.setLayout(new GridLayout(0,1));
 		
@@ -112,9 +105,6 @@ public class CercaDonatorePanel extends CartaPanel{
     	this.add(cp);
     	
     	
-    	
-	    
-	    
 	    
 	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
@@ -150,13 +140,9 @@ public class CercaDonatorePanel extends CartaPanel{
 	    cp.add(gruppo);
 	    
 	    this.add(cp);
-	    
-	   
-    	
-    	//cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
-    	//this.add(cp);
 		
 	}
+	
 	
 	
 	public JLabel getNomeLabel() {
@@ -184,9 +170,10 @@ public class CercaDonatorePanel extends CartaPanel{
 	}
 	
 	
-	  public JButton getIndietroButton() {
-		  return this.indietro;
-	  }
+	public JButton getIndietroButton() {
+		return this.indietro;
+	}
+	
 	
 	
 	public void changeDati(String n,String c,String cf,String dob,String s,String g) {
@@ -210,6 +197,8 @@ public class CercaDonatorePanel extends CartaPanel{
 		this.getGruppoLabel().paintImmediately(this.getGruppoLabel().getVisibleRect());
 		
 	}
+	
+	
 	
 	
 	public void changeDonazioni(ArrayList<Donazione> listaDon) {

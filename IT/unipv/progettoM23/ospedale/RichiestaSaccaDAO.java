@@ -1,16 +1,14 @@
 package IT.unipv.progettoM23.ospedale;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
-import IT.unipv.progettoM23.prenotazioni.Prenotazione;
+
 
 public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 	
@@ -27,6 +25,9 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 
 	
 	
+	
+	
+	
 	public void inserisciRichiesta(RichiestaSacca rd) {
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
@@ -38,7 +39,7 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 			
 			
 			String query="Insert into richiesta values ('"+rd.getCodiceFiscale()+"','"+
-	        rd.getGruppo1()+"','"+rd.getQuantità()+ "','NON EFFETTUATO', '0')";
+	        rd.getGruppo1()+"','"+rd.getQuantità()+ "','"+rd.getEffettuato()+"', '0')";
 			
 			st1.executeUpdate(query);
 			
@@ -59,11 +60,14 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 	
 	
 	
+	
+	
+	
 	public String[][] getArrayRichieste() {
 		
 		
 		ArrayList<String[]> result =new ArrayList<>();
-		//String[][] result ;
+
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		Statement st1;
@@ -95,6 +99,11 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 			           
 		
 	}
+	
+	
+	
+	
+	
 	
 	public ArrayList<RichiestaSacca> selectRichiesteNonEffettuate(){
 		
@@ -134,6 +143,10 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
            
 	}
 	
+	
+	
+	
+	
 	public void setRichiestaEffettuata(RichiestaSacca rs){
 		
 		
@@ -163,9 +176,6 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 	    }
 		
 		JavaDatabaseConn.closeConnection(conn);
-		
-       
-			
-           
+		   
 	}
 }

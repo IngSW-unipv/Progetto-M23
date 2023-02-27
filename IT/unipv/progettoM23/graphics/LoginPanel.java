@@ -2,15 +2,7 @@ package IT.unipv.progettoM23.graphics;
 
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.*;
-
-import IT.unipv.progettoM23.persona.Donatore;
-import IT.unipv.progettoM23.persona.DonatoreDAO;
-import IT.unipv.progettoM23.persona.LoginRegistrazione;
 
 
 public class LoginPanel extends CartaPanel {

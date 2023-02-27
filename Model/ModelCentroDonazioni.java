@@ -1,22 +1,19 @@
 package Model;
 
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import IT.unipv.progettoM23.CentroNazionaleSangue.CentroNazionaleSangue;
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
-import IT.unipv.progettoM23.ospedale.RichiestaSacca;
 import IT.unipv.progettoM23.ospedale.RichiestaSaccaDAO;
 import IT.unipv.progettoM23.persona.Donatore;
 import IT.unipv.progettoM23.persona.DonatoreDAO;
 import IT.unipv.progettoM23.persona.GruppoSanguigno;
-import IT.unipv.progettoM23.persona.LoginRegistrazione;
 import IT.unipv.progettoM23.persona.LoginRegistrazioneDAO;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
-import IT.unipv.progettoM23.sacche.ControllerSacche;
+
 
 public class ModelCentroDonazioni {
 	
@@ -28,7 +25,7 @@ public class ModelCentroDonazioni {
     
 	private Donatore donatoreCercato;
 	private CentroNazionaleSangue centro;
-	//private LoginRegistrazione lrDonatoreCercato;
+	
 	
 	public ModelCentroDonazioni() {
 		pDAO=new PrenotazioneDAO();
@@ -50,13 +47,7 @@ public class ModelCentroDonazioni {
 		return pDAO.getArrayPrenotazioni(d);
 	}
 	
-	
-//	public void confermaPrenotazione(String cf) {
-//		
-//		this.centro.confermaPrenotazione(cf);
-//	}
-//	
-	
+
 	
 	public int[] getNumSacche() {
 		

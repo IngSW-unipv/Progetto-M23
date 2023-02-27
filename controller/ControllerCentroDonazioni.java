@@ -4,24 +4,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import IT.unipv.progettoM23.graphics.CenteredFrame;
 import IT.unipv.progettoM23.persona.Donatore;
-import IT.unipv.progettoM23.persona.DonatoreDAO;
 import Model.ModelCentroDonazioni;
 
 
 public class ControllerCentroDonazioni {
-
+    
+	private CenteredFrame view;
+	private ModelCentroDonazioni model;
+	
+	
     public ControllerCentroDonazioni(CenteredFrame view, ModelCentroDonazioni model) {
-		
-   	    //view.showView("menu");
     	
-    	model.soddisfaRichieste();
+    	this.view=view;
+    	this.model=model;
+    }
+    	
+    	
    	    
-   	    
+   	public void avviaController() {
+   		
    	    ActionListener pulsanteMenu1Listener = new ActionListener() {
 
 			@Override

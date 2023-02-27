@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class FirstPanel extends CartaPanel {
 	
+	private static final long serialVersionUID = 1L;
 	private ContainerPanel cp,cp1;
 	private JButton iDonatoreButton,iOspedaleButton,iCentroButton;
     

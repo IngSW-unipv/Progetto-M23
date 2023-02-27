@@ -28,15 +28,18 @@ public RichiestaSacca(String cf, GruppoSanguigno gr, int q) {
     public String getGruppo1() {
     	return String.valueOf(this.gruppo);
     }
+    
     public int getQuantità() {
     	return quantità;
     }
-//    public String getEffettuato() {
-//    	return effettuato;
-//    }
+    
     
     public void setEffettuato() {
     	this.effettuato = "EFFETTUATO";
     	
+    }
+    
+    public String getEffettuato() {
+    	return this.effettuato;
     }
 }

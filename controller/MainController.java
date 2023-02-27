@@ -5,21 +5,36 @@ import java.awt.event.ActionListener;
 
 import IT.unipv.progettoM23.graphics.CenteredFrame;
 import Model.MainModel;
-import Model.ModelCentroDonazioni;
-import Model.ModelDonatore;
-import Model.ModelOspedale;
 
 public class MainController {
-     
+	
+	private ControllerDonatore controllerDonatore;
+	private ControllerCentroDonazioni controllerCentro;
+	private ControllerOspedale controllerOspedale;
+	
+	private CenteredFrame view;
+	private MainModel model;
+	
 	
 	public MainController(CenteredFrame view, MainModel model) {
+		this.view=view;
+		this.model=model;
 		
-		ControllerDonatore controllerDonatore =new ControllerDonatore(view, model.getModelDonatore());
-		ControllerCentroDonazioni controllerCentro =new ControllerCentroDonazioni(view, model.getModelCentro());
-		ControllerOspedale controllerOspedale=new ControllerOspedale(view,model.getModelOspedale());
+	}
+	
+	
+	public void avviaController() {
+		
+		this.controllerDonatore =new ControllerDonatore(view, model.getModelDonatore());
+		this.controllerCentro =new ControllerCentroDonazioni(view, model.getModelCentro());
+		this.controllerOspedale=new ControllerOspedale(view,model.getModelOspedale());
+		
+		this.controllerDonatore.avviaController();
+		this.controllerCentro.avviaController();
+		this.controllerOspedale.avviaController();
 		
 		
-		
+	
 		ActionListener interfacciaDonatoreListener = new ActionListener() {
 
 			@Override

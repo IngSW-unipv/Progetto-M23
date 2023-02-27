@@ -1,11 +1,9 @@
 package IT.unipv.progettoM23.persona;
 
-//import java.time.LocalDate;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 
 import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
@@ -14,15 +12,17 @@ import IT.unipv.progettoM23.prenotazioni.Prenotazione;
 import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
 
-public class Donatore extends Persona {
+
+public class Donatore {
     
-	private String nome, cognome,sesso;
+	private String nome, cognome,sesso,codFiscale;
+	private Date dob;
+	private GruppoSanguigno gruppo; 
 	
-	private Date dob; 
 	
 	public Donatore(String cf,String c,String n, Date d, String s,GruppoSanguigno g){
-		
-		super(cf,g);
+		this.codFiscale=cf;
+		this.gruppo=g;
 		this.nome=n;
 		this.cognome=c;
         this.sesso=s;
@@ -49,6 +49,16 @@ public class Donatore extends Persona {
 	public String toString() {
 		return this.nome+" "+this.cognome;
 	}
+	
+	
+	public String getcodFiscale() {
+		return this.codFiscale;
+	}
+
+	public GruppoSanguigno getGruppo() {
+		return this.gruppo;
+	}
+	
 
 	
 	
@@ -69,7 +79,6 @@ public class Donatore extends Persona {
 		
 
 		Date data = donazione.getData();
-		//LocalDate d1 = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate d1 = data.toLocalDate();
 
 	    
@@ -118,7 +127,7 @@ public class Donatore extends Persona {
 		    LocalDate dataPrenLD = dataPren.toLocalDate();
 		    				
 		    return today.isAfter(dataPrenLD);
-		    //return false;
+
 		}
 		
 		catch(Exception e) {
@@ -129,74 +138,11 @@ public class Donatore extends Persona {
 	
 	
 
-	
-	
-//	public Prenotazione creaPrenotazione() {
-//		Prenotazione p=null;
-//		Date d;
-//		Time t;
-		
-//		LocalDate giornosucc=LocalDate.now().plusDays(1);
-//		//LocalDate domani = LocalDate.now().plusDays(1);
-//		d = Date.valueOf(giornosucc);
-		
-//		boolean b=false;
-		
-		
-//		PrenotazioneDAO pd=new PrenotazioneDAO();
-		
-//		Prenotazione UltimaprenDelGiorno = pd.selectUltimaPrenGiorno(d);
-//		Prenotazione PrimaprenDelGiorno = pd.selectPrimaPrenGiorno(d);
-		
-				
-		
-//		while (b==false) {  
-			
-//			if(UltimaprenDelGiorno==null) {
-//				t= Time.valueOf("08:00:00");	
-//				p=new Prenotazione(this.getcodFiscale(),d, t);
-				
-//				return p;
-//			}
-			
-//			else if (!PrimaprenDelGiorno.getOra().equals(Time.valueOf("8:00:00")))
-//					{
-				
-//				LocalTime lt=PrimaprenDelGiorno.getOra().toLocalTime();
-//				lt =lt.plusMinutes(-30);
-				
-//				p=new Prenotazione();	
-			 
-//			return p;
-//			}
-	    	
-//			else if (!UltimaprenDelGiorno.getOra().equals(Time.valueOf("12:30:00"))) {
-//	            b=true;
-//	        }
-	     
-//	        else  {
-//	            giornosucc = giornosucc.plusDays(1);
-//	            d = Date.valueOf(giornosucc);
-//	            UltimaprenDelGiorno = pd.selectUltimaPrenGiorno(d);	
-	        
-//	    }
-//	    }
-		
-//	    	LocalTime lt=UltimaprenDelGiorno.getOra().toLocalTime();
-//			lt =lt.plusMinutes(30);
-			
-//			p=new Prenotazione(this.getcodFiscale(),d, Time.valueOf(lt));	
-		
-	    
-//		return p;
-//	}
-//}
 
 	
 	public Prenotazione creaPrenotazione() {
 		Prenotazione p=null;
 		Date d;
-		Time t;
 		Boolean b=false;
 		
 		LocalDate giornosucc=LocalDate.now().plusDays(1);
@@ -253,6 +199,7 @@ public class Donatore extends Persona {
 	return p = new Prenotazione(this.getcodFiscale(),d, secondaOra);
 	
 	}
+	
 	
 
 }

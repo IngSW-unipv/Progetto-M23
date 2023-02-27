@@ -11,6 +11,7 @@ import IT.unipv.progettoM23.persona.GruppoSanguigno;
 
 public class OspedalePanel extends CartaPanel{
     
+	private static final long serialVersionUID = 1L;
 	private ContainerPanel cp,cp1;
 	private JButton indietro,mandaRichiesta;
 	private JLabel testo;

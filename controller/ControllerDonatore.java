@@ -13,8 +13,18 @@ import Model.ModelDonatore;
 public class ControllerDonatore {
 	
 	
+	 private CenteredFrame view;
+	 private ModelDonatore model;
+	
      public ControllerDonatore(CenteredFrame view,ModelDonatore model) {
     	 
+    	 this.view=view;
+    	 this.model=model;
+     }
+     
+     
+    
+     public void avviaController() {
     	 
     	 ActionListener accediListener=new ActionListener() {
     		 
@@ -97,7 +107,7 @@ public class ControllerDonatore {
 					JOptionPane.showMessageDialog(view.getRegistrationView(), "Inserire Codice Fiscale di 16 caratteri");
 				}
 				else if (!model.pswValida(psw)) {
-					JOptionPane.showMessageDialog(view.getRegistrationView(), "Inserire Password di almeno 6 caratteri");
+					JOptionPane.showMessageDialog(view.getRegistrationView(), "Inserire Password di almeno 8 caratteri e massimo 20");
 				}
 				else if (!model.nomeValido(nome)) {
 					JOptionPane.showMessageDialog(view.getRegistrationView(), "Inserire Nome");

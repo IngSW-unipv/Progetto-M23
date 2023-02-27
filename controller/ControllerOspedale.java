@@ -11,8 +11,19 @@ import Model.ModelOspedale;
 
 public class ControllerOspedale {
     
+	private CenteredFrame view;
+	private  ModelOspedale model;
+	
+	
+	
 	public ControllerOspedale(CenteredFrame view, ModelOspedale model) {
 		
+		this.view=view;
+		this.model=model;
+	}
+	
+	
+	public void avviaController() {
 		
 		ActionListener MandaRicListener = new ActionListener() {
 

@@ -1,15 +1,13 @@
 package IT.unipv.progettoM23.CentroNazionaleSangue;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
 import IT.unipv.progettoM23.persona.Donatore;
-import IT.unipv.progettoM23.persona.GruppoSanguigno;
+
 
 public class DonazioneDAO implements IDonazioneDAO{
 	private String schema;

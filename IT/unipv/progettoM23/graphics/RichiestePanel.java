@@ -1,22 +1,13 @@
 package IT.unipv.progettoM23.graphics;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import IT.unipv.progettoM23.ospedale.RichiestaSaccaDAO;
 
 public class RichiestePanel extends CartaPanel{
  
-	
+	private static final long serialVersionUID = 1L;
 	private JTable table;
 	private JButton indietro;
 	private ContainerPanel cp;
@@ -43,6 +34,7 @@ public class RichiestePanel extends CartaPanel{
 	    this.add(scrollPane,BorderLayout.CENTER);
 	    
 	}
+	
 	
 	
 	public void visualizzaRichieste(String[][] dati) {

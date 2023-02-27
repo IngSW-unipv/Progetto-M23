@@ -7,19 +7,20 @@ import java.time.LocalDate;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import IT.unipv.progettoM23.prenotazioni.PrenotazioneDAO;
 
-public class VisualPrenotazioniPanel extends CartaPanel{
+
+public class PrenotazioniPanel extends CartaPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel testo;
 	private ContainerPanel cp,container;
-	private JButton indietro,cerca,conferma,cancella;
+	private JButton indietro,cerca,conferma;
 	private JTextField giornoTF,meseTF,annoTF;
 	private JTable table;
 
 
     
-	public VisualPrenotazioniPanel() {
+	public PrenotazioniPanel() {
 		
 		this.setKey("prenotazioni");
 		
@@ -35,9 +36,7 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 		
 		
 		
-		
-		//// definisce i componenti della riga in alto //////////////////////////////
-		
+			
 		container=new ContainerPanel(new GridLayout(0,3));
 		
 		
@@ -69,6 +68,8 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 	    
 	    
 	    
+	    
+	    
 		cp=new ContainerPanel(new FlowLayout(FlowLayout.RIGHT));
 		
 		cerca =new JButton("Cerca");
@@ -85,11 +86,6 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 	    
 	    
 	    
-	    
-	    ////// definisce i componenti nel centro //////////////////////
-	    
-	    
-	    //container=new ContainerPanel(new GridLayout());
 	    
 	    cp=new ContainerPanel(new FlowLayout(FlowLayout.LEFT));
 		
@@ -108,7 +104,7 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 		
 		
 		
-		///// crea panel east con i 2 pulsanti centrati /////////////////////////////////
+		
 		
 	    container=new ContainerPanel(new GridLayout(0,1));
 	    
@@ -126,6 +122,8 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 		this.add(container,BorderLayout.EAST);
 		
 	}
+	
+	
 	
 	
 	public JTable getTabellaPrenotazioni() {
@@ -160,6 +158,8 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 	}
 	
 	
+	
+	
 	public String getSelectedValueOfTable() {
 		
 		try {
@@ -171,6 +171,7 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 		}
 
 	}
+	
 	
 	
 	
@@ -188,8 +189,6 @@ public class VisualPrenotazioniPanel extends CartaPanel{
 		catch (Exception e) {
 			return null;
 		}
-		
-		
 	}
 	
 	

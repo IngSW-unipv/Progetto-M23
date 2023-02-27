@@ -2,14 +2,7 @@ package IT.unipv.progettoM23.prenotazioni;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
 
-import IT.unipv.progettoM23.CentroNazionaleSangue.Donazione;
-import IT.unipv.progettoM23.CentroNazionaleSangue.DonazioneDAO;
-import IT.unipv.progettoM23.persona.Donatore;
 
 public class Prenotazione {
 	

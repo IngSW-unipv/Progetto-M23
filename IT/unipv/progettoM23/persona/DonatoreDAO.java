@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.time.LocalDate;
-//import java.sql.Date;
-//import java.sql.Driver;
+
 
 import IT.unipv.progettoM23.database.JavaDatabaseConn;
  	 
@@ -63,8 +61,9 @@ public class DonatoreDAO implements IDonatoreDAO {
 	
 	
 	
+	
 	public Donatore selectDonatore(String cf) {
-		//ArrayList<Donatore> result = new ArrayList<>();
+		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
 		PreparedStatement st1;
 		ResultSet rs1;
@@ -101,6 +100,8 @@ public class DonatoreDAO implements IDonatoreDAO {
         
         
      }
+	
+	
 	
 	public boolean inserisciDonatore(Donatore d){
 		
@@ -140,12 +141,8 @@ public class DonatoreDAO implements IDonatoreDAO {
 		
 		JavaDatabaseConn.closeConnection(conn);
 		
-    return b;   
-   }
-	
-	
-
-	
+        return b;   
+    }
 
 		
    }
