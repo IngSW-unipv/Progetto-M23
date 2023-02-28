@@ -136,7 +136,7 @@ public class ModelDonatore {
     }
     
     public boolean pswValida(String psw) {
-    	return (psw.length()>7)&&(psw.length()<9);
+    	return (psw.length()>7)&&(psw.length()<20);
     }
     
     public boolean nomeValido(String n) {

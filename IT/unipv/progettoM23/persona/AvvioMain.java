@@ -5,7 +5,7 @@ import Model.MainModel;
 import controller.MainController;
 
 
-public class AvvioMain {
+  public class AvvioMain {
 	
 	public AvvioMain() {}	
 
