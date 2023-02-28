@@ -29,15 +29,19 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		ArrayList<Prenotazione> result = new ArrayList<>(10);
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		
 	
            try{
 			
-			st1 = conn.createStatement();
-			String query="select * from prenotazione where DataPrenotazione='"+data+"'"+"order by OraPrenotazione ASC" ;
-			rs1=st1.executeQuery(query);
+			
+			String query="select * from prenotazione where DataPrenotazione= ? order by OraPrenotazione ASC" ;
+			st1 = conn.prepareStatement(query);
+			
+			st1.setDate(1, data);
+			
+			rs1=st1.executeQuery();
 			
 			
 			while(rs1.next()) {
@@ -61,19 +65,24 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public void  inserisciPrenotazione(Prenotazione p){
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 
 		
 		try{
 			
-			st1 = conn.createStatement();
 			
-			String query="Insert into Prenotazione values ('"+p.getCodiceFiscale()+"','"
-			+p.getData()+"','"+p.getOra()+"')";
 			
-			st1.executeUpdate(query);
+			String query="Insert into Prenotazione values (?,?,?)";
 			
-			System.out.println("Data inserted successfully");
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, p.getCodiceFiscale());
+			st1.setDate(2, p.getData());
+			st1.setTime(3, p.getOra());
+			
+			st1.executeUpdate();
+			
+			
 		}
 		
 		
@@ -91,15 +100,19 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 	public Prenotazione selectUltimaPrenotazione(String cf){
 		Prenotazione result = null;
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		
 	
         try{
 			
-			st1 = conn.createStatement();
-			String query="select * from prenotazione where CodiceFiscale='"+cf+"'"+"order by DataPrenotazione DESC" ;
-			rs1=st1.executeQuery(query);
+			
+			String query="select * from prenotazione where CodiceFiscale= ? order by DataPrenotazione DESC";
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, cf);
+			
+			rs1=st1.executeQuery();
 			
 			
 			rs1.next(); 
@@ -127,15 +140,19 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
 		String[][] result = new String[10][2];
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		
 	
            try{
 			
-			st1 = conn.createStatement();
-			String query="select * from prenotazione where DataPrenotazione='"+data+"'" ;
-			rs1=st1.executeQuery(query);
+			
+			String query="select * from prenotazione where DataPrenotazione=?" ;
+			st1 = conn.prepareStatement(query);
+			
+			st1.setDate(1, data);
+			
+			rs1=st1.executeQuery();
 			
 			int count=0;
 			

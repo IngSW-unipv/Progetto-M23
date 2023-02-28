@@ -1,6 +1,7 @@
 package IT.unipv.progettoM23.CentroNazionaleSangue;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -21,18 +22,22 @@ public class DonazioneDAO implements IDonazioneDAO{
 
 	public boolean inserisciDonazione(Donazione d) {
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 
 		
 		try{
 			
-			st1 = conn.createStatement();
+			
+
 			
 			
-			String query="Insert into Donazione values ('"+d.getCodiceFiscale()+"','"+
-	        d.getData() +"')";
+			String query="Insert into Donazione values (?,?)";
+			st1 = conn.prepareStatement(query);
 			
-			st1.executeUpdate(query);
+			st1.setString(1, d.getCodiceFiscale());
+			st1.setDate(2, d.getData());
+			
+			st1.executeUpdate();
 			
 			JavaDatabaseConn.closeConnection(conn);
 			
@@ -56,14 +61,18 @@ public class DonazioneDAO implements IDonazioneDAO{
 	public ArrayList<Donazione> selectDonazioni(String cf){
 		ArrayList<Donazione> result = new ArrayList<>();
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		
 		try{
 			
-			st1 = conn.createStatement();
-			String query="select * from donazione where CodiceFiscale='"+cf+"'"+"order by DataDonazione DESC";
-			rs1=st1.executeQuery(query);
+			
+			String query="select * from donazione where CodiceFiscale= ? order by DataDonazione DESC";
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, cf);
+			
+			rs1=st1.executeQuery();
 			
 		    while(rs1.next())
 		    {
@@ -88,19 +97,23 @@ public class DonazioneDAO implements IDonazioneDAO{
 
 	public Donazione selectUltimaDonazione(Donatore d) {
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		Donazione d1=null;
 
 		
 		try{
 			
-			st1 = conn.createStatement();
+		
 			
 			
-			String query="select * from donazione where CodiceFiscale = '"+d.getcodFiscale()+"'" + "order by DataDonazione desc";
+			String query="select * from donazione where CodiceFiscale = ? order by DataDonazione desc";
 			
-			rs1 = st1.executeQuery(query);
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, d.getcodFiscale());
+			
+			rs1 = st1.executeQuery();
 			rs1.next();
 			
 			

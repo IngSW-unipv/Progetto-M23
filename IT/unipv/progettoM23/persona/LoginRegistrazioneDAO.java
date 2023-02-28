@@ -1,6 +1,7 @@
 package IT.unipv.progettoM23.persona;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -19,18 +20,23 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 	public boolean verificaUtente(LoginRegistrazione lr){
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		boolean b = false;
 		
 		
 		try{
 			
-			st1 = conn.createStatement();
-			String query="select * from log_reg where CodiceFiscale="+"'"+lr.getCodiceFiscale()+"'"+
-			"and password="+"'"+lr.getPassword()+"'";
 			
-			rs1=st1.executeQuery(query);
+			String query="select * from log_reg where CodiceFiscale=? and password=? ";
+			
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, lr.getCodiceFiscale());
+			st1.setString(2, lr.getPassword());
+			
+			rs1=st1.executeQuery();
+			
 			rs1.next();
 			rs1.getString(1); 
 			rs1.getString(2);
@@ -53,18 +59,22 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 	public boolean verificaCodiceFiscale(String cf){
 		
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		ResultSet rs1;
 		Boolean b = false;
 
 		try{
 			
-			st1 = conn.createStatement();
-			String query="select * from log_reg where CodiceFiscale="+"'"+cf+"'";
 			
-			rs1=st1.executeQuery(query);
+			String query="select * from log_reg where CodiceFiscale=?";
+			
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, cf);
+			
+			rs1=st1.executeQuery();
+			
 			rs1.next();
-			
 			rs1.getString(1);
 			rs1.getString(2);
 			b = true;
@@ -90,20 +100,26 @@ public class LoginRegistrazioneDAO implements ILoginRegistrazineDAO  {
 	public boolean inserisciUtente(LoginRegistrazione lr){
 	
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 		boolean b = false;
 
 		
 		try{
 			
-			st1 = conn.createStatement();
 			
 			
 			
-			String query="Insert into log_reg values ('"+lr.getCodiceFiscale()+"','"
-			+lr.getPassword()+"')";
 			
-			st1.executeUpdate(query);
+			String query="Insert into log_reg values (?,?)";
+			
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, lr.getCodiceFiscale());
+			st1.setString(2, lr.getPassword());
+			
+			
+			
+			st1.executeUpdate();
 			
 			b = true;
 		}

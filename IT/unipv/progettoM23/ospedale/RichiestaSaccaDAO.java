@@ -30,20 +30,25 @@ public class RichiestaSaccaDAO implements IRichiestaSaccaDAO {
 	
 	public void inserisciRichiesta(RichiestaSacca rd) {
 		conn = JavaDatabaseConn.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
 
 		
 		try{
 			
-			st1 = conn.createStatement();
 			
 			
-			String query="Insert into richiesta values ('"+rd.getCodiceFiscale()+"','"+
-	        rd.getGruppo1()+"','"+rd.getQuantità()+ "','"+rd.getEffettuato()+"', '0')";
 			
-			st1.executeUpdate(query);
+			String query="Insert into richiesta values (?,?,?,?,'0')";
 			
-			System.out.println("Data inserted successfully");
+			st1 = conn.prepareStatement(query);
+			
+			st1.setString(1, rd.getCodiceFiscale());
+			st1.setString(2, rd.getGruppo1());
+			st1.setInt(3, rd.getQuantità());
+			st1.setString(4, rd.getEffettuato());
+			
+			st1.executeUpdate();
+			
 			
 			JavaDatabaseConn.closeConnection(conn);
 		}
