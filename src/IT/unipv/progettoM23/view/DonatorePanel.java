@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import IT.unipv.progettoM23.Model.CentroNazionaleSangue.Donazione;
-import IT.unipv.progettoM23.Model.prenotazioni.Prenotazione;
+import IT.unipv.progettoM23.Model.persona.Prenotazione;
 
 
 

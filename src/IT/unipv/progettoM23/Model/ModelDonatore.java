@@ -7,7 +7,7 @@ import IT.unipv.progettoM23.Model.CentroNazionaleSangue.Donazione;
 import IT.unipv.progettoM23.Model.persona.Donatore;
 import IT.unipv.progettoM23.Model.persona.GruppoSanguigno;
 import IT.unipv.progettoM23.Model.persona.LoginRegistrazione;
-import IT.unipv.progettoM23.Model.prenotazioni.Prenotazione;
+import IT.unipv.progettoM23.Model.persona.Prenotazione;
 import IT.unipv.progettoM23.database.DonatoreDAO;
 import IT.unipv.progettoM23.database.DonazioneDAO;
 import IT.unipv.progettoM23.database.LoginRegistrazioneDAO;

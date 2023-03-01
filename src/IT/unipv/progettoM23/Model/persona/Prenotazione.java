@@ -1,4 +1,4 @@
-package IT.unipv.progettoM23.Model.prenotazioni;
+package IT.unipv.progettoM23.Model.persona;
 
 import java.sql.Date;
 import java.sql.Time;

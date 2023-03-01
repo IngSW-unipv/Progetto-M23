@@ -3,7 +3,7 @@ package IT.unipv.progettoM23.database;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import IT.unipv.progettoM23.Model.prenotazioni.Prenotazione;
+import IT.unipv.progettoM23.Model.persona.Prenotazione;
 
 import java.sql.ResultSet;
 import java.sql.Date;
