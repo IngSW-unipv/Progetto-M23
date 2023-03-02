@@ -7,16 +7,15 @@ import java.util.HashMap;
 
 import IT.unipv.progettoM23.Model.ospedale.RichiestaSacca;
 import IT.unipv.progettoM23.Model.persona.GruppoSanguigno;
-import IT.unipv.progettoM23.controller.ControllerSacche;
 import IT.unipv.progettoM23.database.DonazioneDAO;
 import IT.unipv.progettoM23.database.RichiestaSaccaDAO;
 
 public class CentroNazionaleSangue {
 	
-	ControllerSacche cs;
+	GestoreSacche cs;
     
 	public CentroNazionaleSangue() {
-		cs=new ControllerSacche();
+		cs=new GestoreSacche();
 	}
 	
 	
@@ -151,7 +150,7 @@ public class CentroNazionaleSangue {
 	}
 	
 	
-	public ControllerSacche getControllerSacche() {
+	public GestoreSacche getControllerSacche() {
 		return this.cs;
 	}
 

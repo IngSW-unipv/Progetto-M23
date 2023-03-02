@@ -1,4 +1,4 @@
-package IT.unipv.progettoM23.controller;
+package IT.unipv.progettoM23.Model.CentroNazionaleSangue;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import IT.unipv.progettoM23.Model.persona.GruppoSanguigno;
 
-public class ControllerSacche {
+public class GestoreSacche {
     
-	public ControllerSacche() {}
+	public GestoreSacche() {}
 	
 	public int getNumSacche(GruppoSanguigno g) {
 		
