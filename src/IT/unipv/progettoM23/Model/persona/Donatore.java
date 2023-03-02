@@ -19,6 +19,7 @@ public class Donatore {
 	private GruppoSanguigno gruppo; 
 	
 	
+	
 	public Donatore(String cf,String c,String n, Date d, String s,GruppoSanguigno g){
 		this.codFiscale=cf;
 		this.gruppo=g;
@@ -146,8 +147,8 @@ public class Donatore {
 		
 		LocalDate giornosucc=LocalDate.now().plusDays(1);
 		d = Date.valueOf(giornosucc);
-
-		
+        
+	
 	    Time primaOra = Time.valueOf("8:00:00");
 	    
 	    ArrayList<Prenotazione> Prenotazioni = new ArrayList<>();
@@ -176,8 +177,8 @@ public class Donatore {
 	    }
 	    
 	
-	int i = 1;
-	LocalTime lt = LocalTime.of(8, 30);
+	int i = 0;
+	LocalTime lt = LocalTime.of(8, 00);
 	Time secondaOra = Time.valueOf(lt);
 	boolean c = false; 
 	int j = Prenotazioni.size()-1;
