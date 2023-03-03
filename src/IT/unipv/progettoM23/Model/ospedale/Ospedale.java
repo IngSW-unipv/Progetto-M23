@@ -8,7 +8,7 @@ public class Ospedale {
 	private RichiestaSaccaDAO rDAO;
 	
 	
-	public Ospedale() {}
+	private Ospedale() {}
 	
 	
 	public static Ospedale getIstanza() {

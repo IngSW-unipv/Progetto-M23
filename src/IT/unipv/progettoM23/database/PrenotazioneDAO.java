@@ -146,7 +146,7 @@ public class PrenotazioneDAO implements IPrenotazioneDAO {
            try{
 			
 			
-			String query="select * from prenotazione where DataPrenotazione=?" ;
+			String query="select * from prenotazione where DataPrenotazione=? order by OraPrenotazione ASC" ;
 			st1 = conn.prepareStatement(query);
 			
 			st1.setDate(1, data);

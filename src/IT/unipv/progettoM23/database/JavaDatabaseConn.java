@@ -14,8 +14,6 @@ public class JavaDatabaseConn {
 		String DbURL=null;
 		String username=null;
 		String password=null;
-	
-		//DbDriver= "com.mysql.jdbc.Driver";
 		
 		DbDriver="com.mysql.cj.jdbc.Driver";
 		DbURL= "jdbc:mysql://127.0.0.1:3306/"+schema;
